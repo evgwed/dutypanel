@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Sidebar";
+}
+
+<h2>Menu</h2>
+
+<ul>
+    <li>@Html.ActionLink("На главную", "Index", "Home")</li>
+@if(Session["User"]==null)  
+{  
+    <li>@Html.ActionLink("Авторизация", "Login", "Profile")</li>
+}
+    <li>@Html.ActionLink("Подать заявление", "CreatStatement", "Home")</li>
+    <li>@Html.ActionLink("Создание тестовых пользователей", "CreatAdmin", "Profile")</li>
+</ul>

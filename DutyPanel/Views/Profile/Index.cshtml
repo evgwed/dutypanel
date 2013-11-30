@@ -1,0 +1,114 @@
+﻿@model DutyPanel.Models.User
+
+@{
+    ViewBag.Title = "Index";
+}
+@if(Session["User"]!=null)
+{
+    <h2>Information is User</h2>
+    <div class="display-label">
+        <b>@Html.DisplayNameFor(model => (Session["User"] as DutyPanel.Models.User).Password):</b>
+        @Html.DisplayFor(model => (Session["User"] as DutyPanel.Models.User).Password)
+    </div>
+
+    <div class="display-label">
+        <b>@Html.DisplayNameFor(model => (Session["User"] as DutyPanel.Models.User).Email):</b>
+        @Html.DisplayFor(model => (Session["User"] as DutyPanel.Models.User).Email)
+    </div>
+
+    <div class="display-label">
+        <b>@Html.DisplayNameFor(model => (Session["User"] as DutyPanel.Models.User).LastName):</b>
+        @Html.DisplayFor(model => (Session["User"] as DutyPanel.Models.User).LastName)
+    </div>
+
+    <div class="display-label">
+        <b>@Html.DisplayNameFor(model => (Session["User"] as DutyPanel.Models.User).FirstName):</b>
+        @Html.DisplayFor(model => (Session["User"] as DutyPanel.Models.User).FirstName)
+    </div>
+
+    <div class="display-label">
+        <b>@Html.DisplayNameFor(model => (Session["User"] as DutyPanel.Models.User).SecondName):</b>
+        @Html.DisplayFor(model => (Session["User"] as DutyPanel.Models.User).SecondName)
+    </div>
+
+    <div class="display-label">
+        <b>@Html.DisplayNameFor(model => (Session["User"] as DutyPanel.Models.User).PassportNumber):</b>
+        @Html.DisplayFor(model => (Session["User"] as DutyPanel.Models.User).PassportNumber)
+    </div>
+
+    <div class="display-label">
+        <b>@Html.DisplayNameFor(model => (Session["User"] as DutyPanel.Models.User).WhoGivePassport):</b>
+        @Html.DisplayFor(model =>(Session["User"] as DutyPanel.Models.User).WhoGivePassport)
+    </div>
+
+    <div class="display-label">
+        <b>@Html.DisplayNameFor(model => (Session["User"] as DutyPanel.Models.User).DateGivePassport):</b>
+        @Html.DisplayFor(model => (Session["User"] as DutyPanel.Models.User).DateGivePassport)
+    </div>
+
+    <div class="display-label">
+        <b>@Html.DisplayNameFor(model => (Session["User"] as DutyPanel.Models.User).SubdivisionPasport):</b>
+        @Html.DisplayFor(model => (Session["User"] as DutyPanel.Models.User).SubdivisionPasport)
+    </div>
+
+    <div class="display-label">
+        <b>@Html.DisplayNameFor(model => (Session["User"] as DutyPanel.Models.User).RegistrationAddress):</b>
+        @Html.DisplayFor(model => (Session["User"] as DutyPanel.Models.User).RegistrationAddress)
+    </div>
+
+    <div class="display-label">
+        <b>@Html.DisplayNameFor(model => (Session["User"] as DutyPanel.Models.User).ContactPhone):</b>
+        @Html.DisplayFor(model => (Session["User"] as DutyPanel.Models.User).ContactPhone)
+    </div>
+    if(Session["User"] is DutyPanel.Models.AdminUser){ 
+        <div class="display-label">
+            <b>@Html.DisplayNameFor(model => (Session["User"] as DutyPanel.Models.AdminUser).DateOfLastEntry):</b>
+            @Html.DisplayFor(model => (Session["User"] as DutyPanel.Models.AdminUser).DateOfLastEntry)
+        </div>
+    }
+    if(Session["User"] is DutyPanel.Models.EmployeeUser){ 
+        <div class="display-label">
+            <b>@Html.DisplayNameFor(model => (Session["User"] as DutyPanel.Models.Duty).EmployeeNumber):</b>
+            @Html.DisplayFor(model => (Session["User"] as DutyPanel.Models.Duty).EmployeeNumber)
+        </div>
+        <div class="display-label">
+            <b>@Html.DisplayNameFor(model => (Session["User"] as DutyPanel.Models.Duty).DateRegistr):</b>
+            @Html.DisplayFor(model => (Session["User"] as DutyPanel.Models.Duty).DateRegistr)
+        </div>
+        <div class="display-label">
+            <b>@Html.DisplayNameFor(model => (Session["User"] as DutyPanel.Models.Duty).DateLastEditedRank):</b>
+            @Html.DisplayFor(model => (Session["User"] as DutyPanel.Models.Duty).DateLastEditedRank)
+        </div>
+        <div class="display-label">
+            <b>@Html.DisplayNameFor(model => (Session["User"] as DutyPanel.Models.Duty).WorkingPhone):</b>
+            @Html.DisplayFor(model => (Session["User"] as DutyPanel.Models.Duty).WorkingPhone)
+        </div>
+        <div class="display-label">
+            <b>@Html.DisplayNameFor(model => (Session["User"] as DutyPanel.Models.Duty).PenaltiesCount):</b>
+            @Html.DisplayFor(model => (Session["User"] as DutyPanel.Models.Duty).PenaltiesCount)
+        </div>
+        <div class="display-label">
+            <b>@Html.DisplayNameFor(model => (Session["User"] as DutyPanel.Models.Duty).NumberServiceCertificate):</b>
+            @Html.DisplayFor(model => (Session["User"] as DutyPanel.Models.Duty).NumberServiceCertificate)
+        </div>
+        <div class="display-label">
+            <b>@Html.DisplayNameFor(model => (Session["User"] as DutyPanel.Models.Duty).DateIssueServiceCertificate):</b>
+            @Html.DisplayFor(model => (Session["User"] as DutyPanel.Models.Duty).DateIssueServiceCertificate)
+        </div>
+        <div class="display-label">
+            <b>@Html.DisplayNameFor(model => (Session["User"] as DutyPanel.Models.Duty).Rank.Name):</b>
+            @Html.DisplayFor(model => (Session["User"] as DutyPanel.Models.Duty).Rank.Name)
+        </div>
+        <div class="display-label">
+            <b>@Html.DisplayNameFor(model => (Session["User"] as DutyPanel.Models.Duty).Rank.Salary):</b>
+            @Html.DisplayFor(model => (Session["User"] as DutyPanel.Models.Duty).Rank.Salary)
+        </div>
+    }
+    <p>
+    @Html.ActionLink("Edit", "Edit", new { id = (Session["User"] as DutyPanel.Models.User).Id})
+    </p>
+}
+else
+{
+    <p>Вам необходимо авторизоваться.</p>
+}

@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DutyPanelModelStoreContainer" CdmEntityContainer="DutyPanelEntities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="DutyPanelModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdminUsers">
+      <EntityTypeMapping TypeName="DutyPanelModel.AdminUsers">
+        <MappingFragment StoreEntitySet="AdminUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DateOfLastEntry" ColumnName="DateOfLastEntry" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cars">
+      <EntityTypeMapping TypeName="DutyPanelModel.Cars">
+        <MappingFragment StoreEntitySet="Cars">
+          <ScalarProperty Name="IdCar" ColumnName="IdCar" />
+          <ScalarProperty Name="NumberCar" ColumnName="NumberCar" />
+          <ScalarProperty Name="IsPlaceFoDetainees" ColumnName="IsPlaceFoDetainees" />
+          <ScalarProperty Name="BrandCar" ColumnName="BrandCar" />
+          <ScalarProperty Name="ModelCar" ColumnName="ModelCar" />
+          <ScalarProperty Name="ReleaseDate" ColumnName="ReleaseDate" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="FuelType" ColumnName="FuelType" />
+          <ScalarProperty Name="DateLastRefueling" ColumnName="DateLastRefueling" />
+          <ScalarProperty Name="SeatsCount" ColumnName="SeatsCount" />
+          <ScalarProperty Name="IsSpecSignal" ColumnName="IsSpecSignal" />
+          <ScalarProperty Name="DesiredCategoryDriving" ColumnName="DesiredCategoryDriving" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Detentions">
+      <EntityTypeMapping TypeName="DutyPanelModel.Detentions">
+        <MappingFragment StoreEntitySet="Detentions">
+          <ScalarProperty Name="NumberDetention" ColumnName="NumberDetention" />
+          <ScalarProperty Name="DetentionLastName" ColumnName="DetentionLastName" />
+          <ScalarProperty Name="DetentionFirstName" ColumnName="DetentionFirstName" />
+          <ScalarProperty Name="DetentionSecondName" ColumnName="DetentionSecondName" />
+          <ScalarProperty Name="DateOfDetention" ColumnName="DateOfDetention" />
+          <ScalarProperty Name="PleaceDetention" ColumnName="PleaceDetention" />
+          <ScalarProperty Name="BaseDetention" ColumnName="BaseDetention" />
+          <ScalarProperty Name="Things" ColumnName="Things" />
+          <ScalarProperty Name="IsNotifiRelatives" ColumnName="IsNotifiRelatives" />
+          <ScalarProperty Name="Protocol_NumberProtocol" ColumnName="Protocol_NumberProtocol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Drivers">
+      <EntityTypeMapping TypeName="DutyPanelModel.Drivers">
+        <MappingFragment StoreEntitySet="Drivers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="WorkingCar_IdCar" ColumnName="WorkingCar_IdCar" />
+          <ScalarProperty Name="LicenseNumber" ColumnName="LicenseNumber" />
+          <ScalarProperty Name="DateReceiptLicense" ColumnName="DateReceiptLicense" />
+          <ScalarProperty Name="CategoryLicense" ColumnName="CategoryLicense" />
+          <ScalarProperty Name="NumberMedicalCertificates" ColumnName="NumberMedicalCertificates" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dutys">
+      <EntityTypeMapping TypeName="DutyPanelModel.Dutys">
+        <MappingFragment StoreEntitySet="Dutys">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TypeDuty" ColumnName="TypeDuty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeUsers">
+      <EntityTypeMapping TypeName="DutyPanelModel.EmployeeUsers">
+        <MappingFragment StoreEntitySet="EmployeeUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Rank_Id" ColumnName="Rank_Id" />
+          <ScalarProperty Name="EmployeeNumber" ColumnName="EmployeeNumber" />
+          <ScalarProperty Name="DateRegistr" ColumnName="DateRegistr" />
+          <ScalarProperty Name="DateLastEditedRank" ColumnName="DateLastEditedRank" />
+          <ScalarProperty Name="WorkingPhone" ColumnName="WorkingPhone" />
+          <ScalarProperty Name="PenaltiesCount" ColumnName="PenaltiesCount" />
+          <ScalarProperty Name="NumberServiceCertificate" ColumnName="NumberServiceCertificate" />
+          <ScalarProperty Name="DateIssueServiceCertificate" ColumnName="DateIssueServiceCertificate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InternetStatements">
+      <EntityTypeMapping TypeName="DutyPanelModel.InternetStatements">
+        <MappingFragment StoreEntitySet="InternetStatements">
+          <ScalarProperty Name="NumberStatement" ColumnName="NumberStatement" />
+          <ScalarProperty Name="IpAdress" ColumnName="IpAdress" />
+          <ScalarProperty Name="InfoBrowser" ColumnName="InfoBrowser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LeavingGroups">
+      <EntityTypeMapping TypeName="DutyPanelModel.LeavingGroups">
+        <MappingFragment StoreEntitySet="LeavingGroups">
+          <ScalarProperty Name="IdLeaving" ColumnName="IdLeaving" />
+          <ScalarProperty Name="TimeLeaving" ColumnName="TimeLeaving" />
+          <ScalarProperty Name="Statement_NumberStatement" ColumnName="Statement_NumberStatement" />
+          <ScalarProperty Name="Group_IdGroup" ColumnName="Group_IdGroup" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Merits">
+      <EntityTypeMapping TypeName="DutyPanelModel.Merits">
+        <MappingFragment StoreEntitySet="Merits">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DateOfAssignment" ColumnName="DateOfAssignment" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Promotion" ColumnName="Promotion" />
+          <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OperationalGroups">
+      <EntityTypeMapping TypeName="DutyPanelModel.OperationalGroups">
+        <MappingFragment StoreEntitySet="OperationalGroups">
+          <ScalarProperty Name="IdGroup" ColumnName="IdGroup" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OperativeWorkers">
+      <EntityTypeMapping TypeName="DutyPanelModel.OperativeWorkers">
+        <MappingFragment StoreEntitySet="OperativeWorkers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Group_IdGroup" ColumnName="Group_IdGroup" />
+          <ScalarProperty Name="IsHeadOfGroup" ColumnName="IsHeadOfGroup" />
+          <ScalarProperty Name="NumberServiceWeapon" ColumnName="NumberServiceWeapon" />
+          <ScalarProperty Name="AccessionNumberHandCuffs" ColumnName="AccessionNumberHandCuffs" />
+          <ScalarProperty Name="IsHaveDog" ColumnName="IsHaveDog" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OralStatements">
+      <EntityTypeMapping TypeName="DutyPanelModel.OralStatements">
+        <MappingFragment StoreEntitySet="OralStatements">
+          <ScalarProperty Name="NumberStatement" ColumnName="NumberStatement" />
+          <ScalarProperty Name="PhoneCaller" ColumnName="PhoneCaller" />
+          <ScalarProperty Name="AdressCaller" ColumnName="AdressCaller" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Protocols">
+      <EntityTypeMapping TypeName="DutyPanelModel.Protocols">
+        <MappingFragment StoreEntitySet="Protocols">
+          <ScalarProperty Name="NumberProtocol" ColumnName="NumberProtocol" />
+          <ScalarProperty Name="DateOfPreparation" ColumnName="DateOfPreparation" />
+          <ScalarProperty Name="PlaceOfPreparation" ColumnName="PlaceOfPreparation" />
+          <ScalarProperty Name="IsHaveDelayed" ColumnName="IsHaveDelayed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ranks">
+      <EntityTypeMapping TypeName="DutyPanelModel.Ranks">
+        <MappingFragment StoreEntitySet="Ranks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Statements">
+      <EntityTypeMapping TypeName="DutyPanelModel.Statements">
+        <MappingFragment StoreEntitySet="Statements">
+          <ScalarProperty Name="NumberStatement" ColumnName="NumberStatement" />
+          <ScalarProperty Name="DeclarantLastName" ColumnName="DeclarantLastName" />
+          <ScalarProperty Name="DeclarantFirstName" ColumnName="DeclarantFirstName" />
+          <ScalarProperty Name="DeclarantSecondName" ColumnName="DeclarantSecondName" />
+          <ScalarProperty Name="DateStatment" ColumnName="DateStatment" />
+          <ScalarProperty Name="DaetIncident" ColumnName="DaetIncident" />
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="Harm" ColumnName="Harm" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Duty_Id" ColumnName="Duty_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="DutyPanelModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+          <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+          <ScalarProperty Name="WhoGivePassport" ColumnName="WhoGivePassport" />
+          <ScalarProperty Name="DateGivePassport" ColumnName="DateGivePassport" />
+          <ScalarProperty Name="SubdivisionPasport" ColumnName="SubdivisionPasport" />
+          <ScalarProperty Name="RegistrationAddress" ColumnName="RegistrationAddress" />
+          <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WarDogs">
+      <EntityTypeMapping TypeName="DutyPanelModel.WarDogs">
+        <MappingFragment StoreEntitySet="WarDogs">
+          <ScalarProperty Name="IdDog" ColumnName="IdDog" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Breed" ColumnName="Breed" />
+          <ScalarProperty Name="DateOfBirthday" ColumnName="DateOfBirthday" />
+          <ScalarProperty Name="DateCommencementOfService" ColumnName="DateCommencementOfService" />
+          <ScalarProperty Name="DateLastInspection" ColumnName="DateLastInspection" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WrittenStatements">
+      <EntityTypeMapping TypeName="DutyPanelModel.WrittenStatements">
+        <MappingFragment StoreEntitySet="WrittenStatements">
+          <ScalarProperty Name="NumberStatement" ColumnName="NumberStatement" />
+          <ScalarProperty Name="Leaving_IdLeaving" ColumnName="Leaving_IdLeaving" />
+          <ScalarProperty Name="DeclarantNumberPasport" ColumnName="DeclarantNumberPasport" />
+          <ScalarProperty Name="DeclarantWhoGivePassport" ColumnName="DeclarantWhoGivePassport" />
+          <ScalarProperty Name="DeclarantSubdivisionPasport" ColumnName="DeclarantSubdivisionPasport" />
+          <ScalarProperty Name="DeclarantDateGivePassport" ColumnName="DeclarantDateGivePassport" />
+          <ScalarProperty Name="DeclarantRegistrationAddress" ColumnName="DeclarantRegistrationAddress" />
+          <ScalarProperty Name="DeclarantContactPhone" ColumnName="DeclarantContactPhone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="11f31daac51f4be0b89fc907c20f71ae" Name="Diagram1" ZoomLevel="85">
+        <EntityTypeShape EntityType="DutyPanelModel.C__MigrationHistory" Width="1.5" PointX="0.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DutyPanelModel.AdminUsers" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DutyPanelModel.Cars" Width="1.5" PointX="6" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DutyPanelModel.Detentions" Width="1.5" PointX="17.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DutyPanelModel.Drivers" Width="1.5" PointX="8.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DutyPanelModel.Dutys" Width="1.5" PointX="8.25" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DutyPanelModel.EmployeeUsers" Width="1.5" PointX="6" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DutyPanelModel.InternetStatements" Width="1.5" PointX="12.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DutyPanelModel.LeavingGroups" Width="1.5" PointX="12.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DutyPanelModel.Merits" Width="1.5" PointX="8.25" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DutyPanelModel.OperationalGroups" Width="1.5" PointX="10.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DutyPanelModel.OperativeWorkers" Width="1.5" PointX="15.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DutyPanelModel.OralStatements" Width="1.5" PointX="12.75" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DutyPanelModel.Protocols" Width="1.5" PointX="15" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DutyPanelModel.Ranks" Width="1.5" PointX="3.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DutyPanelModel.Statements" Width="1.5" PointX="10.5" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DutyPanelModel.Users" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DutyPanelModel.WarDogs" Width="1.5" PointX="18" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DutyPanelModel.WrittenStatements" Width="1.5" PointX="15" PointY="14" IsExpanded="true" />
+        <AssociationConnector Association="DutyPanelModel.FK_dbo_AdminUsers_dbo_Users_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="DutyPanelModel.FK_dbo_Drivers_dbo_Cars_WorkingCar_IdCar" ManuallyRouted="false" />
+        <AssociationConnector Association="DutyPanelModel.FK_dbo_Detentions_dbo_Protocols_Protocol_NumberProtocol" ManuallyRouted="false" />
+        <AssociationConnector Association="DutyPanelModel.FK_dbo_Drivers_dbo_EmployeeUsers_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="DutyPanelModel.FK_dbo_OperationalGroups_dbo_Drivers_IdGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="DutyPanelModel.FK_dbo_Dutys_dbo_EmployeeUsers_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="DutyPanelModel.FK_dbo_Statements_dbo_Dutys_Duty_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="DutyPanelModel.FK_dbo_EmployeeUsers_dbo_Ranks_Rank_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="DutyPanelModel.FK_dbo_EmployeeUsers_dbo_Users_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="DutyPanelModel.FK_dbo_Merits_dbo_EmployeeUsers_Employee_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="DutyPanelModel.FK_dbo_OperativeWorkers_dbo_EmployeeUsers_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="DutyPanelModel.FK_dbo_InternetStatements_dbo_Statements_NumberStatement" ManuallyRouted="false" />
+        <AssociationConnector Association="DutyPanelModel.FK_dbo_LeavingGroups_dbo_OperationalGroups_Group_IdGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="DutyPanelModel.FK_dbo_LeavingGroups_dbo_Statements_Statement_NumberStatement" ManuallyRouted="false" />
+        <AssociationConnector Association="DutyPanelModel.FK_dbo_Protocols_dbo_LeavingGroups_NumberProtocol" ManuallyRouted="false" />
+        <AssociationConnector Association="DutyPanelModel.FK_dbo_WrittenStatements_dbo_LeavingGroups_Leaving_IdLeaving" ManuallyRouted="false" />
+        <AssociationConnector Association="DutyPanelModel.FK_dbo_OperativeWorkers_dbo_OperationalGroups_Group_IdGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="DutyPanelModel.FK_dbo_WarDogs_dbo_OperativeWorkers_IdDog" ManuallyRouted="false" />
+        <AssociationConnector Association="DutyPanelModel.FK_dbo_OralStatements_dbo_Statements_NumberStatement" ManuallyRouted="false" />
+        <AssociationConnector Association="DutyPanelModel.FK_dbo_WrittenStatements_dbo_Statements_NumberStatement" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

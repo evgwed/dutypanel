@@ -1,0 +1,562 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DutyPanelModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DutyPanelModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="DutyPanelModel.Store.__MigrationHistory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AdminUsers" EntityType="DutyPanelModel.Store.AdminUsers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cars" EntityType="DutyPanelModel.Store.Cars" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Detentions" EntityType="DutyPanelModel.Store.Detentions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Drivers" EntityType="DutyPanelModel.Store.Drivers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Dutys" EntityType="DutyPanelModel.Store.Dutys" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeUsers" EntityType="DutyPanelModel.Store.EmployeeUsers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="InternetStatements" EntityType="DutyPanelModel.Store.InternetStatements" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LeavingGroups" EntityType="DutyPanelModel.Store.LeavingGroups" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Merits" EntityType="DutyPanelModel.Store.Merits" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OperationalGroups" EntityType="DutyPanelModel.Store.OperationalGroups" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OperativeWorkers" EntityType="DutyPanelModel.Store.OperativeWorkers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OralStatements" EntityType="DutyPanelModel.Store.OralStatements" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Protocols" EntityType="DutyPanelModel.Store.Protocols" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Ranks" EntityType="DutyPanelModel.Store.Ranks" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Statements" EntityType="DutyPanelModel.Store.Statements" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="DutyPanelModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WarDogs" EntityType="DutyPanelModel.Store.WarDogs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WrittenStatements" EntityType="DutyPanelModel.Store.WrittenStatements" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_dbo_AdminUsers_dbo_Users_Id" Association="DutyPanelModel.Store.FK_dbo_AdminUsers_dbo_Users_Id">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="AdminUsers" EntitySet="AdminUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Detentions_dbo_Protocols_Protocol_NumberProtocol" Association="DutyPanelModel.Store.FK_dbo_Detentions_dbo_Protocols_Protocol_NumberProtocol">
+      <End Role="Protocols" EntitySet="Protocols" />
+      <End Role="Detentions" EntitySet="Detentions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Drivers_dbo_Cars_WorkingCar_IdCar" Association="DutyPanelModel.Store.FK_dbo_Drivers_dbo_Cars_WorkingCar_IdCar">
+      <End Role="Cars" EntitySet="Cars" />
+      <End Role="Drivers" EntitySet="Drivers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Drivers_dbo_EmployeeUsers_Id" Association="DutyPanelModel.Store.FK_dbo_Drivers_dbo_EmployeeUsers_Id">
+      <End Role="EmployeeUsers" EntitySet="EmployeeUsers" />
+      <End Role="Drivers" EntitySet="Drivers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Dutys_dbo_EmployeeUsers_Id" Association="DutyPanelModel.Store.FK_dbo_Dutys_dbo_EmployeeUsers_Id">
+      <End Role="EmployeeUsers" EntitySet="EmployeeUsers" />
+      <End Role="Dutys" EntitySet="Dutys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_EmployeeUsers_dbo_Ranks_Rank_Id" Association="DutyPanelModel.Store.FK_dbo_EmployeeUsers_dbo_Ranks_Rank_Id">
+      <End Role="Ranks" EntitySet="Ranks" />
+      <End Role="EmployeeUsers" EntitySet="EmployeeUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_EmployeeUsers_dbo_Users_Id" Association="DutyPanelModel.Store.FK_dbo_EmployeeUsers_dbo_Users_Id">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="EmployeeUsers" EntitySet="EmployeeUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_InternetStatements_dbo_Statements_NumberStatement" Association="DutyPanelModel.Store.FK_dbo_InternetStatements_dbo_Statements_NumberStatement">
+      <End Role="Statements" EntitySet="Statements" />
+      <End Role="InternetStatements" EntitySet="InternetStatements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_LeavingGroups_dbo_OperationalGroups_Group_IdGroup" Association="DutyPanelModel.Store.FK_dbo_LeavingGroups_dbo_OperationalGroups_Group_IdGroup">
+      <End Role="OperationalGroups" EntitySet="OperationalGroups" />
+      <End Role="LeavingGroups" EntitySet="LeavingGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_LeavingGroups_dbo_Statements_Statement_NumberStatement" Association="DutyPanelModel.Store.FK_dbo_LeavingGroups_dbo_Statements_Statement_NumberStatement">
+      <End Role="Statements" EntitySet="Statements" />
+      <End Role="LeavingGroups" EntitySet="LeavingGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Merits_dbo_EmployeeUsers_Employee_Id" Association="DutyPanelModel.Store.FK_dbo_Merits_dbo_EmployeeUsers_Employee_Id">
+      <End Role="EmployeeUsers" EntitySet="EmployeeUsers" />
+      <End Role="Merits" EntitySet="Merits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_OperationalGroups_dbo_Drivers_IdGroup" Association="DutyPanelModel.Store.FK_dbo_OperationalGroups_dbo_Drivers_IdGroup">
+      <End Role="Drivers" EntitySet="Drivers" />
+      <End Role="OperationalGroups" EntitySet="OperationalGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_OperativeWorkers_dbo_EmployeeUsers_Id" Association="DutyPanelModel.Store.FK_dbo_OperativeWorkers_dbo_EmployeeUsers_Id">
+      <End Role="EmployeeUsers" EntitySet="EmployeeUsers" />
+      <End Role="OperativeWorkers" EntitySet="OperativeWorkers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_OperativeWorkers_dbo_OperationalGroups_Group_IdGroup" Association="DutyPanelModel.Store.FK_dbo_OperativeWorkers_dbo_OperationalGroups_Group_IdGroup">
+      <End Role="OperationalGroups" EntitySet="OperationalGroups" />
+      <End Role="OperativeWorkers" EntitySet="OperativeWorkers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_OralStatements_dbo_Statements_NumberStatement" Association="DutyPanelModel.Store.FK_dbo_OralStatements_dbo_Statements_NumberStatement">
+      <End Role="Statements" EntitySet="Statements" />
+      <End Role="OralStatements" EntitySet="OralStatements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Protocols_dbo_LeavingGroups_NumberProtocol" Association="DutyPanelModel.Store.FK_dbo_Protocols_dbo_LeavingGroups_NumberProtocol">
+      <End Role="LeavingGroups" EntitySet="LeavingGroups" />
+      <End Role="Protocols" EntitySet="Protocols" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Statements_dbo_Dutys_Duty_Id" Association="DutyPanelModel.Store.FK_dbo_Statements_dbo_Dutys_Duty_Id">
+      <End Role="Dutys" EntitySet="Dutys" />
+      <End Role="Statements" EntitySet="Statements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_WarDogs_dbo_OperativeWorkers_IdDog" Association="DutyPanelModel.Store.FK_dbo_WarDogs_dbo_OperativeWorkers_IdDog">
+      <End Role="OperativeWorkers" EntitySet="OperativeWorkers" />
+      <End Role="WarDogs" EntitySet="WarDogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_WrittenStatements_dbo_LeavingGroups_Leaving_IdLeaving" Association="DutyPanelModel.Store.FK_dbo_WrittenStatements_dbo_LeavingGroups_Leaving_IdLeaving">
+      <End Role="LeavingGroups" EntitySet="LeavingGroups" />
+      <End Role="WrittenStatements" EntitySet="WrittenStatements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_WrittenStatements_dbo_Statements_NumberStatement" Association="DutyPanelModel.Store.FK_dbo_WrittenStatements_dbo_Statements_NumberStatement">
+      <End Role="Statements" EntitySet="Statements" />
+      <End Role="WrittenStatements" EntitySet="WrittenStatements" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" Nullable="false" MaxLength="32" />
+  </EntityType>
+  <EntityType Name="AdminUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="DateOfLastEntry" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cars">
+    <Key>
+      <PropertyRef Name="IdCar" />
+    </Key>
+    <Property Name="IdCar" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NumberCar" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsPlaceFoDetainees" Type="bit" Nullable="false" />
+    <Property Name="BrandCar" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ModelCar" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ReleaseDate" Type="datetime" Nullable="false" />
+    <Property Name="Color" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FuelType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateLastRefueling" Type="datetime" Nullable="false" />
+    <Property Name="SeatsCount" Type="int" Nullable="false" />
+    <Property Name="IsSpecSignal" Type="bit" Nullable="false" />
+    <Property Name="DesiredCategoryDriving" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Detentions">
+    <Key>
+      <PropertyRef Name="NumberDetention" />
+    </Key>
+    <Property Name="NumberDetention" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DetentionLastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DetentionFirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DetentionSecondName" Type="nvarchar(max)" />
+    <Property Name="DateOfDetention" Type="datetime" Nullable="false" />
+    <Property Name="PleaceDetention" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BaseDetention" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Things" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsNotifiRelatives" Type="bit" Nullable="false" />
+    <Property Name="Protocol_NumberProtocol" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Drivers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="WorkingCar_IdCar" Type="int" Nullable="false" />
+    <Property Name="LicenseNumber" Type="int" Nullable="false" />
+    <Property Name="DateReceiptLicense" Type="datetime" Nullable="false" />
+    <Property Name="CategoryLicense" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NumberMedicalCertificates" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Dutys">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="TypeDuty" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeeUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Rank_Id" Type="int" Nullable="false" />
+    <Property Name="EmployeeNumber" Type="int" Nullable="false" />
+    <Property Name="DateRegistr" Type="datetime" Nullable="false" />
+    <Property Name="DateLastEditedRank" Type="datetime" Nullable="false" />
+    <Property Name="WorkingPhone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PenaltiesCount" Type="int" Nullable="false" />
+    <Property Name="NumberServiceCertificate" Type="int" Nullable="false" />
+    <Property Name="DateIssueServiceCertificate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InternetStatements">
+    <Key>
+      <PropertyRef Name="NumberStatement" />
+    </Key>
+    <Property Name="NumberStatement" Type="int" Nullable="false" />
+    <Property Name="IpAdress" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="InfoBrowser" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LeavingGroups">
+    <Key>
+      <PropertyRef Name="IdLeaving" />
+    </Key>
+    <Property Name="IdLeaving" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TimeLeaving" Type="datetime" Nullable="false" />
+    <Property Name="Statement_NumberStatement" Type="int" />
+    <Property Name="Group_IdGroup" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Merits">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DateOfAssignment" Type="datetime" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Promotion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Employee_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OperationalGroups">
+    <Key>
+      <PropertyRef Name="IdGroup" />
+    </Key>
+    <Property Name="IdGroup" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OperativeWorkers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Group_IdGroup" Type="int" />
+    <Property Name="IsHeadOfGroup" Type="bit" Nullable="false" />
+    <Property Name="NumberServiceWeapon" Type="int" Nullable="false" />
+    <Property Name="AccessionNumberHandCuffs" Type="int" Nullable="false" />
+    <Property Name="IsHaveDog" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OralStatements">
+    <Key>
+      <PropertyRef Name="NumberStatement" />
+    </Key>
+    <Property Name="NumberStatement" Type="int" Nullable="false" />
+    <Property Name="PhoneCaller" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AdressCaller" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Protocols">
+    <Key>
+      <PropertyRef Name="NumberProtocol" />
+    </Key>
+    <Property Name="NumberProtocol" Type="int" Nullable="false" />
+    <Property Name="DateOfPreparation" Type="datetime" Nullable="false" />
+    <Property Name="PlaceOfPreparation" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsHaveDelayed" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ranks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Salary" Type="decimal" Nullable="false" Scale="2" />
+  </EntityType>
+  <EntityType Name="Statements">
+    <Key>
+      <PropertyRef Name="NumberStatement" />
+    </Key>
+    <Property Name="NumberStatement" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DeclarantLastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DeclarantFirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DeclarantSecondName" Type="nvarchar(max)" />
+    <Property Name="DateStatment" Type="datetime" Nullable="false" />
+    <Property Name="DaetIncident" Type="datetime" Nullable="false" />
+    <Property Name="Adress" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="District" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Harm" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Duty_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SecondName" Type="nvarchar(max)" />
+    <Property Name="PassportNumber" Type="int" Nullable="false" />
+    <Property Name="WhoGivePassport" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateGivePassport" Type="datetime" Nullable="false" />
+    <Property Name="SubdivisionPasport" Type="int" Nullable="false" />
+    <Property Name="RegistrationAddress" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ContactPhone" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WarDogs">
+    <Key>
+      <PropertyRef Name="IdDog" />
+    </Key>
+    <Property Name="IdDog" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Breed" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateOfBirthday" Type="datetime" Nullable="false" />
+    <Property Name="DateCommencementOfService" Type="datetime" Nullable="false" />
+    <Property Name="DateLastInspection" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WrittenStatements">
+    <Key>
+      <PropertyRef Name="NumberStatement" />
+    </Key>
+    <Property Name="NumberStatement" Type="int" Nullable="false" />
+    <Property Name="Leaving_IdLeaving" Type="int" />
+    <Property Name="DeclarantNumberPasport" Type="int" Nullable="false" />
+    <Property Name="DeclarantWhoGivePassport" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DeclarantSubdivisionPasport" Type="int" Nullable="false" />
+    <Property Name="DeclarantDateGivePassport" Type="datetime" Nullable="false" />
+    <Property Name="DeclarantRegistrationAddress" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DeclarantContactPhone" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_dbo_AdminUsers_dbo_Users_Id">
+    <End Role="Users" Type="DutyPanelModel.Store.Users" Multiplicity="1" />
+    <End Role="AdminUsers" Type="DutyPanelModel.Store.AdminUsers" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AdminUsers">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Detentions_dbo_Protocols_Protocol_NumberProtocol">
+    <End Role="Protocols" Type="DutyPanelModel.Store.Protocols" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Detentions" Type="DutyPanelModel.Store.Detentions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Protocols">
+        <PropertyRef Name="NumberProtocol" />
+      </Principal>
+      <Dependent Role="Detentions">
+        <PropertyRef Name="Protocol_NumberProtocol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Drivers_dbo_Cars_WorkingCar_IdCar">
+    <End Role="Cars" Type="DutyPanelModel.Store.Cars" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Drivers" Type="DutyPanelModel.Store.Drivers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cars">
+        <PropertyRef Name="IdCar" />
+      </Principal>
+      <Dependent Role="Drivers">
+        <PropertyRef Name="WorkingCar_IdCar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Drivers_dbo_EmployeeUsers_Id">
+    <End Role="EmployeeUsers" Type="DutyPanelModel.Store.EmployeeUsers" Multiplicity="1" />
+    <End Role="Drivers" Type="DutyPanelModel.Store.Drivers" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Drivers">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Dutys_dbo_EmployeeUsers_Id">
+    <End Role="EmployeeUsers" Type="DutyPanelModel.Store.EmployeeUsers" Multiplicity="1" />
+    <End Role="Dutys" Type="DutyPanelModel.Store.Dutys" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Dutys">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_EmployeeUsers_dbo_Ranks_Rank_Id">
+    <End Role="Ranks" Type="DutyPanelModel.Store.Ranks" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EmployeeUsers" Type="DutyPanelModel.Store.EmployeeUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ranks">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeUsers">
+        <PropertyRef Name="Rank_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_EmployeeUsers_dbo_Users_Id">
+    <End Role="Users" Type="DutyPanelModel.Store.Users" Multiplicity="1" />
+    <End Role="EmployeeUsers" Type="DutyPanelModel.Store.EmployeeUsers" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeUsers">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_InternetStatements_dbo_Statements_NumberStatement">
+    <End Role="Statements" Type="DutyPanelModel.Store.Statements" Multiplicity="1" />
+    <End Role="InternetStatements" Type="DutyPanelModel.Store.InternetStatements" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Statements">
+        <PropertyRef Name="NumberStatement" />
+      </Principal>
+      <Dependent Role="InternetStatements">
+        <PropertyRef Name="NumberStatement" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_LeavingGroups_dbo_OperationalGroups_Group_IdGroup">
+    <End Role="OperationalGroups" Type="DutyPanelModel.Store.OperationalGroups" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="LeavingGroups" Type="DutyPanelModel.Store.LeavingGroups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OperationalGroups">
+        <PropertyRef Name="IdGroup" />
+      </Principal>
+      <Dependent Role="LeavingGroups">
+        <PropertyRef Name="Group_IdGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_LeavingGroups_dbo_Statements_Statement_NumberStatement">
+    <End Role="Statements" Type="DutyPanelModel.Store.Statements" Multiplicity="0..1" />
+    <End Role="LeavingGroups" Type="DutyPanelModel.Store.LeavingGroups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Statements">
+        <PropertyRef Name="NumberStatement" />
+      </Principal>
+      <Dependent Role="LeavingGroups">
+        <PropertyRef Name="Statement_NumberStatement" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Merits_dbo_EmployeeUsers_Employee_Id">
+    <End Role="EmployeeUsers" Type="DutyPanelModel.Store.EmployeeUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Merits" Type="DutyPanelModel.Store.Merits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Merits">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_OperationalGroups_dbo_Drivers_IdGroup">
+    <End Role="Drivers" Type="DutyPanelModel.Store.Drivers" Multiplicity="1" />
+    <End Role="OperationalGroups" Type="DutyPanelModel.Store.OperationalGroups" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Drivers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OperationalGroups">
+        <PropertyRef Name="IdGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_OperativeWorkers_dbo_EmployeeUsers_Id">
+    <End Role="EmployeeUsers" Type="DutyPanelModel.Store.EmployeeUsers" Multiplicity="1" />
+    <End Role="OperativeWorkers" Type="DutyPanelModel.Store.OperativeWorkers" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OperativeWorkers">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_OperativeWorkers_dbo_OperationalGroups_Group_IdGroup">
+    <End Role="OperationalGroups" Type="DutyPanelModel.Store.OperationalGroups" Multiplicity="0..1" />
+    <End Role="OperativeWorkers" Type="DutyPanelModel.Store.OperativeWorkers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OperationalGroups">
+        <PropertyRef Name="IdGroup" />
+      </Principal>
+      <Dependent Role="OperativeWorkers">
+        <PropertyRef Name="Group_IdGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_OralStatements_dbo_Statements_NumberStatement">
+    <End Role="Statements" Type="DutyPanelModel.Store.Statements" Multiplicity="1" />
+    <End Role="OralStatements" Type="DutyPanelModel.Store.OralStatements" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Statements">
+        <PropertyRef Name="NumberStatement" />
+      </Principal>
+      <Dependent Role="OralStatements">
+        <PropertyRef Name="NumberStatement" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Protocols_dbo_LeavingGroups_NumberProtocol">
+    <End Role="LeavingGroups" Type="DutyPanelModel.Store.LeavingGroups" Multiplicity="1" />
+    <End Role="Protocols" Type="DutyPanelModel.Store.Protocols" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="LeavingGroups">
+        <PropertyRef Name="IdLeaving" />
+      </Principal>
+      <Dependent Role="Protocols">
+        <PropertyRef Name="NumberProtocol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Statements_dbo_Dutys_Duty_Id">
+    <End Role="Dutys" Type="DutyPanelModel.Store.Dutys" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Statements" Type="DutyPanelModel.Store.Statements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dutys">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Statements">
+        <PropertyRef Name="Duty_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_WarDogs_dbo_OperativeWorkers_IdDog">
+    <End Role="OperativeWorkers" Type="DutyPanelModel.Store.OperativeWorkers" Multiplicity="1" />
+    <End Role="WarDogs" Type="DutyPanelModel.Store.WarDogs" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="OperativeWorkers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WarDogs">
+        <PropertyRef Name="IdDog" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_WrittenStatements_dbo_LeavingGroups_Leaving_IdLeaving">
+    <End Role="LeavingGroups" Type="DutyPanelModel.Store.LeavingGroups" Multiplicity="0..1" />
+    <End Role="WrittenStatements" Type="DutyPanelModel.Store.WrittenStatements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LeavingGroups">
+        <PropertyRef Name="IdLeaving" />
+      </Principal>
+      <Dependent Role="WrittenStatements">
+        <PropertyRef Name="Leaving_IdLeaving" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_WrittenStatements_dbo_Statements_NumberStatement">
+    <End Role="Statements" Type="DutyPanelModel.Store.Statements" Multiplicity="1" />
+    <End Role="WrittenStatements" Type="DutyPanelModel.Store.WrittenStatements" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Statements">
+        <PropertyRef Name="NumberStatement" />
+      </Principal>
+      <Dependent Role="WrittenStatements">
+        <PropertyRef Name="NumberStatement" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

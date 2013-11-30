@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<table>
+@foreach(DutyPanel.Models.User tmp in ViewBag.Users)
+{
+    <tr>
+        <td>@tmp.Email</td>
+        <td>@tmp.Password</td>
+        <td>
+            @if (tmp is DutyPanel.Models.AdminUser)
+            { 
+                <span>AdminUser</span>
+            }
+            @if (tmp is DutyPanel.Models.Driver)
+            { 
+                <span>Driver</span>
+            }
+            @if (tmp is DutyPanel.Models.Duty)
+            { 
+                <span>Duty</span>
+            }
+            @if (tmp is DutyPanel.Models.EmployeeUser)
+            { 
+                <span>EmployeeUser</span>
+            }
+            @if (tmp is DutyPanel.Models.OperativeWorker)
+            { 
+                <span>OperativeWorker</span>
+            }
+        </td>
+    </tr>
+}
+</table>

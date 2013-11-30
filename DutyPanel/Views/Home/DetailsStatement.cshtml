@@ -1,0 +1,92 @@
+﻿@model DutyPanel.Models.InternetStatement
+
+@{
+    ViewBag.Title = "DetailsStatement";
+}
+
+<h2>DetailsStatement</h2>
+
+<fieldset>
+    <legend>InternetStatement</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IpAdress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IpAdress)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.InfoBrowser)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.InfoBrowser)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DeclarantLastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DeclarantLastName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DeclarantFirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DeclarantFirstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DeclarantSecondName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DeclarantSecondName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateStatment)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateStatment)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DaetIncident)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DaetIncident)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Adress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Adress)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.District)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.District)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Harm)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Harm)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.NumberStatement }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
