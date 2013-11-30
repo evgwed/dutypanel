@@ -5,7 +5,23 @@
 }
 @if(Session["User"]!=null)
 {
-    <h2>Information is User</h2>
+    <h2>Ваш профиль</h2>
+    <div class="display-label">
+        <b>Вы авторизованы как:</b>
+        @if(Session["User"] is DutyPanel.Models.AdminUser){
+            <span>Администратор</span>
+        }
+        @if(Session["User"] is DutyPanel.Models.Duty){
+            <span>Дежурный</span>
+        }
+        @if(Session["User"] is DutyPanel.Models.OperativeWorker){
+            <span>Оперативный работник</span>
+        }
+        @if(Session["User"] is DutyPanel.Models.Driver){
+            <span>Водитель</span>
+        }
+    </div>
+    
     <div class="display-label">
         <b>@Html.DisplayNameFor(model => (Session["User"] as DutyPanel.Models.User).Password):</b>
         @Html.DisplayFor(model => (Session["User"] as DutyPanel.Models.User).Password)

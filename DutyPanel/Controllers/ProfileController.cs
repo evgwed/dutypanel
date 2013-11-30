@@ -91,5 +91,10 @@ namespace DutyPanel.Controllers
             }
             return RedirectToAction("Index");
         }
+        public ActionResult Logout()
+        {
+            Session["User"] = null;
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
