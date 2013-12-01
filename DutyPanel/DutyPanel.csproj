@@ -337,6 +337,8 @@
     <Content Include="Views\Shared\Sidebar.cshtml" />
     <Content Include="Views\Shared\Header.cshtml" />
     <Content Include="Views\Profile\EditDuty.cshtml" />
+    <Content Include="Views\Profile\EditOperativeWorker.cshtml" />
+    <Content Include="Views\Profile\EditDriver.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
