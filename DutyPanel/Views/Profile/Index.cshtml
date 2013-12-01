@@ -120,8 +120,17 @@
             @Html.DisplayFor(model => (Session["User"] as DutyPanel.Models.Duty).Rank.Salary)
         </div>
     }
+    if(Session["User"] is DutyPanel.Models.Duty){ 
+        <div class="display-label">
+            <b>@Html.DisplayNameFor(model => (Session["User"] as DutyPanel.Models.Duty).TypeDuty):</b>
+            @Html.DisplayFor(model => (Session["User"] as DutyPanel.Models.Duty).TypeDuty)
+        </div>
+    }
     <p>
-    @Html.ActionLink("Edit", "Edit", new { id = (Session["User"] as DutyPanel.Models.User).Id})
+    @if (Session["User"] is DutyPanel.Models.Duty)
+    { 
+        @Html.ActionLink("Edit", "EditDuty", new { id = (Session["User"] as DutyPanel.Models.Duty).Id})
+    }
     </p>
 }
 else

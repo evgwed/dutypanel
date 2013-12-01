@@ -79,7 +79,7 @@ textarea {
 }
 .cont {
     width:970px;
-    margin:0px auto;
+    margin:10px auto;
 }
 .cont .cont_b {
     display:inline-block;
@@ -98,4 +98,11 @@ textarea {
     padding: 10px;
     color: #912e33;
     border:1px solid #912e33;
+}
+/*Info message in page*/
+.info_b {
+    background-color: #bce5f7;
+    padding: 10px;
+    color: #60a2d6;
+    border:1px solid #60a2d6;
 }

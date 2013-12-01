@@ -43,12 +43,43 @@ namespace DutyPanel.Controllers
                 ViewData["ErrorText"] = "Ошибка авторизации. Проверьте правильность e-mail или пароля.";
                 return View();
             }
-        }
-        public ActionResult Edit(int id)
+        }/*
+        public ActionResult Edit(int idu)
         {
-            return View(db.Users.Find(id));
+            DutyPanel.Models.User tmp_usr = db.Users.Find(idu);
+            if (tmp_usr is Duty)
+            { 
+                return RedirectToAction("EditDuty", new {id = idu});
+            }
+            return View();
+        }*/
+        public ActionResult EditDuty(int id)
+        {
+            SelectListItem[] rank_list = new SelectListItem[db.Ranks.Count()];
+            int i = 0;
+            foreach(Rank rank_tmp in db.Ranks)
+            {
+                rank_list[i] = new SelectListItem();
+                rank_list[i].Selected = false;
+                rank_list[i].Text = rank_tmp.Name;
+                rank_list[i].Value = rank_tmp.Id.ToString();
+                i++;
+            }
+            ViewData["Rank"] = new SelectList(db.Ranks, "Id", "Name");
+            return View(db.Dutys.Find(id));
         }
         [HttpPost]
+        public ActionResult EditDuty(DutyPanel.Models.Duty duty_usr)
+        {
+            duty_usr.Rank = db.Ranks.Find(Convert.ToInt32(Request.Form["Rank"]));
+
+            db.Entry(duty_usr).State = System.Data.EntityState.Modified;
+            db.SaveChanges();
+            Session["User"] = duty_usr;
+            ViewData["InfoText"] = "Данные о пользователе обновлены";
+            return RedirectToAction("Index");
+        }
+        /*[HttpPost]
         public ActionResult Edit(DutyPanel.Models.User usr)
         {
             db.Entry(usr).State = System.Data.EntityState.Modified;
@@ -70,7 +101,12 @@ namespace DutyPanel.Controllers
                 Session["User"] = usr as Driver;
             }
             return RedirectToAction("Index");
-        }
+        }*/
+
+        /// <summary>
+        /// profile/creatadmin - создание тестовых пользователей
+        /// </summary>
+        /// <returns></returns>
         public ActionResult CreatAdmin()
         {
             if (db.AdminUsers.Count() == 0)
@@ -89,7 +125,7 @@ namespace DutyPanel.Controllers
                 db.OperativeWorkers.Add(ow);
                 db.SaveChanges();
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult Logout()
         {
