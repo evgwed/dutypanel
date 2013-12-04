@@ -49,15 +49,10 @@ namespace DutyPanel.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(AdminUser adminuser)
         {
-            if (ModelState.IsValid)
-            {
                 adminuser.DateOfLastEntry = DateTime.Now;
                 db.AdminUsers.Add(adminuser);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
-
-            return View(adminuser);
         }
 
         //
@@ -65,7 +60,7 @@ namespace DutyPanel.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            AdminUser adminuser = db.AdminUsers.Find(id) as AdminUser;
+            AdminUser adminuser = db.AdminUsers.Find(id);
             if (adminuser == null)
             {
                 return HttpNotFound();
@@ -110,10 +105,18 @@ namespace DutyPanel.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            AdminUser adminuser = db.AdminUsers.Find(id);
-            db.AdminUsers.Remove(adminuser);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (db.AdminUsers.Count() > 1)
+            {
+                AdminUser adminuser = db.AdminUsers.Find(id);
+                db.AdminUsers.Remove(adminuser);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewData["InfoText"] = "Ошибка удаления! В системе даолжен быть хотя бы один администратор.";
+                return View(db.AdminUsers.Find(id));
+            }
         }
 
         protected override void Dispose(bool disposing)

@@ -6,7 +6,7 @@
 @if ((Session["User"] is DutyPanel.Models.Duty) || (Session["User"] is DutyPanel.Models.OperativeWorker)||(Session["User"] is DutyPanel.Models.AdminUser))
 {
 <h2>Index</h2>
-    if (Session["User"] is DutyPanel.Models.Duty || Session["User"] is DutyPanel.Models.AdminUser)
+    if (Session["User"] is DutyPanel.Models.Duty)
     {
         <p>
             @Html.ActionLink("Create New", "Create")

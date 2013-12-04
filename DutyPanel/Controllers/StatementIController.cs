@@ -53,7 +53,14 @@ namespace DutyPanel.Controllers
             internetstatement.IpAdress = Request.UserHostAddress;
             db.InternetStatements.Add(internetstatement);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            if (Session["User"] != null)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("Details", new { id = internetstatement.NumberStatement });
+            }
         }
 
         //
@@ -76,9 +83,13 @@ namespace DutyPanel.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(InternetStatement internetstatement)
         {
-                db.Entry(internetstatement).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+            if (Session["User"] is Duty)
+            { 
+                internetstatement.Duty =  db.Dutys.Find((Session["User"] as Duty).Id);
+            }
+            db.Entry(internetstatement).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         //

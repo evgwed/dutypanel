@@ -4,6 +4,8 @@
     ViewBag.Title = "Delete";
 }
 
+@if (Session["User"] is DutyPanel.Models.AdminUser || Session["User"] is DutyPanel.Models.Duty)
+{
 <h2>Delete</h2>
 
 <h3>Are you sure you want to delete this?</h3>
@@ -87,10 +89,16 @@
         @Html.DisplayFor(model => model.Description)
     </div>
 </fieldset>
-@using (Html.BeginForm()) {
+using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     <p>
         <input type="submit" value="Delete" /> |
         @Html.ActionLink("Back to List", "Index")
     </p>
+}
+
+}
+else
+{
+    <p>У вас нет прав доступа для просмотра данного раздела</p>
 }

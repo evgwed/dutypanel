@@ -139,6 +139,7 @@
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\StatementIController.cs" />
     <Compile Include="Controllers\StatementOController.cs" />
+    <Compile Include="Controllers\StatementWController.cs" />
     <Compile Include="C__MigrationHistory.cs">
       <DependentUpon>DutyPanelModel.tt</DependentUpon>
     </Compile>
@@ -355,10 +356,14 @@
     <Content Include="Views\StatementO\Create.cshtml" />
     <Content Include="Views\StatementO\Edit.cshtml" />
     <Content Include="Views\StatementO\Delete.cshtml" />
+    <Content Include="Views\StatementW\Index.cshtml" />
+    <Content Include="Views\StatementW\Details.cshtml" />
+    <Content Include="Views\StatementW\Create.cshtml" />
+    <Content Include="Views\StatementW\Edit.cshtml" />
+    <Content Include="Views\StatementW\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\StatementW\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

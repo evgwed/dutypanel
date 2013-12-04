@@ -1,29 +1,57 @@
-﻿@model DutyPanel.Models.InternetStatement
+﻿@model DutyPanel.Models.WrittenStatement
 
 @{
     ViewBag.Title = "Details";
 }
-
+@if (Session["User"] is DutyPanel.Models.Duty || Session["User"] is DutyPanel.Models.AdminUser || Session["User"] is DutyPanel.Models.OperativeWorker)
+{
 <h2>Details</h2>
 
 <fieldset>
-    <legend>InternetStatement</legend>
-@if(Session["User"]!=null)
-{
+    <legend>WrittenStatement</legend>
+
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.IpAdress)
+         @Html.DisplayNameFor(model => model.DeclarantNumberPasport)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.IpAdress)
+        @Html.DisplayFor(model => model.DeclarantNumberPasport)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.InfoBrowser)
+         @Html.DisplayNameFor(model => model.DeclarantWhoGivePassport)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.InfoBrowser)
+        @Html.DisplayFor(model => model.DeclarantWhoGivePassport)
     </div>
-}
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DeclarantSubdivisionPasport)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DeclarantSubdivisionPasport)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DeclarantDateGivePassport)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DeclarantDateGivePassport)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DeclarantRegistrationAddress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DeclarantRegistrationAddress)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DeclarantContactPhone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DeclarantContactPhone)
+    </div>
+
     <div class="display-label">
          @Html.DisplayNameFor(model => model.DeclarantLastName)
     </div>
@@ -87,14 +115,15 @@
         @Html.DisplayFor(model => model.Description)
     </div>
 </fieldset>
-
 <p>
-@if (Session["User"] is DutyPanel.Models.Duty)
-{
-    @Html.ActionLink("Edit", "Edit", new { id=Model.NumberStatement }) <span>|</span>
-}
-@if (Session["User"] is DutyPanel.Models.AdminUser || Session["User"] is DutyPanel.Models.Duty)
-{
+    @if (Session["User"] is DutyPanel.Models.Duty)
+    {
+        @Html.ActionLink("Edit", "Edit", new { id=Model.NumberStatement }) <span>|</span> 
+    }
     @Html.ActionLink("Back to List", "Index")
-}
 </p>
+}
+else
+{
+    <p>У вас нет прав для доступа к данному разделу.</p>
+}

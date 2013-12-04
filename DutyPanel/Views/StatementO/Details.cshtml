@@ -3,8 +3,9 @@
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Details</h2>
+@if (Session["User"] is DutyPanel.Models.Duty || Session["User"] is DutyPanel.Models.OperativeWorker || Session["User"] is DutyPanel.Models.AdminUser)
+{
+    <h2>Details</h2>
 
 <fieldset>
     <legend>OralStatement</legend>
@@ -87,6 +88,14 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.NumberStatement }) |
+    @if(Session["User"] is DutyPanel.Models.Duty)
+    {
+        @Html.ActionLink("Edit", "Edit", new { id=Model.NumberStatement }) <span>|</span>
+    }
     @Html.ActionLink("Back to List", "Index")
 </p>
+}
+else
+{
+    <p>У вас нет прав для доступа в данный раздел.</p>
+}

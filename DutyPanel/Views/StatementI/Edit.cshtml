@@ -4,9 +4,11 @@
     ViewBag.Title = "Edit";
 }
 
+@if (Session["User"] is DutyPanel.Models.Duty)
+{
 <h2>Edit</h2>
 
-@using (Html.BeginForm()) {
+using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
@@ -120,4 +122,10 @@
             $("#DateStatment, #DaetIncident").appendDtpicker({ "dateFormat": "DD/MM/YYYY h:m" });
         });
     </script>
+}
+
+}
+else
+{
+    <p>Ошибка, вы не можете подавать заявление таким способом</p>
 }
