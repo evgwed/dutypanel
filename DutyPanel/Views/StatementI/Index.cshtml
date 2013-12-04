@@ -1,0 +1,59 @@
+﻿@model IEnumerable<DutyPanel.Models.InternetStatement>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Internet Statements</h2>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DeclarantLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeclarantFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeclarantSecondName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateStatment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DaetIncident)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adress)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeclarantLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeclarantFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeclarantSecondName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateStatment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DaetIncident)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adress)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.NumberStatement }) |
+            @Html.ActionLink("Details", "Details", new { id=item.NumberStatement }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.NumberStatement })
+        </td>
+    </tr>
+}
+
+</table>

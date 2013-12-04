@@ -1,0 +1,111 @@
+﻿@model DutyPanel.Models.AdminUser
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+@if(Session["User"] is DutyPanel.Models.AdminUser)
+{
+<h2>Delete</h2>
+
+<h3>Вы действительно хотите удалить этого пользователя?</h3>
+<fieldset>
+    <legend>AdminUser</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateOfLastEntry)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateOfLastEntry)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Password)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Password)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FirstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SecondName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SecondName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PassportNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PassportNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.WhoGivePassport)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.WhoGivePassport)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateGivePassport)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateGivePassport)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SubdivisionPasport)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SubdivisionPasport)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RegistrationAddress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RegistrationAddress)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ContactPhone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ContactPhone)
+    </div>
+</fieldset>
+using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+}
+else
+{
+    <p>Ошибка! Необходимо авторизоваться</p>
+}

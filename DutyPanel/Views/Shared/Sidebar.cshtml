@@ -9,11 +9,26 @@
 @if(Session["User"]==null)  
 {  
     <li>@Html.ActionLink("Авторизация", "Login", "Profile")</li>
+    <li>@Html.ActionLink("Создание заявления интернет", "Create", "StatementI")</li>
 }
 else
 {
     <li>@Html.ActionLink("Выйти", "Logout", "Profile")</li>
 }
-    <li>@Html.ActionLink("Подать заявление", "CreatStatement", "Home")</li>
     <li>@Html.ActionLink("Создание тестовых пользователей", "CreatAdmin", "Profile")</li>
 </ul>
+@if(Session["User"] is DutyPanel.Models.AdminUser)
+{
+    <h2>Admin Menu</h2>
+    <ul>
+        <li>@Html.ActionLink("Администратору профиль", "Index", "Admin")</li>
+    </ul>
+}
+@if ((Session["User"] is DutyPanel.Models.Duty) || (Session["User"] is DutyPanel.Models.AdminUser))
+{ 
+    <h2>Duty Menu</h2>
+    <ul>
+        <li>@Html.ActionLink("Интернет заявления", "Index", "StatementI")</li>
+        <li>@Html.ActionLink("Устные заявления", "Index", "StatementO")</li>
+    </ul>
+}

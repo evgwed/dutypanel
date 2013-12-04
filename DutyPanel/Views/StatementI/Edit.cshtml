@@ -1,0 +1,123 @@
+﻿@model DutyPanel.Models.InternetStatement
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>InternetStatement</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IpAdress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IpAdress)
+            @Html.ValidationMessageFor(model => model.IpAdress)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.InfoBrowser)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.InfoBrowser)
+            @Html.ValidationMessageFor(model => model.InfoBrowser)
+        </div>
+
+        @Html.HiddenFor(model => model.NumberStatement)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DeclarantLastName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DeclarantLastName)
+            @Html.ValidationMessageFor(model => model.DeclarantLastName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DeclarantFirstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DeclarantFirstName)
+            @Html.ValidationMessageFor(model => model.DeclarantFirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DeclarantSecondName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DeclarantSecondName)
+            @Html.ValidationMessageFor(model => model.DeclarantSecondName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateStatment)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateStatment)
+            @Html.ValidationMessageFor(model => model.DateStatment)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DaetIncident)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DaetIncident)
+            @Html.ValidationMessageFor(model => model.DaetIncident)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Adress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Adress)
+            @Html.ValidationMessageFor(model => model.Adress)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.District)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.District)
+            @Html.ValidationMessageFor(model => model.District)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Harm)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Harm)
+            @Html.ValidationMessageFor(model => model.Harm)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            $("#DateStatment, #DaetIncident").appendDtpicker({ "dateFormat": "DD/MM/YYYY h:m" });
+        });
+    </script>
+}

@@ -1,0 +1,103 @@
+﻿@model DutyPanel.Models.OralStatement
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+@if ((Session["User"] is DutyPanel.Models.Duty) || (Session["User"] is DutyPanel.Models.AdminUser))
+{
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>OralStatement</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PhoneCaller)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PhoneCaller)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AdressCaller)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AdressCaller)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DeclarantLastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DeclarantLastName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DeclarantFirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DeclarantFirstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DeclarantSecondName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DeclarantSecondName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateStatment)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateStatment)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DaetIncident)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DaetIncident)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Adress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Adress)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.District)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.District)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Harm)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Harm)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+</fieldset>
+using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+}
+else
+{
+    <p>У вас нет прав на совершение данного действия</p>
+}

@@ -19,22 +19,6 @@ namespace DutyPanel.Controllers
             ViewBag.Users = db.Users;
             return View();
         }
-        public ActionResult CreatStatement()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult CreatStatement(DutyPanel.Models.InternetStatement statement)
-        {
-            statement.IpAdress = Request.UserHostAddress;
-            statement.InfoBrowser = Request.Browser.Browser;
-            db.Statements.Add(statement);
-            db.SaveChanges();
-            return RedirectToAction("DetailsStatement", new { id = statement.NumberStatement });
-        }
-        public ActionResult DetailsStatement(int id)
-        {
-            return View(db.InternetStatements.Find(id));
-        }
+        
     }
 }

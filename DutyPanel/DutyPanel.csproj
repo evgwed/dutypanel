@@ -134,9 +134,11 @@
     <Compile Include="Cars.cs">
       <DependentUpon>DutyPanelModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
-    <Compile Include="Controllers\StatementController.cs" />
+    <Compile Include="Controllers\StatementIController.cs" />
+    <Compile Include="Controllers\StatementOController.cs" />
     <Compile Include="C__MigrationHistory.cs">
       <DependentUpon>DutyPanelModel.tt</DependentUpon>
     </Compile>
@@ -332,22 +334,31 @@
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Profile\Login.cshtml" />
     <Content Include="Views\Profile\Edit.cshtml" />
-    <Content Include="Views\Home\CreatStatement.cshtml" />
-    <Content Include="Views\Home\DetailsStatement.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Shared\Sidebar.cshtml" />
     <Content Include="Views\Shared\Header.cshtml" />
     <Content Include="Views\Profile\EditDuty.cshtml" />
     <Content Include="Views\Profile\EditOperativeWorker.cshtml" />
     <Content Include="Views\Profile\EditDriver.cshtml" />
-    <Content Include="Views\Statement\Index.cshtml" />
-    <Content Include="Views\Statement\Details.cshtml" />
-    <Content Include="Views\Statement\Create.cshtml" />
-    <Content Include="Views\Statement\Edit.cshtml" />
-    <Content Include="Views\Statement\Delete.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\StatementI\Index.cshtml" />
+    <Content Include="Views\StatementI\Details.cshtml" />
+    <Content Include="Views\StatementI\Create.cshtml" />
+    <Content Include="Views\StatementI\Edit.cshtml" />
+    <Content Include="Views\StatementI\Delete.cshtml" />
+    <Content Include="Views\StatementO\Index.cshtml" />
+    <Content Include="Views\StatementO\Details.cshtml" />
+    <Content Include="Views\StatementO\Create.cshtml" />
+    <Content Include="Views\StatementO\Edit.cshtml" />
+    <Content Include="Views\StatementO\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\StatementW\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
