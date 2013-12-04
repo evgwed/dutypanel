@@ -136,6 +136,7 @@
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\StatementController.cs" />
     <Compile Include="C__MigrationHistory.cs">
       <DependentUpon>DutyPanelModel.tt</DependentUpon>
     </Compile>
@@ -339,6 +340,11 @@
     <Content Include="Views\Profile\EditDuty.cshtml" />
     <Content Include="Views\Profile\EditOperativeWorker.cshtml" />
     <Content Include="Views\Profile\EditDriver.cshtml" />
+    <Content Include="Views\Statement\Index.cshtml" />
+    <Content Include="Views\Statement\Details.cshtml" />
+    <Content Include="Views\Statement\Create.cshtml" />
+    <Content Include="Views\Statement\Edit.cshtml" />
+    <Content Include="Views\Statement\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

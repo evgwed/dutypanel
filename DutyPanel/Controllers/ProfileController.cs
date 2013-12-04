@@ -99,7 +99,7 @@ namespace DutyPanel.Controllers
 
             db.Entry(d_usr).State = System.Data.EntityState.Modified;
             db.SaveChanges();
-            Session["User"] = d_usr;
+            Session["User"] = db.Drivers.Find(d_usr.Id);
             return RedirectToAction("Index");
         }
         
