@@ -24,6 +24,7 @@ else
         <li>@Html.ActionLink("Профиль админа", "Index", "Admin")</li>
         <li>@Html.ActionLink("Добавить звание", "Index", "Merit")</li>
         <li>@Html.ActionLink("Сотрудники", "Index", "Employee")</li>
+        <li>@Html.ActionLink("Оперативные группы", "Index", "Operational")</li>
     </ul>
 }
 @if ((Session["User"] is DutyPanel.Models.Duty) || (Session["User"] is DutyPanel.Models.AdminUser))
@@ -33,5 +34,20 @@ else
         <li>@Html.ActionLink("Интернет заявления", "Index", "StatementI")</li>
         <li>@Html.ActionLink("Устные заявления", "Index", "StatementO")</li>
         <li>@Html.ActionLink("Письменные заявления", "Index", "StatementW")</li>
+    </ul>
+}
+@if ((Session["User"] is DutyPanel.Models.Driver) || (Session["User"] is DutyPanel.Models.AdminUser))
+{ 
+    <h2>Driver Menu</h2>
+    <ul>
+        <li>@Html.ActionLink("Автомобили", "Index", "Car")</li>
+    </ul>
+}
+@if ((Session["User"] is DutyPanel.Models.OperativeWorker) || (Session["User"] is DutyPanel.Models.AdminUser))
+{ 
+    <h2>OperativeWorker Menu</h2>
+    <ul>
+        <li>@Html.ActionLink("Собаки", "Index", "Dog")</li>
+        
     </ul>
 }

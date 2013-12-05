@@ -1,0 +1,40 @@
+﻿@model DutyPanel.Models.OperationalGroup
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>OperationalGroup</legend>
+    @if(Model.Driver != null)
+    {
+        <h4>Водитель</h4>
+        <p>@Model.Driver.LastName @Model.Driver.FirstName</p>
+        <h4>Автомобиль</h4>
+        <p>@Model.Driver.WorkingCar.BrandCar Номер:@Model.Driver.WorkingCar.NumberCar</p>
+    }
+    else
+    {
+        <p>Водителя в группе нет</p>
+    }
+    <h4>Состав группы</h4>
+    @if (Model.Workers!=null)
+    {
+        foreach (var item in Model.Workers)
+        { 
+            <p>
+                <b>@Html.DisplayNameFor(model => item.LastName) </b> @Html.DisplayFor(model => item.LastName)
+            </p>
+        }
+    }
+    else
+    {
+        <p>В группе никого нет</p>
+    }
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.IdGroup }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

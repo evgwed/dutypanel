@@ -1,0 +1,29 @@
+﻿@model IEnumerable<DutyPanel.Models.OperationalGroup>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>Номер оперативной группы</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <th>@Html.DisplayFor(modelItem => item.IdGroup)</th>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdGroup }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdGroup }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdGroup })
+        </td>
+    </tr>
+}
+
+</table>

@@ -135,9 +135,12 @@
       <DependentUpon>DutyPanelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CarController.cs" />
+    <Compile Include="Controllers\DogController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MeritController.cs" />
+    <Compile Include="Controllers\OperationalController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\StatementIController.cs" />
     <Compile Include="Controllers\StatementOController.cs" />
@@ -373,6 +376,24 @@
     <Content Include="Views\Employee\Create.cshtml" />
     <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Views\Employee\Delete.cshtml" />
+    <Content Include="Views\Employee\CreatDuty.cshtml" />
+    <Content Include="Views\Employee\CreatOperativeWorker.cshtml" />
+    <Content Include="Views\Employee\CreatDriver.cshtml" />
+    <Content Include="Views\Car\Index.cshtml" />
+    <Content Include="Views\Car\Details.cshtml" />
+    <Content Include="Views\Car\Create.cshtml" />
+    <Content Include="Views\Car\Edit.cshtml" />
+    <Content Include="Views\Car\Delete.cshtml" />
+    <Content Include="Views\Dog\Index.cshtml" />
+    <Content Include="Views\Dog\Details.cshtml" />
+    <Content Include="Views\Dog\Create.cshtml" />
+    <Content Include="Views\Dog\Edit.cshtml" />
+    <Content Include="Views\Dog\Delete.cshtml" />
+    <Content Include="Views\Operational\Index.cshtml" />
+    <Content Include="Views\Operational\Details.cshtml" />
+    <Content Include="Views\Operational\Create.cshtml" />
+    <Content Include="Views\Operational\Edit.cshtml" />
+    <Content Include="Views\Operational\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -47,16 +47,19 @@ namespace DutyPanel.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(EmployeeUser employeeuser)
+        public ActionResult Create(EmployeeUsers euser)
         {
-            if (ModelState.IsValid)
+            switch (Request.Form["TypeUser"])
             {
-                db.EmployeeUsers.Add(employeeuser);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                case "1":
+                    return RedirectToAction("CreatDuty");
+                case "2":
+                    return RedirectToAction("CreatOperativeWorker");
+                case "3":
+                    return RedirectToAction("CreatDriver");
 
-            return View(employeeuser);
+            }
+            return RedirectToAction("Index");
         }
 
         //
@@ -116,6 +119,22 @@ namespace DutyPanel.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult CreatDuty()
+        {
+            ViewData["Rank"] = new SelectList(db.Ranks, "Id", "Name");
+            return View();
+        }
+
+        public ActionResult CreatOperativeWorker()
+        {
+            ViewData["Rank"] = new SelectList(db.Ranks, "Id", "Name");
+            return View();
+        }
+        public ActionResult CreatDriver()
+        {
+            ViewData["Rank"] = new SelectList(db.Ranks, "Id", "Name");
+            return View();
+        }
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

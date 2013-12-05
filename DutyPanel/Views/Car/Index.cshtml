@@ -1,0 +1,93 @@
+﻿@model IEnumerable<DutyPanel.Models.Car>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberCar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsPlaceFoDetainees)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BrandCar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModelCar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FuelType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateLastRefueling)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SeatsCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsSpecSignal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DesiredCategoryDriving)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberCar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsPlaceFoDetainees)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BrandCar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModelCar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReleaseDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FuelType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateLastRefueling)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SeatsCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsSpecSignal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DesiredCategoryDriving)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdCar }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdCar }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdCar })
+        </td>
+    </tr>
+}
+
+</table>
