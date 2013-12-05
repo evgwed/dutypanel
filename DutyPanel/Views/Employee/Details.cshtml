@@ -1,0 +1,148 @@
+﻿@model DutyPanel.Models.EmployeeUser
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>EmployeeUser</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EmployeeNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EmployeeNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateRegistr)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateRegistr)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateLastEditedRank)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateLastEditedRank)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.WorkingPhone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.WorkingPhone)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PenaltiesCount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PenaltiesCount)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NumberServiceCertificate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NumberServiceCertificate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateIssueServiceCertificate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateIssueServiceCertificate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Password)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Password)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FirstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SecondName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SecondName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PassportNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PassportNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.WhoGivePassport)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.WhoGivePassport)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateGivePassport)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateGivePassport)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SubdivisionPasport)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SubdivisionPasport)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RegistrationAddress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RegistrationAddress)
+    </div>
+    
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ContactPhone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ContactPhone)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Rank)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Rank.Name)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("AddMerit", "Create", "Merit", new { id = Model.Id }, "div");
+</p>

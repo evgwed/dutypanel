@@ -1,0 +1,36 @@
+﻿@model DutyPanel.Models.Merit
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Merit</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateOfAssignment)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateOfAssignment)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Promotion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Promotion)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

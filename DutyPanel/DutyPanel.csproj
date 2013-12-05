@@ -135,7 +135,9 @@
       <DependentUpon>DutyPanelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MeritController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\StatementIController.cs" />
     <Compile Include="Controllers\StatementOController.cs" />
@@ -361,6 +363,16 @@
     <Content Include="Views\StatementW\Create.cshtml" />
     <Content Include="Views\StatementW\Edit.cshtml" />
     <Content Include="Views\StatementW\Delete.cshtml" />
+    <Content Include="Views\Merit\Index.cshtml" />
+    <Content Include="Views\Merit\Details.cshtml" />
+    <Content Include="Views\Merit\Create.cshtml" />
+    <Content Include="Views\Merit\Edit.cshtml" />
+    <Content Include="Views\Merit\Delete.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Employee\Details.cshtml" />
+    <Content Include="Views\Employee\Create.cshtml" />
+    <Content Include="Views\Employee\Edit.cshtml" />
+    <Content Include="Views\Employee\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

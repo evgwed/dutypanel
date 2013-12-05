@@ -21,7 +21,9 @@ else
 {
     <h2>Admin Menu</h2>
     <ul>
-        <li>@Html.ActionLink("Администратору профиль", "Index", "Admin")</li>
+        <li>@Html.ActionLink("Профиль админа", "Index", "Admin")</li>
+        <li>@Html.ActionLink("Добавить звание", "Index", "Merit")</li>
+        <li>@Html.ActionLink("Сотрудники", "Index", "Employee")</li>
     </ul>
 }
 @if ((Session["User"] is DutyPanel.Models.Duty) || (Session["User"] is DutyPanel.Models.AdminUser))
