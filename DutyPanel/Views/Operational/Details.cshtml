@@ -20,9 +20,9 @@
         <p>Водителя в группе нет</p>
     }
     <h4>Состав группы</h4>
-    @if (Model.Workers!=null)
+    @if (Model.Workers!= null)
     {
-        foreach (var item in Model.Workers)
+        foreach (DutyPanel.Models.OperativeWorker item in Model.Workers)
         { 
             <p>
                 <b>@Html.DisplayNameFor(model => item.LastName) </b> @Html.DisplayFor(model => item.LastName)
@@ -35,6 +35,5 @@
     }
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.IdGroup }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

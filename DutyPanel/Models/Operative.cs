@@ -13,9 +13,9 @@ namespace DutyPanel.Models
         [Display(Name = "Водитель")]
         public virtual Driver Driver { get; set; }
         [Display(Name = "Оперативные сотрудники")]
-        public virtual IEnumerable<OperativeWorker> Workers { get; set; }
+        public virtual ICollection<OperativeWorker> Workers { get; set; }
         [Display(Name = "Выездые оперативной группы")]
-        public virtual IEnumerable<LeavingGroup> Leavings { get; set; }
+        public virtual ICollection<LeavingGroup> Leavings { get; set; }
     }
     public class LeavingGroup
     {

@@ -392,7 +392,6 @@
     <Content Include="Views\Operational\Index.cshtml" />
     <Content Include="Views\Operational\Details.cshtml" />
     <Content Include="Views\Operational\Create.cshtml" />
-    <Content Include="Views\Operational\Edit.cshtml" />
     <Content Include="Views\Operational\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>

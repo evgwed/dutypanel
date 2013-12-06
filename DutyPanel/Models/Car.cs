@@ -45,6 +45,6 @@ namespace DutyPanel.Models
         [Display(Name = "Необходимая категория водительских прав")]
         public string DesiredCategoryDriving { get; set; }
         [Display(Name = "Водители")]
-        public virtual IEnumerable<Driver> Drivers { get; set; }
+        public virtual ICollection<Driver> Drivers { get; set; }
     }
 }

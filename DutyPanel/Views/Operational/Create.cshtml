@@ -12,7 +12,27 @@
 
     <fieldset>
         <legend>OperationalGroup</legend>
-        <b>Вы действительно хотете создать оперативную группу @Model.IdGroup ?</b>
+        <b>Вы действительно хотете создать оперативную группу ?</b>
+        @if ((ViewData["Workers"] as SelectList).Count()>0)
+        {
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Workers)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Workers, (SelectList)ViewData["Workers"])
+            @Html.ValidationMessageFor(model => model.Workers)
+        </div>
+        }
+        @if ((ViewData["Driver"] as SelectList).Count()>0)
+        {
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Driver)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Driver, (SelectList)ViewData["Driver"])
+            @Html.ValidationMessageFor(model => model.Driver)
+        </div>
+        }
         <p>
             <input type="submit" value="Create" />
         </p>

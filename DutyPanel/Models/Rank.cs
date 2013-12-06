@@ -18,6 +18,6 @@ namespace DutyPanel.Models
         [Display(Name = "Оклад")]
         public decimal Salary { get; set; }
         [Display(Name = "Сотрудники")]
-        public virtual IEnumerable<EmployeeUser> EmployeeUsers { get; set; }
+        public virtual ICollection<EmployeeUser> EmployeeUsers { get; set; }
     }
 }

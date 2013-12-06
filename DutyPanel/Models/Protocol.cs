@@ -23,6 +23,6 @@ namespace DutyPanel.Models
         [Display(Name = "Оперативная группа")]
         public virtual LeavingGroup Leaving { get; set; }
         [Display(Name = "Задержания")]
-        public virtual IEnumerable<Detention> Detentions { get; set; }
+        public virtual ICollection<Detention> Detentions { get; set; }
     }
 }

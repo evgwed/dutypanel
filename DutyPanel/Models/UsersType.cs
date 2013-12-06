@@ -79,6 +79,6 @@ namespace DutyPanel.Models
         [Display(Name = "Идентификатор звания")]
         public virtual Rank Rank { get; set; }
         [Display(Name = "Заслуги")]
-        public virtual IEnumerable<Merit> Merits { get; set; }
+        public virtual ICollection<Merit> Merits { get; set; }
     }
 }

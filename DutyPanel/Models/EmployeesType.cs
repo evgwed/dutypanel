@@ -22,7 +22,7 @@ namespace DutyPanel.Models
         [Required]
         [Display(Name = "Тип должности")]
         public TypeDuty TypeDuty { get; set; }
-        public virtual IEnumerable<Statement> Statments { get; set; }
+        public virtual ICollection<Statement> Statments { get; set; }
     }
     public class OperativeWorker : EmployeeUser
     {

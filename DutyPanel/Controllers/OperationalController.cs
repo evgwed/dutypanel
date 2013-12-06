@@ -40,6 +40,10 @@ namespace DutyPanel.Controllers
         public ActionResult Create()
         {
             ViewBag.IdGroup = new SelectList(db.Users, "Id", "Password");
+            IEnumerable<OperativeWorker> workers = db.OperativeWorkers.Where(m => m.IsHeadOfGroup != true);
+            ViewData["Workers"] = new SelectList(workers, "Id", "LastName");
+            IEnumerable<Driver> drivers = db.Drivers.Where(m => m.Group == null);
+            ViewData["Driver"] = new SelectList(drivers, "Id", "LastName");
             return View();
         }
 
@@ -50,42 +54,20 @@ namespace DutyPanel.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(OperationalGroup operationalgroup)
         {
-                db.OperationalGroups.Add(operationalgroup);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-        }
-
-        //
-        // GET: /Operational/Edit/5
-
-        public ActionResult Edit(int id = 0)
-        {
-            OperationalGroup operationalgroup = db.OperationalGroups.Find(id);
-            if (operationalgroup == null)
+            db.OperationalGroups.Add(operationalgroup);
+            if (Request.Form["Driver"] != null)
             {
-                return HttpNotFound();
+                db.Drivers.Find(Convert.ToInt32(Request.Form["Driver"])).Group = db.OperationalGroups.Find(operationalgroup.IdGroup);
             }
-            ViewBag.IdGroup = new SelectList(db.Users, "Id", "Password", operationalgroup.IdGroup);
-            return View(operationalgroup);
-        }
-
-        //
-        // POST: /Operational/Edit/5
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(OperationalGroup operationalgroup)
-        {
-            if (ModelState.IsValid)
+            if (Request.Form["Workers"] != null)
             {
-                db.Entry(operationalgroup).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                db.OperativeWorkers.Find(Convert.ToInt32(Request.Form["Workers"])).Group = db.OperationalGroups.Find(operationalgroup.IdGroup);
             }
-            ViewBag.IdGroup = new SelectList(db.Users, "Id", "Password", operationalgroup.IdGroup);
-            return View(operationalgroup);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
+       
         //
         // GET: /Operational/Delete/5
 
@@ -107,6 +89,13 @@ namespace DutyPanel.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             OperationalGroup operationalgroup = db.OperationalGroups.Find(id);
+            IEnumerable<OperativeWorker> w_arr = db.OperativeWorkers.Where(s => s.Group.IdGroup == operationalgroup.IdGroup);
+            foreach (OperativeWorker item in w_arr)
+            {
+                db.OperativeWorkers.Find(item.Id).IsHeadOfGroup = false;
+                db.OperativeWorkers.Find(item.Id).Group = null;
+            }
+            db.Drivers.Find(operationalgroup.Driver.Id).Group = null;
             db.OperationalGroups.Remove(operationalgroup);
             db.SaveChanges();
             return RedirectToAction("Index");
