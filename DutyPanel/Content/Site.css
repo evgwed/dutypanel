@@ -106,3 +106,8 @@ textarea {
     color: #60a2d6;
     border:1px solid #60a2d6;
 }
+
+/*ВРЕМЕННО!!*/
+.display-label {
+    font-weight:bold;
+}

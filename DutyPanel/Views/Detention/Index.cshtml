@@ -1,0 +1,44 @@
+﻿@model IEnumerable<DutyPanel.Models.Detention>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DetentionLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DetentionFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BaseDetention)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DetentionLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DetentionFirstName)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.BaseDetention)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.NumberDetention }) |
+            @Html.ActionLink("Details", "Details", new { id=item.NumberDetention }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.NumberDetention })
+        </td>
+    </tr>
+}
+
+</table>

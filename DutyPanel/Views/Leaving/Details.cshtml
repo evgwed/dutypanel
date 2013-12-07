@@ -1,0 +1,54 @@
+﻿@model DutyPanel.Models.LeavingGroup
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>LeavingGroup</legend>
+    
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IdLeaving)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IdLeaving)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TimeLeaving)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TimeLeaving)
+    </div>
+    
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Statement.NumberStatement)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Statement.NumberStatement)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Statement.Adress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Statement.Adress)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Statement.DeclarantLastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Statement.DeclarantLastName)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Statement.DeclarantFirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Statement.DeclarantFirstName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.IdLeaving }) |
+    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Создать протокол", "Create", "Protocol", new { id = Model.IdLeaving}, "div")
+</p>

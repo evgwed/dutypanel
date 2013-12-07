@@ -1,0 +1,94 @@
+﻿@model DutyPanel.Models.Detention
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Detention</legend>
+
+        @Html.HiddenFor(model => model.NumberDetention)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DetentionLastName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DetentionLastName)
+            @Html.ValidationMessageFor(model => model.DetentionLastName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DetentionFirstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DetentionFirstName)
+            @Html.ValidationMessageFor(model => model.DetentionFirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DetentionSecondName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DetentionSecondName)
+            @Html.ValidationMessageFor(model => model.DetentionSecondName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateOfDetention)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateOfDetention)
+            @Html.ValidationMessageFor(model => model.DateOfDetention)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PleaceDetention)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PleaceDetention)
+            @Html.ValidationMessageFor(model => model.PleaceDetention)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BaseDetention)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BaseDetention)
+            @Html.ValidationMessageFor(model => model.BaseDetention)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Things)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Things)
+            @Html.ValidationMessageFor(model => model.Things)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IsNotifiRelatives)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsNotifiRelatives)
+            @Html.ValidationMessageFor(model => model.IsNotifiRelatives)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

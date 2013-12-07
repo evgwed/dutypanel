@@ -1,0 +1,42 @@
+﻿@model DutyPanel.Models.LeavingGroup
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>LeavingGroup</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TimeLeaving)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TimeLeaving)
+            @Html.ValidationMessageFor(model => model.TimeLeaving)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Group)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Group, (SelectList)ViewData["Group"])
+            @Html.ValidationMessageFor(model => model.Group)
+        </div>
+        
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

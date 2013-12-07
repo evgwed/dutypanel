@@ -44,6 +44,18 @@ namespace DutyPanel.Controllers
             ViewData["Workers"] = new SelectList(workers, "Id", "LastName");
             IEnumerable<Driver> drivers = db.Drivers.Where(m => m.Group == null);
             ViewData["Driver"] = new SelectList(drivers, "Id", "LastName");
+            if (workers.Count() == 0)
+            {
+                ViewData["InfoText"] = "Нет свободных оперативных работников, которы бы могли сать главой оперативной группы.";
+            }
+            if (drivers.Count() == 0)
+            {
+                ViewData["InfoText"] = "Нет свободных водителей, которые могут совершать выезд оперативной группы";
+            }
+            if (workers.Count() == 0&&drivers.Count() == 0)
+            {
+                ViewData["InfoText"] = "Нет свободных оперативных работников, которы бы могли сать главой оперативной группы. Нет свободных водителей, которые могут совершать выезд оперативной группы";
+            }
             return View();
         }
 

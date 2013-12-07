@@ -136,12 +136,15 @@
     </Compile>
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CarController.cs" />
+    <Compile Include="Controllers\DetentionController.cs" />
     <Compile Include="Controllers\DogController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LeavingController.cs" />
     <Compile Include="Controllers\MeritController.cs" />
     <Compile Include="Controllers\OperationalController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\ProtocolController.cs" />
     <Compile Include="Controllers\StatementIController.cs" />
     <Compile Include="Controllers\StatementOController.cs" />
     <Compile Include="Controllers\StatementWController.cs" />
@@ -393,6 +396,21 @@
     <Content Include="Views\Operational\Details.cshtml" />
     <Content Include="Views\Operational\Create.cshtml" />
     <Content Include="Views\Operational\Delete.cshtml" />
+    <Content Include="Views\Leaving\Index.cshtml" />
+    <Content Include="Views\Leaving\Details.cshtml" />
+    <Content Include="Views\Leaving\Create.cshtml" />
+    <Content Include="Views\Leaving\Edit.cshtml" />
+    <Content Include="Views\Leaving\Delete.cshtml" />
+    <Content Include="Views\Protocol\Index.cshtml" />
+    <Content Include="Views\Protocol\Details.cshtml" />
+    <Content Include="Views\Protocol\Create.cshtml" />
+    <Content Include="Views\Protocol\Edit.cshtml" />
+    <Content Include="Views\Protocol\Delete.cshtml" />
+    <Content Include="Views\Detention\Index.cshtml" />
+    <Content Include="Views\Detention\Details.cshtml" />
+    <Content Include="Views\Detention\Create.cshtml" />
+    <Content Include="Views\Detention\Edit.cshtml" />
+    <Content Include="Views\Detention\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

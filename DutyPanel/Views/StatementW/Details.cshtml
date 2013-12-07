@@ -122,6 +122,9 @@
     }
     @Html.ActionLink("Back to List", "Index")
 </p>
+<p>
+    @Html.ActionLink("Создать выезд", "Create", "Leaving", new { id = Model.NumberStatement}, "div")
+</p>
 }
 else
 {

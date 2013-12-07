@@ -1,0 +1,71 @@
+﻿@model DutyPanel.Models.Detention
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Detention</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DetentionLastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DetentionLastName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DetentionFirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DetentionFirstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DetentionSecondName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DetentionSecondName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateOfDetention)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateOfDetention)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PleaceDetention)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PleaceDetention)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BaseDetention)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BaseDetention)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Things)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Things)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IsNotifiRelatives)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsNotifiRelatives)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.NumberDetention }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

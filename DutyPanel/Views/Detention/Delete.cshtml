@@ -1,0 +1,75 @@
+﻿@model DutyPanel.Models.Detention
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Detention</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DetentionLastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DetentionLastName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DetentionFirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DetentionFirstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DetentionSecondName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DetentionSecondName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateOfDetention)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateOfDetention)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PleaceDetention)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PleaceDetention)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BaseDetention)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BaseDetention)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Things)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Things)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IsNotifiRelatives)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsNotifiRelatives)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

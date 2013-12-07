@@ -1,0 +1,30 @@
+﻿@model IEnumerable<DutyPanel.Models.LeavingGroup>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeLeaving)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeLeaving)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdLeaving }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdLeaving }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdLeaving })
+        </td>
+    </tr>
+}
+
+</table>

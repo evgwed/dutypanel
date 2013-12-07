@@ -1,0 +1,54 @@
+﻿@model DutyPanel.Models.Protocol
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Protocol</legend>
+
+        @Html.HiddenFor(model => model.NumberProtocol)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateOfPreparation)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateOfPreparation)
+            @Html.ValidationMessageFor(model => model.DateOfPreparation)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PlaceOfPreparation)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PlaceOfPreparation)
+            @Html.ValidationMessageFor(model => model.PlaceOfPreparation)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IsHaveDelayed)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsHaveDelayed)
+            @Html.ValidationMessageFor(model => model.IsHaveDelayed)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
