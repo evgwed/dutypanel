@@ -4,143 +4,179 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<fieldset>
-    <legend>EmployeeUser</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.EmployeeNumber)
+    <h2>Информация</h2>
+    <h3>Пользовалеьская информация</h3>
+    <div>
+         <b>@Html.DisplayNameFor(model => model.Email):</b> @Html.DisplayFor(model => model.Email)
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.EmployeeNumber)
+    <div>
+         <b>@Html.DisplayNameFor(model => model.LastName):</b> @Html.DisplayFor(model => model.LastName)
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DateRegistr)
+    <div>
+         <b>@Html.DisplayNameFor(model => model.FirstName):</b> @Html.DisplayFor(model => model.FirstName)
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DateRegistr)
+    <div>
+         <b>@Html.DisplayNameFor(model => model.SecondName):</b> @Html.DisplayFor(model => model.SecondName)
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DateLastEditedRank)
+    <div>
+         <b>@Html.DisplayNameFor(model => model.PassportNumber):</b> @Html.DisplayFor(model => model.PassportNumber)
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DateLastEditedRank)
+    <div>
+         <b>@Html.DisplayNameFor(model => model.WhoGivePassport):</b> @Html.DisplayFor(model => model.WhoGivePassport)
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.WorkingPhone)
+    <div>
+         <b>@Html.DisplayNameFor(model => model.DateGivePassport):</b> @Model.DateGivePassport.Value.Day/@Model.DateGivePassport.Value.Month/@Model.DateGivePassport.Value.Year
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.WorkingPhone)
+    <div>
+         <b>@Html.DisplayNameFor(model => model.SubdivisionPasport):</b> @Html.DisplayFor(model => model.SubdivisionPasport)
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.PenaltiesCount)
+    <div>
+         <b>@Html.DisplayNameFor(model => model.RegistrationAddress):</b> @Html.DisplayFor(model => model.RegistrationAddress)
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.PenaltiesCount)
+    <div>
+         <b>@Html.DisplayNameFor(model => model.ContactPhone):</b> @Html.DisplayFor(model => model.ContactPhone)
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.NumberServiceCertificate)
+    <h3>Информация о сотруднике:</h3>
+    <div>
+         <b>@Html.DisplayNameFor(model => model.EmployeeNumber):</b> @Html.DisplayFor(model => model.EmployeeNumber)
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.NumberServiceCertificate)
+    <div>
+         <b>@Html.DisplayNameFor(model => model.DateRegistr):</b>@Model.DateRegistr.Value.Day/@Model.DateRegistr.Value.Month/@Model.DateRegistr.Value.Year
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DateIssueServiceCertificate)
+    <div>
+         <b>@Html.DisplayNameFor(model => model.WorkingPhone):</b> @Html.DisplayFor(model => model.WorkingPhone)
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DateIssueServiceCertificate)
+    <div>
+         <b>@Html.DisplayNameFor(model => model.PenaltiesCount):</b> @Html.DisplayFor(model => model.PenaltiesCount)
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Password)
+    <div>
+         <b>@Html.DisplayNameFor(model => model.NumberServiceCertificate):</b> @Html.DisplayFor(model => model.NumberServiceCertificate)
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Password)
+    <div>
+         <b>@Html.DisplayNameFor(model => model.DateIssueServiceCertificate):</b> @Model.DateIssueServiceCertificate.Value.Day/@Model.DateIssueServiceCertificate.Value.Month/@Model.DateIssueServiceCertificate.Value.Year
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Email)
+    <h4>Информация о звании:</h4>
+    <div>
+         <b>@Html.DisplayNameFor(model => model.Rank):</b> @Html.DisplayFor(model => model.Rank.Name)
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Email)
+    <div>
+         <b>@Html.DisplayNameFor(model => model.Rank.Salary):</b> @Html.DisplayFor(model => model.Rank.Salary)
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.LastName)
+    <div>
+         <b>@Html.DisplayNameFor(model => model.DateLastEditedRank):</b> @Model.DateLastEditedRank.Value.Day/@Model.DateLastEditedRank.Value.Month/@Model.DateLastEditedRank.Value.Year
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.LastName)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.FirstName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.FirstName)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.SecondName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.SecondName)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.PassportNumber)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.PassportNumber)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.WhoGivePassport)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.WhoGivePassport)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DateGivePassport)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DateGivePassport)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.SubdivisionPasport)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.SubdivisionPasport)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.RegistrationAddress)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.RegistrationAddress)
-    </div>
-    
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ContactPhone)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ContactPhone)
-    </div>
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Rank)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Rank.Name)
-    </div>
-</fieldset>
+    @if(Model is DutyPanel.Models.Duty)
+    {
+        <h3>Информация о дежурном:</h3>
+        <div>
+             <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.Duty).TypeDuty):</b>
+              @switch ((Model as DutyPanel.Models.Duty).TypeDuty) { 
+                  case DutyPanel.Models.TypeDuty.Duty:
+                      <span>Дежурный</span>
+                      break;
+                  case DutyPanel.Models.TypeDuty.SeniorDuty:
+                      <span>Старшый оперативный дежурный</span>
+                      break;
+                  case DutyPanel.Models.TypeDuty.AssistantDuty:
+                      <span>Помощник оперативного дежурного(по службе 02)</span>
+                      break;
+              }
+                  
+        </div>
+    }
+    @if(Model is DutyPanel.Models.OperativeWorker)
+    {
+        <h3>Информация о оперативном работнике:</h3>
+        <div>
+             <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.OperativeWorker).IsHeadOfGroup):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.OperativeWorker).IsHeadOfGroup)
+        </div>
+        <div>
+             <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.OperativeWorker).NumberServiceWeapon):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.OperativeWorker).NumberServiceWeapon)
+        </div>
+        <div>
+             <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.OperativeWorker).AccessionNumberHandCuffs):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.OperativeWorker).AccessionNumberHandCuffs)
+        </div>
+        <div>
+             <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.OperativeWorker).IsHaveDog):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.OperativeWorker).IsHaveDog)
+        </div>
+        if ((Model as DutyPanel.Models.OperativeWorker).IsHaveDog)
+        { 
+           <h4>Информация о служебной собаке:</h4>
+            <div>
+                 <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.OperativeWorker).WarDog.Name):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.OperativeWorker).WarDog.Name)
+            </div>
+            <div>
+                 <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.OperativeWorker).WarDog.Breed):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.OperativeWorker).WarDog.Breed)
+            </div>
+            <div>
+                 <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.OperativeWorker).WarDog.DateOfBirthday):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.OperativeWorker).WarDog.DateOfBirthday)
+            </div>
+            <div>
+                 <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.OperativeWorker).WarDog.DateCommencementOfService):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.OperativeWorker).WarDog.DateCommencementOfService)
+            </div>
+            <div>
+                 <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.OperativeWorker).WarDog.DateLastInspection):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.OperativeWorker).WarDog.DateLastInspection)
+            </div>
+        }
+        <h4>Информация об оперативной группе:</h4>
+        <div>
+             <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.OperativeWorker).Group):</b># @Html.DisplayFor(model =>(model as DutyPanel.Models.OperativeWorker).Group.IdGroup)
+        </div>
+    }
+    @if(Model is DutyPanel.Models.Driver)
+    {
+        <h3>Информация о видителе:</h3>
+        <div>
+                <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.Driver).LicenseNumber):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.Driver).LicenseNumber)
+        </div>
+        <div>
+                <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.Driver).DateReceiptLicense):</b>@((Model as DutyPanel.Models.Driver).DateReceiptLicense.Value.Day+"/"+(Model as DutyPanel.Models.Driver).DateReceiptLicense.Value.Month+"/"+(Model as DutyPanel.Models.Driver).DateReceiptLicense.Value.Year)
+        </div>
+        <div>
+                <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.Driver).CategoryLicense):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.Driver).CategoryLicense)
+        </div>
+        <div>
+                <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.Driver).NumberMedicalCertificates):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.Driver).NumberMedicalCertificates)
+        </div>
+        <h4>Информация о рабочем автомобиле:</h4>
+        <div>
+                <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.Driver).WorkingCar.NumberCar):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.Driver).WorkingCar.NumberCar)
+        </div>
+        <div>
+                <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.Driver).WorkingCar.IsPlaceFoDetainees):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.Driver).WorkingCar.IsPlaceFoDetainees)
+        </div>
+        <div>
+                <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.Driver).WorkingCar.BrandCar):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.Driver).WorkingCar.BrandCar)
+        </div>
+        <div>
+                <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.Driver).WorkingCar.ModelCar):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.Driver).WorkingCar.ModelCar)
+        </div>
+        <div>
+                <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.Driver).WorkingCar.ReleaseDate):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.Driver).WorkingCar.ReleaseDate.Value.Year)
+        </div>
+        <div>
+                <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.Driver).WorkingCar.Color):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.Driver).WorkingCar.Color)
+        </div>
+        <div>
+                <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.Driver).WorkingCar.FuelType):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.Driver).WorkingCar.FuelType)
+        </div>
+        <div>
+                <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.Driver).WorkingCar.DateLastRefueling):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.Driver).WorkingCar.DateLastRefueling)
+        </div>
+        <div>
+                <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.Driver).WorkingCar.SeatsCount):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.Driver).WorkingCar.SeatsCount)
+        </div>
+        <div>
+                <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.Driver).WorkingCar.IsSpecSignal):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.Driver).WorkingCar.IsSpecSignal)
+        </div>
+        <div>
+                <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.Driver).WorkingCar.DesiredCategoryDriving):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.Driver).WorkingCar.DesiredCategoryDriving)
+        </div>
+        <h4>Информация об оперативной группе:</h4>
+        <div>
+             <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.Driver).Group):</b># @Html.DisplayFor(model =>(model as DutyPanel.Models.Driver).Group.IdGroup)
+        </div>
+    }
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
