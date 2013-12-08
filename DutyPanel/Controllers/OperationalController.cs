@@ -73,6 +73,7 @@ namespace DutyPanel.Controllers
             }
             if (Request.Form["Workers"] != null)
             {
+                db.OperativeWorkers.Find(Convert.ToInt32(Request.Form["Workers"])).IsHeadOfGroup = true;
                 db.OperativeWorkers.Find(Convert.ToInt32(Request.Form["Workers"])).Group = db.OperationalGroups.Find(operationalgroup.IdGroup);
             }
             db.SaveChanges();

@@ -124,16 +124,51 @@ namespace DutyPanel.Controllers
             ViewData["Rank"] = new SelectList(db.Ranks, "Id", "Name");
             return View();
         }
+        [HttpPost]
+        public ActionResult CreatDuty(Duty duty_usr)
+        {
+            duty_usr.PenaltiesCount = 0;
+            duty_usr.DateRegistr = DateTime.Now;
+            duty_usr.Rank = db.Ranks.Find(Convert.ToInt32(Request.Form["Rank"]));
+            db.Dutys.Add(duty_usr);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
         public ActionResult CreatOperativeWorker()
         {
             ViewData["Rank"] = new SelectList(db.Ranks, "Id", "Name");
+            ViewData["Group"] = new SelectList(db.OperationalGroups, "IdGroup", "IdGroup");
             return View();
+        }
+        [HttpPost]
+        public ActionResult CreatOperativeWorker(OperativeWorker ow_usr)
+        {
+            ow_usr.PenaltiesCount = 0;
+            ow_usr.DateRegistr = DateTime.Now;
+            ow_usr.IsHeadOfGroup = false;
+            ow_usr.Group = db.OperationalGroups.Find(Convert.ToInt32(Request.Form["Group"]));
+            ow_usr.Rank = db.Ranks.Find(Convert.ToInt32(Request.Form["Rank"]));
+            db.OperativeWorkers.Add(ow_usr);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
         public ActionResult CreatDriver()
         {
             ViewData["Rank"] = new SelectList(db.Ranks, "Id", "Name");
+            ViewData["WorkingCar"] = new SelectList(db.Cars, "IdCar", "NumberCar");
             return View();
+        }
+        [HttpPost]
+        public ActionResult CreatDriver(Driver driver_usr)
+        {
+            driver_usr.PenaltiesCount = 0;
+            driver_usr.DateRegistr = DateTime.Now;
+            driver_usr.Rank = db.Ranks.Find(Convert.ToInt32(Request.Form["Rank"]));
+            driver_usr.WorkingCar = db.Cars.Find(Convert.ToInt32(Request.Form["WorkingCar"]));
+            db.Drivers.Add(driver_usr);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
         protected override void Dispose(bool disposing)
         {

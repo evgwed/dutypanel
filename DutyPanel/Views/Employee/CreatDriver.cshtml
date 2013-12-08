@@ -6,13 +6,28 @@
 
 <h2>CreatDriver</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
         <legend>Driver</legend>
-
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Rank)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Rank, (SelectList)ViewData["Rank"])
+            @Html.ValidationMessageFor(model => model.Rank)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.WorkingCar)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.WorkingCar, (SelectList)ViewData["WorkingCar"])
+            @Html.ValidationMessageFor(model => model.WorkingCar)
+        </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.LicenseNumber)
         </div>
@@ -54,14 +69,6 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.DateRegistr)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.DateRegistr)
-            @Html.ValidationMessageFor(model => model.DateRegistr)
-        </div>
-
-        <div class="editor-label">
             @Html.LabelFor(model => model.DateLastEditedRank)
         </div>
         <div class="editor-field">
@@ -75,14 +82,6 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.WorkingPhone)
             @Html.ValidationMessageFor(model => model.WorkingPhone)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PenaltiesCount)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.PenaltiesCount)
-            @Html.ValidationMessageFor(model => model.PenaltiesCount)
         </div>
 
         <div class="editor-label">
@@ -201,4 +200,9 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            $("#DateLastEditedRank, #DateIssueServiceCertificate, #DateGivePassport, #DateReceiptLicense").appendDtpicker({ "dateFormat": "DD/MM/YYYY" });
+        });
+    </script>
 }

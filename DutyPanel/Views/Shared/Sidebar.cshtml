@@ -34,6 +34,7 @@ else
         <li>@Html.ActionLink("Интернет заявления", "Index", "StatementI")</li>
         <li>@Html.ActionLink("Устные заявления", "Index", "StatementO")</li>
         <li>@Html.ActionLink("Письменные заявления", "Index", "StatementW")</li>
+        <li>@Html.ActionLink("Выезд оперативной группы", "Index", "Leaving")</li>
     </ul>
 }
 @if ((Session["User"] is DutyPanel.Models.Driver) || (Session["User"] is DutyPanel.Models.AdminUser))
@@ -48,10 +49,11 @@ else
     <h2>OperativeWorker Menu</h2>
     <ul>
         <li>@Html.ActionLink("Собаки", "Index", "Dog")</li>
-        
+        <li>@Html.ActionLink("Протоколы", "Index", "Protocol")</li>
+        <li>@Html.ActionLink("Задержания", "Index", "Detention")</li>        
     </ul>
 }
 
-        @Html.ActionLink("Выезд оперативной группы", "Index", "Leaving")
-        @Html.ActionLink("Протоколы", "Index", "Protocol")
-        @Html.ActionLink("Задержания", "Index", "Detention")
+        
+        
+        

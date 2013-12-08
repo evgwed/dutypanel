@@ -10,15 +10,19 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>OperativeWorker</legend>
-
         <div class="editor-label">
-            @Html.LabelFor(model => model.IsHeadOfGroup)
+            @Html.LabelFor(model => model.Group)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.IsHeadOfGroup)
-            @Html.ValidationMessageFor(model => model.IsHeadOfGroup)
+            @Html.DropDownListFor(model => model.Group, (SelectList)ViewData["Group"])
+            @Html.ValidationMessageFor(model => model.Group)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Rank)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Rank, (SelectList)ViewData["Rank"])
+            @Html.ValidationMessageFor(model => model.Rank)
         </div>
 
         <div class="editor-label">
@@ -54,14 +58,6 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.DateRegistr)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.DateRegistr)
-            @Html.ValidationMessageFor(model => model.DateRegistr)
-        </div>
-
-        <div class="editor-label">
             @Html.LabelFor(model => model.DateLastEditedRank)
         </div>
         <div class="editor-field">
@@ -75,14 +71,6 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.WorkingPhone)
             @Html.ValidationMessageFor(model => model.WorkingPhone)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PenaltiesCount)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.PenaltiesCount)
-            @Html.ValidationMessageFor(model => model.PenaltiesCount)
         </div>
 
         <div class="editor-label">
@@ -192,7 +180,6 @@
         <p>
             <input type="submit" value="Create" />
         </p>
-    </fieldset>
 }
 
 <div>
@@ -201,4 +188,9 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            $("#DateLastEditedRank, #DateIssueServiceCertificate, #DateGivePassport").appendDtpicker({ "dateFormat": "DD/MM/YYYY" });
+        });
+    </script>
 }
