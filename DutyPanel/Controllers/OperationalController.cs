@@ -40,22 +40,6 @@ namespace DutyPanel.Controllers
         public ActionResult Create()
         {
             ViewBag.IdGroup = new SelectList(db.Users, "Id", "Password");
-            IEnumerable<OperativeWorker> workers = db.OperativeWorkers.Where(m => m.IsHeadOfGroup != true);
-            ViewData["Workers"] = new SelectList(workers, "Id", "LastName");
-            IEnumerable<Driver> drivers = db.Drivers.Where(m => m.Group == null);
-            ViewData["Driver"] = new SelectList(drivers, "Id", "LastName");
-            if (workers.Count() == 0)
-            {
-                ViewData["InfoText"] = "Нет свободных оперативных работников, которы бы могли сать главой оперативной группы.";
-            }
-            if (drivers.Count() == 0)
-            {
-                ViewData["InfoText"] = "Нет свободных водителей, которые могут совершать выезд оперативной группы";
-            }
-            if (workers.Count() == 0&&drivers.Count() == 0)
-            {
-                ViewData["InfoText"] = "Нет свободных оперативных работников, которы бы могли сать главой оперативной группы. Нет свободных водителей, которые могут совершать выезд оперативной группы";
-            }
             return View();
         }
 
@@ -67,15 +51,6 @@ namespace DutyPanel.Controllers
         public ActionResult Create(OperationalGroup operationalgroup)
         {
             db.OperationalGroups.Add(operationalgroup);
-            if (Request.Form["Driver"] != null)
-            {
-                db.Drivers.Find(Convert.ToInt32(Request.Form["Driver"])).Group = db.OperationalGroups.Find(operationalgroup.IdGroup);
-            }
-            if (Request.Form["Workers"] != null)
-            {
-                db.OperativeWorkers.Find(Convert.ToInt32(Request.Form["Workers"])).IsHeadOfGroup = true;
-                db.OperativeWorkers.Find(Convert.ToInt32(Request.Form["Workers"])).Group = db.OperationalGroups.Find(operationalgroup.IdGroup);
-            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }

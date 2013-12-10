@@ -4,7 +4,7 @@
 
 <h2>Index</h2>
 <table>
-@foreach(DutyPanel.Models.User tmp in ViewBag.Users)
+@foreach (DutyPanel.Models.User tmp in (IEnumerable<DutyPanel.Models.User>)ViewBag.Users)
 {
     <tr>
         <td>@tmp.Email</td>

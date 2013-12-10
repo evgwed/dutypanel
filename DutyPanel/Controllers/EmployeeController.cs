@@ -138,7 +138,12 @@ namespace DutyPanel.Controllers
         public ActionResult CreatOperativeWorker()
         {
             ViewData["Rank"] = new SelectList(db.Ranks, "Id", "Name");
-            ViewData["Group"] = new SelectList(db.OperationalGroups, "IdGroup", "IdGroup");
+            List<SelectListItem> for_query = new List<SelectListItem>();
+            foreach (OperationalGroup item in db.OperationalGroups)
+            {
+                for_query.Add(new SelectListItem() { Value = item.IdGroup.ToString(), Text = "группа № " + item.IdGroup.ToString() });
+            }
+            ViewData["Group"] = for_query;
             return View();
         }
         [HttpPost]
@@ -156,7 +161,20 @@ namespace DutyPanel.Controllers
         public ActionResult CreatDriver()
         {
             ViewData["Rank"] = new SelectList(db.Ranks, "Id", "Name");
-            ViewData["WorkingCar"] = new SelectList(db.Cars, "IdCar", "NumberCar");
+            if (db.OperationalGroups.Where(m => m.Driver == null).Count() != 0)
+            {
+                List<SelectListItem> for_query = new List<SelectListItem>();
+                foreach (OperationalGroup item in db.OperationalGroups.Where(m=>m.Driver==null))
+                {
+                    for_query.Add(new SelectListItem() { Value = item.IdGroup.ToString(), Text = "группа № " + item.IdGroup.ToString() });
+                }
+                ViewData["Group"] = for_query;
+                ViewData["WorkingCar"] = new SelectList(db.Cars, "IdCar", "NumberCar");
+            }
+            else
+            {
+                ViewData["ErrorText"] = "Нет оперативных групп, где бы можно было работать создаваемому водителю, поэтому необходимо в начале создать новую оперативную группу.";
+            }
             return View();
         }
         [HttpPost]
@@ -166,6 +184,7 @@ namespace DutyPanel.Controllers
             driver_usr.DateRegistr = DateTime.Now;
             driver_usr.Rank = db.Ranks.Find(Convert.ToInt32(Request.Form["Rank"]));
             driver_usr.WorkingCar = db.Cars.Find(Convert.ToInt32(Request.Form["WorkingCar"]));
+            driver_usr.Group = db.OperationalGroups.Find(Convert.ToInt32(Request.Form["Group"]));
             db.Drivers.Add(driver_usr);
             db.SaveChanges();
             return RedirectToAction("Index");

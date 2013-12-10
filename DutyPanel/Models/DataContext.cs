@@ -47,7 +47,7 @@ namespace DutyPanel.Models
             .WithRequired(s => s.Leaving);
             modelBuilder.Entity<Driver>()
             .HasOptional(f => f.Group)
-            .WithRequired(s => s.Driver);
+            .WithOptionalDependent(s => s.Driver);
         }
 
     }

@@ -14,7 +14,7 @@
             @Html.LabelFor(model => model.Group)
         </div>
         <div class="editor-field">
-            @Html.DropDownListFor(model => model.Group, (SelectList)ViewData["Group"])
+            @Html.DropDownListFor(model => model.Group, (List<SelectListItem>)ViewData["Group"])
             @Html.ValidationMessageFor(model => model.Group)
         </div>
         <div class="editor-label">
