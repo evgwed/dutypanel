@@ -57,7 +57,7 @@
     </div>
     <h4>Информация о звании:</h4>
     <div>
-         <b>@Html.DisplayNameFor(model => model.Rank):</b> @Html.DisplayFor(model => model.Rank.Name)
+         <b>@Html.DisplayNameFor(model => model.Rank):</b> @Html.DisplayFor(model => model.Rank.Name) (@Html.ActionLink("Изменить звание", "EditRank","Employee", new {id = Model.Id}, null))
     </div>
     <div>
          <b>@Html.DisplayNameFor(model => model.Rank.Salary):</b> @Html.DisplayFor(model => model.Rank.Salary)

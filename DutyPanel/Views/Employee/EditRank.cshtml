@@ -1,0 +1,41 @@
+﻿@model DutyPanel.Models.EmployeeUser
+
+@{
+    ViewBag.Title = "EditRank";
+}
+
+<h2>EditRank</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>EmployeeUser</legend>
+
+        
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Rank)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Rank, (SelectList)ViewData["Rank"])
+            @Html.ValidationMessageFor(model => model.Rank)
+        </div>
+
+        
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

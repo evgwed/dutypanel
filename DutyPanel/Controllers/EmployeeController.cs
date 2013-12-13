@@ -35,6 +35,32 @@ namespace DutyPanel.Controllers
         }
 
         //
+        // GET: /Employee/Delete/5
+
+        public ActionResult Delete(int id = 0)
+        {
+            EmployeeUser employeeuser = db.EmployeeUsers.Find(id);
+            if (employeeuser == null)
+            {
+                return HttpNotFound();
+            }
+            return View(employeeuser);
+        }
+
+        //
+        // POST: /Employee/Delete/5
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            EmployeeUser employeeuser = db.EmployeeUsers.Find(id);
+            db.EmployeeUsers.Remove(employeeuser);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        //
         // GET: /Employee/Create
 
         public ActionResult Create()
@@ -61,64 +87,6 @@ namespace DutyPanel.Controllers
             }
             return RedirectToAction("Index");
         }
-
-        //
-        // GET: /Employee/Edit/5
-
-        public ActionResult Edit(int id = 0)
-        {
-            EmployeeUser employeeuser = db.EmployeeUsers.Find(id);
-            if (employeeuser == null)
-            {
-                return HttpNotFound();
-            }
-            ViewData["Rank"] = new SelectList(db.Ranks, "Id", "Name");
-            return View(employeeuser);
-        }
-
-        //
-        // POST: /Employee/Edit/5
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(EmployeeUser employeeuser)
-        {
-            employeeuser.Rank = db.Ranks.Find(Convert.ToInt32(Request.Form["Rank"]));
-            if (ModelState.IsValid)
-            {
-                db.Entry(employeeuser).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(employeeuser);
-        }
-
-        //
-        // GET: /Employee/Delete/5
-
-        public ActionResult Delete(int id = 0)
-        {
-            EmployeeUser employeeuser = db.EmployeeUsers.Find(id);
-            if (employeeuser == null)
-            {
-                return HttpNotFound();
-            }
-            return View(employeeuser);
-        }
-
-        //
-        // POST: /Employee/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            EmployeeUser employeeuser = db.EmployeeUsers.Find(id);
-            db.EmployeeUsers.Remove(employeeuser);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
         public ActionResult CreatDuty()
         {
             ViewData["Rank"] = new SelectList(db.Ranks, "Id", "Name");
@@ -134,7 +102,7 @@ namespace DutyPanel.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        
         public ActionResult CreatOperativeWorker()
         {
             ViewData["Rank"] = new SelectList(db.Ranks, "Id", "Name");
@@ -186,6 +154,85 @@ namespace DutyPanel.Controllers
             driver_usr.WorkingCar = db.Cars.Find(Convert.ToInt32(Request.Form["WorkingCar"]));
             driver_usr.Group = db.OperationalGroups.Find(Convert.ToInt32(Request.Form["Group"]));
             db.Drivers.Add(driver_usr);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        //
+        // GET: /Employee/Edit/5
+
+        public ActionResult Edit(int id = 0)
+        {
+            EmployeeUser employeeuser = db.EmployeeUsers.Find(id);
+            if (employeeuser == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                if (employeeuser is Duty)
+                {
+                    return View("EditDuty", db.Dutys.Find(id));
+                }
+                else
+                {
+                    if (employeeuser is OperativeWorker)
+                    {
+                        ViewData["Group"] = new SelectList(db.OperationalGroups, "IdGroup", "IdGroup");
+                        return View("EditOperativeWorker", db.OperativeWorkers.Find(id));
+                    }
+                    else
+                    {
+                        ViewData["Group"] = new SelectList(db.OperationalGroups, "IdGroup", "IdGroup");
+                        return View("EditDriver", db.Drivers.Find(id));
+                    }
+                }
+
+            }
+        }
+        [HttpPost]
+        public ActionResult EditDuty(DutyPanel.Models.Duty duty_usr)
+        {
+            duty_usr.Rank = db.Ranks.Find(duty_usr.Id);
+            duty_usr.DateLastEditedRank = db.EmployeeUsers.Find(duty_usr.Id).DateLastEditedRank;
+            duty_usr.TypeDuty = TypeDuty.Duty;
+            db.Entry(duty_usr).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public ActionResult EditOperativeWorker(DutyPanel.Models.OperativeWorker ow_usr)
+        {
+            ow_usr.Group = db.OperationalGroups.Find(Convert.ToInt32(Request.Form["Group"]));
+            ow_usr.Rank = db.Ranks.Find(ow_usr.Id);
+            ow_usr.DateLastEditedRank = db.EmployeeUsers.Find(ow_usr.Id).DateLastEditedRank;
+            db.Entry(ow_usr).State = System.Data.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public ActionResult EditDriver(DutyPanel.Models.Driver d_usr)
+        {
+            d_usr.Rank = db.Ranks.Find(d_usr.Id);
+            d_usr.DateLastEditedRank = db.EmployeeUsers.Find(d_usr.Id).DateLastEditedRank;
+            d_usr.Group = db.OperationalGroups.Find(Convert.ToInt32(Request.Form["Group"]));
+            db.Entry(d_usr).State = System.Data.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult EditRank(int id = 0)
+        {
+            if (db.EmployeeUsers.Find(id) == null)
+                return HttpNotFound();
+            ViewData["Rank"] = new SelectList(db.Ranks, "Id", "Name");
+            return View();
+        }
+        [HttpPost]
+        public ActionResult EditRank(EmployeeUser empl_usr)
+        {
+            db.EmployeeUsers.Find(empl_usr.Id).DateLastEditedRank = DateTime.Now;
+            db.EmployeeUsers.Find(empl_usr.Id).Rank = db.Ranks.Find(Convert.ToInt32(Request.Form["Rank"]));
+            db.Entry(db.EmployeeUsers.Find(empl_usr.Id)).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

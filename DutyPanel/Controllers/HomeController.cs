@@ -19,6 +19,23 @@ namespace DutyPanel.Controllers
             ViewBag.Users = db.Users;
             return View();
         }
-        
+        public ActionResult TMP_Enter(string role)
+        {
+            switch (role) { 
+                case "admin":
+                    Session["User"] = db.AdminUsers.First();
+                    break;
+                case "duty":
+                    Session["User"] = db.Dutys.First();
+                    break;
+                case "driver":
+                    Session["User"] = db.Drivers.First();
+                    break;
+                case "ow":
+                    Session["User"] = db.OperativeWorkers.First();
+                    break;
+            }
+            return RedirectToAction("Index", "Profile");
+        }
     }
 }

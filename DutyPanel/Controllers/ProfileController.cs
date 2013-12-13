@@ -53,55 +53,7 @@ namespace DutyPanel.Controllers
             }
             return View();
         }*/
-        public ActionResult EditDuty(int id)
-        {
-            ViewData["Rank"] = new SelectList(db.Ranks, "Id", "Name");
-            return View(db.Dutys.Find(id));
-        }
-        [HttpPost]
-        public ActionResult EditDuty(DutyPanel.Models.Duty duty_usr)
-        {
-            duty_usr.Rank = db.Ranks.Find(Convert.ToInt32(Request.Form["Rank"]));
-
-            db.Entry(duty_usr).State = System.Data.EntityState.Modified;
-            db.SaveChanges();
-            Session["User"] = duty_usr;
-            return RedirectToAction("Index");
-        }
-        public ActionResult EditOperativeWorker(int id)
-        {
-            ViewData["Rank"] = new SelectList(db.Ranks, "Id", "Name");
-            ViewData["Group"] = new SelectList(db.OperationalGroups, "IdGroup", "IdGroup");
-            return View(db.OperativeWorkers.Find(id));
-        }
-        [HttpPost]
-        public ActionResult EditOperativeWorker(DutyPanel.Models.OperativeWorker ow_usr)
-        {
-            ow_usr.Rank = db.Ranks.Find(Convert.ToInt32(Request.Form["Rank"]));
-            ow_usr.Group = db.OperationalGroups.Find(Convert.ToInt32(Request.Form["Group"]));
-
-            db.Entry(ow_usr).State = System.Data.EntityState.Modified;
-            db.SaveChanges();
-            Session["User"] = ow_usr;
-            return RedirectToAction("Index");
-        }
-        public ActionResult EditDriver(int id)
-        {
-            ViewData["Rank"] = new SelectList(db.Ranks, "Id", "Name");
-            ViewData["Group"] = new SelectList(db.OperationalGroups, "IdGroup", "IdGroup");
-            return View(db.Drivers.Find(id));
-        }
-        [HttpPost]
-        public ActionResult EditDriver(DutyPanel.Models.Driver d_usr)
-        {
-            d_usr.Rank = db.Ranks.Find(Convert.ToInt32(Request.Form["Rank"]));
-            d_usr.Group = db.OperationalGroups.Find(Convert.ToInt32(Request.Form["Group"]));
-
-            db.Entry(d_usr).State = System.Data.EntityState.Modified;
-            db.SaveChanges();
-            Session["User"] = db.Drivers.Find(d_usr.Id);
-            return RedirectToAction("Index");
-        }
+        
         
         /// <summary>
         /// profile/creatadmin - создание тестовых пользователей

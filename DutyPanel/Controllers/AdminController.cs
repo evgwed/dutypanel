@@ -75,14 +75,20 @@ namespace DutyPanel.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(AdminUser adminuser)
         {
-            if (ModelState.IsValid)
-            {
-                adminuser.DateOfLastEntry = DateTime.Now;
-                db.Entry(adminuser).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(adminuser);
+            AdminUser tmp_admin = db.AdminUsers.Find(adminuser.Id);
+            tmp_admin.ContactPhone = adminuser.ContactPhone;
+            tmp_admin.DateGivePassport = adminuser.DateGivePassport;
+            tmp_admin.Email = adminuser.Email;
+            tmp_admin.FirstName = adminuser.FirstName;
+            tmp_admin.LastName = adminuser.LastName;
+            tmp_admin.PassportNumber = adminuser.PassportNumber;
+            tmp_admin.Password = adminuser.RegistrationAddress;
+            tmp_admin.SecondName = adminuser.SecondName;
+            tmp_admin.SubdivisionPasport = adminuser.SubdivisionPasport;
+            tmp_admin.WhoGivePassport = adminuser.WhoGivePassport;
+            db.Entry(tmp_admin).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         //

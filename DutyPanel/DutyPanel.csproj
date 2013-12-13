@@ -346,9 +346,9 @@
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Shared\Sidebar.cshtml" />
     <Content Include="Views\Shared\Header.cshtml" />
-    <Content Include="Views\Profile\EditDuty.cshtml" />
-    <Content Include="Views\Profile\EditOperativeWorker.cshtml" />
-    <Content Include="Views\Profile\EditDriver.cshtml" />
+    <Content Include="Views\Employee\EditDuty.cshtml" />
+    <Content Include="Views\Employee\EditOperativeWorker.cshtml" />
+    <Content Include="Views\Employee\EditDriver.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Details.cshtml" />
     <Content Include="Views\Admin\Create.cshtml" />
@@ -411,6 +411,7 @@
     <Content Include="Views\Detention\Create.cshtml" />
     <Content Include="Views\Detention\Edit.cshtml" />
     <Content Include="Views\Detention\Delete.cshtml" />
+    <Content Include="Views\Employee\EditRank.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
