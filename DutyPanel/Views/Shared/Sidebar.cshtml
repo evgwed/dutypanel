@@ -2,56 +2,66 @@
     ViewBag.Title = "Sidebar";
 }
 
-<h2>Menu</h2>
-
-<ul>
-    <li>@Html.ActionLink("На главную", "Index", "Home")</li>
-@if(Session["User"]==null)  
-{  
-    <li>@Html.ActionLink("Авторизация", "Login", "Profile")</li>
-    <li>@Html.ActionLink("Создание заявления интернет", "Create", "StatementI")</li>
-}
-else
-{
-    <li>@Html.ActionLink("Выйти", "Logout", "Profile")</li>
-}
-    <li>@Html.ActionLink("Создание тестовых пользователей", "CreatAdmin", "Profile")</li>
-</ul>
+<div class="side_b">
+    <h2>Меню</h2>
+    <ul>
+        <li>@Html.ActionLink("На главную", "Index", "Home")</li>
+        @if(Session["User"]==null)  
+        {  
+            <li>@Html.ActionLink("Авторизация", "Login", "Profile")</li>
+            <li>@Html.ActionLink("Создание заявления интернет", "Create", "StatementI")</li>
+        }
+        else
+        {
+            <li>@Html.ActionLink("Выйти", "Logout", "Profile")</li>
+            <li>@Html.ActionLink("Профиль", "Index", "Profile")</li>
+        }
+            <li>@Html.ActionLink("Создание тестовых пользователей", "CreatAdmin", "Profile")</li>
+    </ul>
+</div>
 @if(Session["User"] is DutyPanel.Models.AdminUser)
 {
-    <h2>Admin Menu</h2>
-    <ul>
-        <li>@Html.ActionLink("Профиль админа", "Index", "Admin")</li>
-        <li>@Html.ActionLink("Добавить звание", "Index", "Merit")</li>
-        <li>@Html.ActionLink("Сотрудники", "Index", "Employee")</li>
-        <li>@Html.ActionLink("Оперативные группы", "Index", "Operational")</li>
-    </ul>
+    <div class="side_b">
+        <h2>Меню Администратора</h2>
+        <ul>
+            <li>@Html.ActionLink("Профиль админа", "Index", "Admin")</li>
+            <li>@Html.ActionLink("Добавить звание", "Index", "Merit")</li>
+            <li>@Html.ActionLink("Сотрудники", "Index", "Employee")</li>
+            <li>@Html.ActionLink("Оперативные группы", "Index", "Operational")</li>
+        </ul>
+    </div>
 }
 @if ((Session["User"] is DutyPanel.Models.Duty) || (Session["User"] is DutyPanel.Models.AdminUser))
 { 
-    <h2>Duty Menu</h2>
-    <ul>
-        <li>@Html.ActionLink("Интернет заявления", "Index", "StatementI")</li>
-        <li>@Html.ActionLink("Устные заявления", "Index", "StatementO")</li>
-        <li>@Html.ActionLink("Письменные заявления", "Index", "StatementW")</li>
-        <li>@Html.ActionLink("Выезд оперативной группы", "Index", "Leaving")</li>
-    </ul>
+    <div class="side_b">
+        <h2>Меню дежурного</h2>
+        <ul>
+            <li>@Html.ActionLink("Интернет заявления", "Index", "StatementI")</li>
+            <li>@Html.ActionLink("Устные заявления", "Index", "StatementO")</li>
+            <li>@Html.ActionLink("Письменные заявления", "Index", "StatementW")</li>
+            <li>@Html.ActionLink("Выезд оперативной группы", "Index", "Leaving")</li>
+        </ul>
+    </div>
 }
 @if ((Session["User"] is DutyPanel.Models.Driver) || (Session["User"] is DutyPanel.Models.AdminUser))
 { 
-    <h2>Driver Menu</h2>
-    <ul>
-        <li>@Html.ActionLink("Автомобили", "Index", "Car")</li>
-    </ul>
+    <div class="side_b">
+        <h2>Меню водителя</h2>
+        <ul>
+            <li>@Html.ActionLink("Автомобили", "Index", "Car")</li>
+        </ul>
+    </div>
 }
 @if ((Session["User"] is DutyPanel.Models.OperativeWorker) || (Session["User"] is DutyPanel.Models.AdminUser))
 { 
-    <h2>OperativeWorker Menu</h2>
-    <ul>
-        <li>@Html.ActionLink("Собаки", "Index", "Dog")</li>
-        <li>@Html.ActionLink("Протоколы", "Index", "Protocol")</li>
-        <li>@Html.ActionLink("Задержания", "Index", "Detention")</li>        
-    </ul>
+    <div class="side_b">
+        <h2>Меню оперативного работника</h2>
+        <ul>
+            <li>@Html.ActionLink("Собаки", "Index", "Dog")</li>
+            <li>@Html.ActionLink("Протоколы", "Index", "Protocol")</li>
+            <li>@Html.ActionLink("Задержания", "Index", "Detention")</li>        
+        </ul>
+    </div>
 }
 
         
