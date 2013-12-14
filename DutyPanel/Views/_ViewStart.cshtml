@@ -1,3 +1,10 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["Style"] == null || Session["Style"] == "default")
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    if (Session["Style"] == "mini")
+    {
+        Layout = "~/Views/Shared/_LayoutMini.cshtml";
+    }
 }

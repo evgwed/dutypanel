@@ -14,10 +14,20 @@ namespace DutyPanel.Controllers
         //
         // GET: /Home/
 
-        public ActionResult Index(bool res = false)
+        public ActionResult Index(bool res = false, string IsMiniStyle = "default")
         {
             if (res)
+            {
                 ViewData["InfoText"] = "Ваше заявление создано, скоро с вами свяжется дежурный для уточнения информации.";
+            }
+            if (IsMiniStyle == "mini")
+            {
+                Session["Style"] = "mini";
+            }
+            else
+            {
+                Session["Style"] = "default";
+            }
             ViewBag.Users = db.Users;
             return View();
         }

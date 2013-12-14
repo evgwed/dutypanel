@@ -1,7 +1,8 @@
-﻿@{
-    ViewBag.Title = "Header";
-}
-<div class="head_b">
+﻿<div class="head_b">
+    <div class="style_b">
+        @Html.ActionLink("Основной", "Index", "Home", new { res = false, IsMiniStyle = "default" }, null) | 
+        @Html.ActionLink("Минималистичный", "Index", "Home", new { res = false, IsMiniStyle = "mini" }, null)
+    </div>
     <div class="head_text">
         <h2>Система «Дежурный Пульт»</h2>
         <p class="head_desc">
