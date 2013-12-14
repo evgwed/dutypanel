@@ -53,6 +53,7 @@ namespace DutyPanel.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(OralStatement oralstatement)
         {
+            oralstatement.DateStatment = DateTime.Now;
             if (Session["User"] is Duty)
             {
                 oralstatement.Duty = db.Dutys.Find((Session["User"] as Duty).Id);

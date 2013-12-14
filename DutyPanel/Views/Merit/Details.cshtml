@@ -1,36 +1,52 @@
 ﻿@model DutyPanel.Models.Merit
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Информация о заслуге";
 }
+@if(Session["User"] is DutyPanel.Models.AdminUser)
+{
+    <h2>Инофрмация о заслуге</h2>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Employee.LastName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Employee.LastName)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Employee.FirstName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Employee.FirstName)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Employee.SecondName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Employee.SecondName)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.DateOfAssignment)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DateOfAssignment)
+        </div>
 
-<h2>Details</h2>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Description)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Description)
+        </div>
 
-<fieldset>
-    <legend>Merit</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DateOfAssignment)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DateOfAssignment)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Description)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Description)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Promotion)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Promotion)
-    </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Promotion)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Promotion)
+        </div>
+    <p>
+        @Html.ActionLink("Редактировать", "Edit", new { id=Model.Id }) |
+        @Html.ActionLink("Вернуться назад к списку", "Index")
+    </p>
+}

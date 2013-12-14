@@ -1,19 +1,16 @@
 ﻿@model DutyPanel.Models.WrittenStatement
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Создание письменного заявления";
 }
 @if (Session["User"] is DutyPanel.Models.Duty)
 {
-<h2>Create</h2>
+<h2>Создание письменного заявления</h2>
 
 using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>WrittenStatement</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.DeclarantNumberPasport)
@@ -87,13 +84,6 @@ using (Html.BeginForm())
             @Html.ValidationMessageFor(model => model.DeclarantSecondName)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.DateStatment)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.DateStatment)
-            @Html.ValidationMessageFor(model => model.DateStatment)
-        </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.DaetIncident)
@@ -136,13 +126,12 @@ using (Html.BeginForm())
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Создать" />
         </p>
-    </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Вернуться назад к списку", "Index")
 </div>
 
 @section Scripts {
@@ -157,5 +146,5 @@ using (Html.BeginForm())
 }
 else
 {
-    <p>У вас нет прав доступа.</p>
+    @Html.Partial("AccessError")
 }

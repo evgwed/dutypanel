@@ -1,19 +1,15 @@
 ﻿@model DutyPanel.Models.EmployeeUser
 
 @{
-    ViewBag.Title = "EditRank";
+    ViewBag.Title = "Изменение звания";
 }
+@if(Session["User"] is DutyPanel.Models.AdminUser)
+{
+<h2>Изменение звания</h2>
 
-<h2>EditRank</h2>
-
-@using (Html.BeginForm()) {
+using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>EmployeeUser</legend>
-
-        
 
         @Html.HiddenFor(model => model.Id)
 
@@ -25,17 +21,20 @@
             @Html.ValidationMessageFor(model => model.Rank)
         </div>
 
-        
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Изменить звание" />
         </p>
-    </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Вернуться назад к списку", "Index")
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+}
+}
+else
+{
+    @Html.Partial("AccessError")
 }

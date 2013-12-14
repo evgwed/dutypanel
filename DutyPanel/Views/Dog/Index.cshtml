@@ -1,57 +1,62 @@
 ﻿@model IEnumerable<DutyPanel.Models.WarDog>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Список собак";
 }
+@if ((Session["User"] is DutyPanel.Models.AdminUser) || (Session["User"] is DutyPanel.Models.OperativeWorker))
+{
+    <h2>Список служебных собак</h2>
+    <p>
+        @Html.ActionLink("Создать новую собаку", "Create")
+    </p>
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Breed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirthday)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCommencementOfService)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateLastInspection)
+            </th>
+            <th></th>
+        </tr>
 
-<h2>Index</h2>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Breed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirthday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCommencementOfService)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateLastInspection)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id=item.IdDog }) |
+                @Html.ActionLink("Подробная информация", "Details", new { id=item.IdDog }) |
+                @Html.ActionLink("Удалить", "Delete", new { id=item.IdDog })
+            </td>
+        </tr>
+    }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Breed)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateOfBirthday)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateCommencementOfService)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateLastInspection)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Breed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfBirthday)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateCommencementOfService)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateLastInspection)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdDog }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdDog }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdDog })
-        </td>
-    </tr>
+    </table>
 }
-
-</table>
+else
+{
+    @Html.Partial("AccessError")
+}

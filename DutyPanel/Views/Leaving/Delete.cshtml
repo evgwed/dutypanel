@@ -1,26 +1,26 @@
 ﻿@model DutyPanel.Models.LeavingGroup
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Удаление выезда оперативной группы";
 }
-
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<fieldset>
-    <legend>LeavingGroup</legend>
-
+@if (Session["User"] is DutyPanel.Models.OperativeWorker || Session["User"] is DutyPanel.Models.AdminUser)
+{
+    <h2>Вы действительно хотите удалить данную запись?</h2>
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.TimeLeaving)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TimeLeaving)
-    </div>
-</fieldset>
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+             @Html.DisplayNameFor(model => model.TimeLeaving)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TimeLeaving)
+        </div>
+    using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        <p>
+            <input type="submit" value="Удалить" /> |
+            @Html.ActionLink("Вернуться назад к списку", "Index")
+        </p>
+    }
+}
+else
+{
+    @Html.Partial("AccessError")
 }

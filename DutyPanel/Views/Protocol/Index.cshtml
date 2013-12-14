@@ -1,45 +1,47 @@
 ﻿@model IEnumerable<DutyPanel.Models.Protocol>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Список протоколов";
 }
+@if (Session["User"] is DutyPanel.Models.AdminUser || Session["User"] is DutyPanel.Models.OperativeWorker)
+{
+    <h2>Список протоколов</h2>
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfPreparation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlaceOfPreparation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsHaveDelayed)
+            </th>
+            <th></th>
+        </tr>
 
-<h2>Index</h2>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfPreparation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlaceOfPreparation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsHaveDelayed)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id=item.NumberProtocol }) |
+                @Html.ActionLink("Подробная информация", "Details", new { id=item.NumberProtocol }) |
+                @Html.ActionLink("Удалить", "Delete", new { id=item.NumberProtocol })
+            </td>
+        </tr>
+    }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DateOfPreparation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PlaceOfPreparation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsHaveDelayed)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfPreparation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PlaceOfPreparation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsHaveDelayed)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.NumberProtocol }) |
-            @Html.ActionLink("Details", "Details", new { id=item.NumberProtocol }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.NumberProtocol })
-        </td>
-    </tr>
+    </table>
 }
-
-</table>
+else
+{
+    @Html.Partial("AccessError")
+}

@@ -14,8 +14,10 @@ namespace DutyPanel.Controllers
         //
         // GET: /Home/
 
-        public ActionResult Index()
+        public ActionResult Index(bool res = false)
         {
+            if (res)
+                ViewData["InfoText"] = "Ваше заявление создано, скоро с вами свяжется дежурный для уточнения информации.";
             ViewBag.Users = db.Users;
             return View();
         }

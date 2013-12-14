@@ -1,30 +1,42 @@
 ﻿@model IEnumerable<DutyPanel.Models.LeavingGroup>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Список выездов оперативных групп";
 }
+@if (Session["User"]!=null)
+{
+    <h2>Список выездов оперативных групп</h2>
 
-<h2>Index</h2>
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeLeaving)
+            </th>
+            <th></th>
+        </tr>
 
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TimeLeaving)
-        </th>
-        <th></th>
-    </tr>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeLeaving)
+            </td>
+            <td>
+                @if (Session["User"] is DutyPanel.Models.OperativeWorker || Session["User"] is DutyPanel.Models.Duty || Session["User"] is DutyPanel.Models.AdminUser)
+                {
+                    @Html.ActionLink("Редактировать", "Edit", new { id=item.IdLeaving }) <span>|</span>
+                }
+                @Html.ActionLink("Подробная информация", "Details", new { id=item.IdLeaving }) |
+                @if (Session["User"] is DutyPanel.Models.OperativeWorker || Session["User"] is DutyPanel.Models.AdminUser)
+                {
+                    @Html.ActionLink("Удалить", "Delete", new { id=item.IdLeaving })
+                }
+            </td>
+        </tr>
+    }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TimeLeaving)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdLeaving }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdLeaving }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdLeaving })
-        </td>
-    </tr>
+    </table>
 }
-
-</table>
+else
+{
+    @Html.Partial("AccessError")
+}

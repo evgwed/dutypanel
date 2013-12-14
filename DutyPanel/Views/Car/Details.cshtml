@@ -1,92 +1,94 @@
 ﻿@model DutyPanel.Models.Car
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Подробная информация об автомобиле";
 }
+@if ((Session["User"] is DutyPanel.Models.AdminUser) || (Session["User"] is DutyPanel.Models.Driver))
+{
+    <h2>Подробная информация об автомобиле</h2>
 
-<h2>Details</h2>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.NumberCar)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.NumberCar)
+        </div>
 
-<fieldset>
-    <legend>Car</legend>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.IsPlaceFoDetainees)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.IsPlaceFoDetainees)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.NumberCar)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.NumberCar)
-    </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.BrandCar)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.BrandCar)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.IsPlaceFoDetainees)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.IsPlaceFoDetainees)
-    </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.ModelCar)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.ModelCar)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.BrandCar)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.BrandCar)
-    </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.ReleaseDate)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.ReleaseDate)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ModelCar)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ModelCar)
-    </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Color)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Color)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ReleaseDate)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ReleaseDate)
-    </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.FuelType)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.FuelType)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Color)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Color)
-    </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.DateLastRefueling)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DateLastRefueling)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.FuelType)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.FuelType)
-    </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.SeatsCount)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.SeatsCount)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DateLastRefueling)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DateLastRefueling)
-    </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.IsSpecSignal)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.IsSpecSignal)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.SeatsCount)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.SeatsCount)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.IsSpecSignal)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.IsSpecSignal)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DesiredCategoryDriving)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DesiredCategoryDriving)
-    </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.IdCar }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.DesiredCategoryDriving)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DesiredCategoryDriving)
+        </div>
+    <p>
+        @Html.ActionLink("Редактировать", "Edit", new { id=Model.IdCar }) |
+        @Html.ActionLink("Вернуться назад к списку", "Index")
+    </p>
+}
+else
+{
+    @Html.Partial("AccessError")
+}

@@ -1,12 +1,12 @@
 ﻿@model DutyPanel.Models.AdminUser
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Информация о администраторе/начальнике дежуронй части";
 }
 
 @if(Session["User"] is DutyPanel.Models.AdminUser)
 {
-<h2>Profile Admin #@Model.Id</h2>
+<h2>Информация о администраторе/начальнике дежуронй части</h2>
 
 
     <div class="display-label">
@@ -93,12 +93,12 @@
         @Html.DisplayFor(model => model.ContactPhone)
     </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Редактировать", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Вернуться назад к списку", "Index")
 </p>
 
 }
 else
 {
-    <p>Ошибка! Необходимо авторизоваться</p>
+    @Html.Partial("AccessError")
 }

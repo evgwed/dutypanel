@@ -1,59 +1,66 @@
 ﻿@model IEnumerable<DutyPanel.Models.Car>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Список автомобилей в системе";
 }
 
-<h2>Index</h2>
+@if ((Session["User"] is DutyPanel.Models.AdminUser) || (Session["User"] is DutyPanel.Models.Driver))
+{
+    <h2>Автомобили в системе</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NumberCar)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BrandCar)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModelCar)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Color)
-        </th>
+    <p>
+        @Html.ActionLink("Создать новый автомобиль", "Create")
+    </p>
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberCar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BrandCar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModelCar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Color)
+            </th>
         
-        <th>
-            @Html.DisplayNameFor(model => model.SeatsCount)
-        </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeatsCount)
+            </th>
         
-        <th></th>
-    </tr>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumberCar)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BrandCar)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModelCar)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Color)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SeatsCount)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdCar }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdCar }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdCar })
-        </td>
-    </tr>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberCar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrandCar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModelCar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeatsCount)
+            </td>
+            <td>
+                @Html.ActionLink("Редактирование", "Edit", new { id=item.IdCar }) |
+                @Html.ActionLink("Подробная информация", "Details", new { id=item.IdCar }) |
+                @Html.ActionLink("Удалить", "Delete", new { id=item.IdCar })
+            </td>
+        </tr>
+    }
+
+    </table>
 }
-
-</table>
+else
+{
+    @Html.Partial("AccessError")
+}

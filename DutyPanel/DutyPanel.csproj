@@ -342,7 +342,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Profile\Login.cshtml" />
-    <Content Include="Views\Profile\Edit.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Shared\Sidebar.cshtml" />
     <Content Include="Views\Shared\Header.cshtml" />
@@ -377,7 +376,6 @@
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\Details.cshtml" />
     <Content Include="Views\Employee\Create.cshtml" />
-    <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Views\Employee\Delete.cshtml" />
     <Content Include="Views\Employee\CreatDuty.cshtml" />
     <Content Include="Views\Employee\CreatOperativeWorker.cshtml" />
@@ -412,6 +410,7 @@
     <Content Include="Views\Detention\Edit.cshtml" />
     <Content Include="Views\Detention\Delete.cshtml" />
     <Content Include="Views\Employee\EditRank.cshtml" />
+    <Content Include="Views\Shared\AccessError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

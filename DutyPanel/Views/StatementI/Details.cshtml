@@ -1,104 +1,104 @@
 ﻿@model DutyPanel.Models.InternetStatement
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Интернет заявление";
 }
 
-<h2>Details</h2>
-
-<fieldset>
-    <legend>InternetStatement</legend>
 @if(Session["User"]!=null)
 {
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.IpAdress)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.IpAdress)
-    </div>
+    <h2>Интернет заявление № @Model.NumberStatement</h2>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.InfoBrowser)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.InfoBrowser)
-    </div>
-}
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DeclarantLastName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DeclarantLastName)
-    </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.IpAdress)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.IpAdress)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DeclarantFirstName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DeclarantFirstName)
-    </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.InfoBrowser)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.InfoBrowser)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.DeclarantLastName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DeclarantLastName)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DeclarantSecondName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DeclarantSecondName)
-    </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.DeclarantFirstName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DeclarantFirstName)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DateStatment)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DateStatment)
-    </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.DeclarantSecondName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DeclarantSecondName)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DaetIncident)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DaetIncident)
-    </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.DateStatment)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DateStatment)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Adress)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Adress)
-    </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.DaetIncident)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DaetIncident)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.District)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.District)
-    </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Adress)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Adress)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Harm)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Harm)
-    </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.District)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.District)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Description)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Description)
-    </div>
-</fieldset>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Harm)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Harm)
+        </div>
 
-<p>
-@if (Session["User"] is DutyPanel.Models.Duty)
-{
-    @Html.ActionLink("Edit", "Edit", new { id=Model.NumberStatement }) <span>|</span>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Description)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Description)
+        </div>
+    <p>
+    @if (Session["User"] is DutyPanel.Models.Duty)
+    {
+        @Html.ActionLink("Редактировать", "Edit", new { id=Model.NumberStatement }) <span>|</span>
     
+    }
+    @if (Session["User"] is DutyPanel.Models.AdminUser || Session["User"] is DutyPanel.Models.Duty)
+    {
+        @Html.ActionLink("Вернуться назад к списку", "Index")
+    }
+    </p>
+    <p>
+        @Html.ActionLink("Создать выезд оперативной группы", "Create", "Leaving", new { id = Model.NumberStatement}, null)
+    </p>
 }
-@if (Session["User"] is DutyPanel.Models.AdminUser || Session["User"] is DutyPanel.Models.Duty)
+else
 {
-    @Html.ActionLink("Back to List", "Index")
+    @Html.Partial("AccessError")
 }
-</p>
-<p>
-    @Html.ActionLink("Создать выезд", "Create", "Leaving", new { id = Model.NumberStatement}, "div")
-</p>

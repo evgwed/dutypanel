@@ -1,12 +1,12 @@
 ﻿@model DutyPanel.Models.AdminUser
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Добавление Администратора/Начальника дежурной части";
 }
 
 @if(Session["User"] is DutyPanel.Models.AdminUser)
 {
-<h2>Create</h2>
+<h2>Добавление Администратора/Начальника дежурной части</h2>
 
 using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -101,12 +101,12 @@ using (Html.BeginForm()) {
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Создать" />
         </p>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Вернуться назад(к списку адинистраторов в системе)", "Index")
 </div>
 
 @section Scripts {
@@ -121,5 +121,5 @@ using (Html.BeginForm()) {
 }
 else
 {
-    <p>Ошибка! Необходимо авторизоваться</p>
+    @Html.Partial("AccessError")
 }

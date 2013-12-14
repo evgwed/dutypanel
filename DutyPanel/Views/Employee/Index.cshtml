@@ -1,50 +1,56 @@
 ﻿@model IEnumerable<DutyPanel.Models.EmployeeUser>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Список сотрудников";
 }
+@if(Session["User"] is DutyPanel.Models.AdminUser)
+{
+    <h2>Список сотрудников</h2>
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
+    <p>
+        @Html.ActionLink("Создать сотрудника", "Create")
+    </p>
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
         
-        <th>
-            @Html.DisplayNameFor(model => model.ContactPhone)
-        </th>
-        <th></th>
-    </tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactPhone)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SecondName)
-        </td>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecondName)
+            </td>
         
-        <td>
-            @Html.DisplayFor(modelItem => item.ContactPhone)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactPhone)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Подробная информация", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Удалить", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+    }
+
+    </table>
 }
-
-</table>
+else
+{
+    @Html.Partial("AccessError")
+}

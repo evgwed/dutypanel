@@ -1,71 +1,73 @@
 ﻿@model DutyPanel.Models.Detention
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Информация о задержании";
 }
+@if ((Session["User"] is DutyPanel.Models.AdminUser) || (Session["User"] is DutyPanel.Models.OperativeWorker))
+{
+    <h2>Информация о задержании</h2>
 
-<h2>Details</h2>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.DetentionLastName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DetentionLastName)
+        </div>
 
-<fieldset>
-    <legend>Detention</legend>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.DetentionFirstName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DetentionFirstName)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DetentionLastName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DetentionLastName)
-    </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.DetentionSecondName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DetentionSecondName)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DetentionFirstName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DetentionFirstName)
-    </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.DateOfDetention)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DateOfDetention)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DetentionSecondName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DetentionSecondName)
-    </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.PleaceDetention)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.PleaceDetention)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DateOfDetention)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DateOfDetention)
-    </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.BaseDetention)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.BaseDetention)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.PleaceDetention)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.PleaceDetention)
-    </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Things)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Things)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.BaseDetention)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.BaseDetention)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Things)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Things)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.IsNotifiRelatives)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.IsNotifiRelatives)
-    </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.NumberDetention }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.IsNotifiRelatives)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.IsNotifiRelatives)
+        </div>
+    <p>
+        @Html.ActionLink("Редактировать", "Edit", new { id=Model.NumberDetention }) |
+        @Html.ActionLink("Вернуться назад к списку", "Index")
+    </p>
+}
+else
+{
+    @Html.Partial("AccessError")
+}

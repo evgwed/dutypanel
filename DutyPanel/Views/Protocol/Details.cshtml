@@ -1,37 +1,39 @@
 ﻿@model DutyPanel.Models.Protocol
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Инофрмация о протоколе";
 }
+@if (Session["User"] is DutyPanel.Models.AdminUser || Session["User"] is DutyPanel.Models.OperativeWorker)
+{
+    <h2>Протокол № @Model.NumberProtocol</h2>
 
-<h2>Details</h2>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.DateOfPreparation)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DateOfPreparation)
+        </div>
 
-<fieldset>
-    <legend>Protocol</legend>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.PlaceOfPreparation)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.PlaceOfPreparation)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DateOfPreparation)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DateOfPreparation)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.PlaceOfPreparation)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.PlaceOfPreparation)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.IsHaveDelayed)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.IsHaveDelayed)
-    </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.NumberProtocol }) |
-    @Html.ActionLink("Back to List", "Index")
-    @Html.ActionLink("Добавить задержанных", "Create", "Detention", new { id = Model.NumberProtocol}, "div")
-</p>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.IsHaveDelayed)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.IsHaveDelayed)
+        </div>
+    <p>
+        @Html.ActionLink("Редактировать", "Edit", new { id=Model.NumberProtocol }) |
+        @Html.ActionLink("Вернуться назад к списку", "Index")
+        @Html.ActionLink("Добавить задержанных", "Create", "Detention", new { id = Model.NumberProtocol}, null)
+    </p>
+}
+else
+{
+    @Html.Partial("AccessError")
+}

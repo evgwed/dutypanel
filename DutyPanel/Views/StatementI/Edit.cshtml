@@ -6,14 +6,11 @@
 
 @if (Session["User"] is DutyPanel.Models.Duty)
 {
-<h2>Edit</h2>
+<h2>Редактирование интернет заявления</h2>
 
 using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>InternetStatement</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.IpAdress)
@@ -106,13 +103,12 @@ using (Html.BeginForm()) {
         </div>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Сохранить изменения" />
         </p>
-    </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Вернуться назад к списку", "Index")
 </div>
 
 @section Scripts {
@@ -127,5 +123,5 @@ using (Html.BeginForm()) {
 }
 else
 {
-    <p>Ошибка, вы не можете подавать заявление таким способом</p>
+    @Html.Partial("AccessError")
 }

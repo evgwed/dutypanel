@@ -1,8 +1,8 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Автоматизированная система \"Дежурный пульт\"";
 }
 
-<h2>Index</h2>
+<h2>Автоматизированная система "Дежурный пульт"</h2>
 <table>
 @foreach (DutyPanel.Models.User tmp in (IEnumerable<DutyPanel.Models.User>)ViewBag.Users)
 {
@@ -12,28 +12,29 @@
         <td>
             @if (tmp is DutyPanel.Models.AdminUser)
             { 
-                <span>AdminUser</span>
+                <span>Администратор</span>
             }
             @if (tmp is DutyPanel.Models.Driver)
             { 
-                <span>Driver</span>
+                <span>Водитель</span>
             }
             @if (tmp is DutyPanel.Models.Duty)
             { 
-                <span>Duty</span>
-            }
-            @if (tmp is DutyPanel.Models.EmployeeUser)
-            { 
-                <span>EmployeeUser</span>
+                <span>Дежурный</span>
             }
             @if (tmp is DutyPanel.Models.OperativeWorker)
             { 
-                <span>OperativeWorker</span>
+                <span>Оперативный работник</span>
+            }
+            @if (tmp is DutyPanel.Models.EmployeeUser)
+            { 
+                <span>(Сотрудник)</span>
             }
         </td>
     </tr>
 }
 </table>
+<br /><br />
 @Html.ActionLink("Войти от Админа", "TMP_Enter", new { role = "admin"})| 
 @Html.ActionLink("Войти от Дежурного", "TMP_Enter", new { role = "duty"})| 
 @Html.ActionLink("Войти от Водителя", "TMP_Enter", new { role = "driver"})| 

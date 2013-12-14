@@ -1,50 +1,52 @@
 ﻿@model DutyPanel.Models.WarDog
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Информация о собаке";
 }
+@if ((Session["User"] is DutyPanel.Models.AdminUser) || (Session["User"] is DutyPanel.Models.OperativeWorker))
+{
+    <h2>Информация о служебной собаке</h2>
 
-<h2>Details</h2>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Name)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Name)
+        </div>
 
-<fieldset>
-    <legend>WarDog</legend>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Breed)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Breed)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Name)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Name)
-    </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.DateOfBirthday)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DateOfBirthday)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Breed)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Breed)
-    </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.DateCommencementOfService)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DateCommencementOfService)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DateOfBirthday)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DateOfBirthday)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DateCommencementOfService)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DateCommencementOfService)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DateLastInspection)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DateLastInspection)
-    </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.IdDog }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.DateLastInspection)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DateLastInspection)
+        </div>
+    <p>
+        @Html.ActionLink("Редактировать", "Edit", new { id=Model.IdDog }) |
+        @Html.ActionLink("Вернуться назад к списку", "Index")
+    </p>
+}
+else
+{
+    @Html.Partial("AccessError")
+}

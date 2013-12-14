@@ -1,32 +1,40 @@
 ﻿@model DutyPanel.Models.OperationalGroup
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Создание оперативной группы";
 }
-@if (ViewData["InfoText"]==null)
+
+@if(Session["User"] is DutyPanel.Models.AdminUser)
 {
-<h2>Create</h2>
+    if (ViewData["InfoText"]==null)
+    {
+        <h2>Создание оперативной группы</h2>
 
-using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+        using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
 
-        <b>Вы действительно хотете создать оперативную группу ?</b>
+                <b>Вы действительно хотете создать оперативную группу ?</b>
        
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-}
+                <p>
+                    <input type="submit" value="Создать" />
+                </p>
+        }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+        <div>
+            @Html.ActionLink("Вернуться назад к списку", "Index")
+        </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+    }
+    else
+    {
+        @Html.ActionLink("Вернуться назад к списку", "Index")
+    }
 }
 else
 {
-    @Html.ActionLink("Назад", "Index")
+    @Html.Partial("AccessError")
 }

@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<DutyPanel.Models.AdminUser>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Список Администраторов системы";
 }
 @if(Session["User"] is DutyPanel.Models.AdminUser)
 {
-<h2>Index</h2>
+<h2>Список Администраторов системы</h2>
 
 <p>
-    @Html.ActionLink("Create New Admin", "Create")
+    @Html.ActionLink("Создать нового администратора", "Create")
 </p>
 <table>
     <tr>
@@ -41,9 +41,9 @@
             @Html.DisplayFor(modelItem => item.ContactPhone)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Подробная информация", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.Id })
         </td>
     </tr>
 }
@@ -52,5 +52,5 @@
 }
 else
 {
-    <p>Ошибка! Необходимо авторизоваться</p>
+    @Html.Partial("AccessError")
 }

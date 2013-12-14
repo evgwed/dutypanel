@@ -1,45 +1,47 @@
 ﻿@model IEnumerable<DutyPanel.Models.Merit>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Список заслуг сотрудников";
 }
+@if(Session["User"] is DutyPanel.Models.AdminUser)
+{
+    <h2>Список заслуг сотрудников</h2>
 
-<h2>Index</h2>
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfAssignment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Promotion)
+            </th>
+            <th></th>
+        </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DateOfAssignment)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Promotion)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfAssignment)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Promotion)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfAssignment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Promotion)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Подробная информация", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Удалить", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+    }
+    </table>
 }
-
-</table>
+else
+{
+    @Html.Partial("AccessError")
+}

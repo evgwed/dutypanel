@@ -1,20 +1,16 @@
 ﻿@model DutyPanel.Models.WrittenStatement
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Редактирование письменного заявления";
 }
 @if (Session["User"] is DutyPanel.Models.Duty)
 {
-<h2>Edit</h2>
+<h2>Редактирование письменного заявления</h2>
 
 using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>WrittenStatement</legend>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.DeclarantNumberPasport)
         </div>
@@ -138,13 +134,12 @@ using (Html.BeginForm())
         </div>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Сохранить" />
         </p>
-    </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Вернуться назад к списку", "Index")
 </div>
 
 @section Scripts {
@@ -159,5 +154,5 @@ using (Html.BeginForm())
 }
 else
 {
-    <p>У вас нет прав для досупа в данный раздел.</p>
+    @Html.Partial("AccessError")
 }

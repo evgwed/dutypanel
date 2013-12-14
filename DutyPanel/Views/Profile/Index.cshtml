@@ -1,7 +1,7 @@
 ﻿@model DutyPanel.Models.User
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Профиль";
 }
 @if (Session["User"] != null)
 {
@@ -158,7 +158,7 @@
             {
                 <div class="display-label">
                     <b>@Html.DisplayNameFor(model => (Session["User"] as DutyPanel.Models.OperativeWorker).WarDog):</b>
-                    @Html.DisplayFor(model => (Session["User"] as DutyPanel.Models.OperativeWorker).WarDog.Name + " (# " + (Session["User"] as DutyPanel.Models.OperativeWorker).WarDog.IdDog + ")")
+                     @((Session["User"] as DutyPanel.Models.OperativeWorker).WarDog.Name)  # @((Session["User"] as DutyPanel.Models.OperativeWorker).WarDog.IdDog)
                 </div>
             }
         }
@@ -204,5 +204,5 @@
 }
 else
 {
-    <p>Вам необходимо авторизоваться.</p>
+    @Html.Partial("AccessError")
 }

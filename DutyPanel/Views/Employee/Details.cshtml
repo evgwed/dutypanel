@@ -1,9 +1,10 @@
 ﻿@model DutyPanel.Models.EmployeeUser
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Информация о сотруднике";
 }
-
+@if(Session["User"] is DutyPanel.Models.AdminUser)
+{
     <h2>Информация</h2>
     <h3>Пользовалеьская информация</h3>
     <div>
@@ -65,7 +66,7 @@
     <div>
          <b>@Html.DisplayNameFor(model => model.DateLastEditedRank):</b> @Model.DateLastEditedRank.Value.Day/@Model.DateLastEditedRank.Value.Month/@Model.DateLastEditedRank.Value.Year
     </div>
-    @if(Model is DutyPanel.Models.Duty)
+    if(Model is DutyPanel.Models.Duty)
     {
         <h3>Информация о дежурном:</h3>
         <div>
@@ -84,7 +85,7 @@
                   
         </div>
     }
-    @if(Model is DutyPanel.Models.OperativeWorker)
+    if(Model is DutyPanel.Models.OperativeWorker)
     {
         <h3>Информация о оперативном работнике:</h3>
         <div>
@@ -123,7 +124,7 @@
              <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.OperativeWorker).Group):</b># @Html.DisplayFor(model =>(model as DutyPanel.Models.OperativeWorker).Group.IdGroup)
         </div>
     }
-    @if(Model is DutyPanel.Models.Driver)
+    if(Model is DutyPanel.Models.Driver)
     {
         <h3>Информация о видителе:</h3>
         <div>
@@ -178,7 +179,12 @@
         </div>
     }
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-    @Html.ActionLink("AddMerit", "Create", "Merit", new { id = Model.Id }, "div");
+    @Html.ActionLink("Редактировать", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Вернуться назад к списку", "Index")
+    @Html.ActionLink("Добавить заслугу", "Create", "Merit", new { id = Model.Id }, "div");
 </p>
+}
+else
+{
+    @Html.Partial("AccessError")
+}

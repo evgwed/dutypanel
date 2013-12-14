@@ -1,15 +1,11 @@
 ﻿@model DutyPanel.Models.WrittenStatement
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Удаление письменного заявления";
 }
 @if (Session["User"] is DutyPanel.Models.Duty || Session["User"] is DutyPanel.Models.AdminUser)
 {
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<fieldset>
-    <legend>WrittenStatement</legend>
+<h2>Удаить письменное заявление № @Model.NumberStatement  ?</h2>
 
     <div class="display-label">
          @Html.DisplayNameFor(model => model.DeclarantNumberPasport)
@@ -115,16 +111,15 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.Description)
     </div>
-</fieldset>
 using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
+        <input type="submit" value="Удалить" /> |
+        @Html.ActionLink("Вернуться назад к списку", "Index")
     </p>
 }
 }
 else
 {
-    <p>У вас нет доступа</p>
+    @Html.Partial("AccessError")
 }

@@ -1,38 +1,46 @@
 ﻿@model DutyPanel.Models.LeavingGroup
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Редактирование выезда оперативной группы";
 }
+@if ((Session["User"] is DutyPanel.Models.Duty) || (Session["User"] is DutyPanel.Models.AdminUser) || (Session["User"] is DutyPanel.Models.OperativeWorker))
+{
+    <h2>Редактирование выезда оперативной группы</h2>
 
-<h2>Edit</h2>
+    using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.IdLeaving)
 
-    <fieldset>
-        <legend>LeavingGroup</legend>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.TimeLeaving)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.TimeLeaving)
+                @Html.ValidationMessageFor(model => model.TimeLeaving)
+            </div>
 
-        @Html.HiddenFor(model => model.IdLeaving)
+            <p>
+                <input type="submit" value="Сохранить изменения" />
+            </p>
+    }
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.TimeLeaving)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.TimeLeaving)
-            @Html.ValidationMessageFor(model => model.TimeLeaving)
-        </div>
+    <div>
+        @Html.ActionLink("Вернуться назад к списку", "Index")
+    </div>
 
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        <script>
+            $(function () {
+                $("#TimeLeaving").appendDtpicker({ "dateFormat": "DD/MM/YYYY hh:mm" });
+            });
+        </script>
+    }
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+else
+{
+    @Html.Partial("AccessError")
 }

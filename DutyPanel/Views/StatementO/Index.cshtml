@@ -1,73 +1,77 @@
 ﻿@model IEnumerable<DutyPanel.Models.OralStatement>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Список устных заявлений";
 }
 @if ((Session["User"] is DutyPanel.Models.Duty) || (Session["User"] is DutyPanel.Models.OperativeWorker)||(Session["User"] is DutyPanel.Models.AdminUser))
 {
-<h2>Index</h2>
+    <h2>Список устных заявлений</h2>
     if (Session["User"] is DutyPanel.Models.Duty)
     {
         <p>
-            @Html.ActionLink("Create New", "Create")
+            @Html.ActionLink("Создать устное заявление", "Create")
         </p>
     }
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DeclarantLastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DeclarantFirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DeclarantSecondName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateStatment)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DaetIncident)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Adress)
-        </th>
-        <th></th>
-    </tr>
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DeclarantLastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeclarantFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeclarantSecondName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateStatment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DaetIncident)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adress)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DeclarantLastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DeclarantFirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DeclarantSecondName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateStatment)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DaetIncident)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Adress)
-        </td>
-        <td>
-            @if (Session["User"] is DutyPanel.Models.Duty)
-            {
-                @Html.ActionLink("Edit", "Edit", new { id=item.NumberStatement }) <span>|</span>
-            }
-            @Html.ActionLink("Details", "Details", new { id=item.NumberStatement }) <span>|</span>
-            @if (Session["User"] is DutyPanel.Models.Duty || Session["User"] is DutyPanel.Models.AdminUser)
-            {
-                @Html.ActionLink("Delete", "Delete", new { id=item.NumberStatement })
-            }
-        </td>
-    </tr>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeclarantLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeclarantFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeclarantSecondName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateStatment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DaetIncident)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adress)
+            </td>
+            <td>
+                @if (Session["User"] is DutyPanel.Models.Duty)
+                {
+                    @Html.ActionLink("Редактировать", "Edit", new { id=item.NumberStatement }) <span>|</span>
+                }
+                @Html.ActionLink("Подробная информация", "Details", new { id=item.NumberStatement }) <span>|</span>
+                @if (Session["User"] is DutyPanel.Models.Duty || Session["User"] is DutyPanel.Models.AdminUser)
+                {
+                    @Html.ActionLink("Удалить", "Delete", new { id=item.NumberStatement })
+                }
+            </td>
+        </tr>
+    }
+
+    </table>
 }
-
-</table>
+else
+{
+    @Html.Partial("AccessError")
 }

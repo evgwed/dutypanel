@@ -1,44 +1,46 @@
 ﻿@model DutyPanel.Models.OperationalGroup
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Информация об оперативной группе";
 }
-
-<h2>Details</h2>
-
-<fieldset>
-    <legend>OperationalGroup</legend>
-    @if(Model.Driver != null)
-    {
-        <h4>Водитель</h4>
-        <p>@Model.Driver.LastName @Model.Driver.FirstName</p>
-        <h4>Автомобиль</h4>
-        <p>@Model.Driver.WorkingCar.BrandCar Номер:@Model.Driver.WorkingCar.NumberCar</p>
-    }
-    else
-    {
-        <p>Водителя в группе нет</p>
-    }
-    <h4>Состав группы</h4>
-    @if (Model.Workers!= null)
-    {
-        foreach (DutyPanel.Models.OperativeWorker item in Model.Workers)
-        { 
-            <p>
-                <b>@Html.DisplayNameFor(model => item.LastName) </b> @Html.DisplayFor(model => item.LastName)
-            </p>
-        
-            <p>
-                <b>@Html.DisplayNameFor(model => item.FirstName) </b> @Html.DisplayFor(model => item.FirstName)
-            </p>
-            <hr />
+@if(Session["User"] is DutyPanel.Models.AdminUser)
+{
+    <h2>Инофрмация об оперативной группе</h2>
+        if(Model.Driver != null)
+        {
+            <h4>Водитель</h4>
+            <p>@Model.Driver.LastName @Model.Driver.FirstName</p>
+            <h4>Автомобиль</h4>
+            <p>@Model.Driver.WorkingCar.BrandCar Номер:@Model.Driver.WorkingCar.NumberCar</p>
         }
-    }
-    else
-    {
-        <p>В группе никого нет</p>
-    }
-</fieldset>
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        else
+        {
+            <p>Водителя в группе нет</p>
+        }
+        <h4>Состав группы</h4>
+        if (Model.Workers!= null)
+        {
+            foreach (DutyPanel.Models.OperativeWorker item in Model.Workers)
+            { 
+                <p>
+                    <b>@Html.DisplayNameFor(model => item.LastName) </b> @Html.DisplayFor(model => item.LastName)
+                </p>
+        
+                <p>
+                    <b>@Html.DisplayNameFor(model => item.FirstName) </b> @Html.DisplayFor(model => item.FirstName)
+                </p>
+                <hr />
+            }
+        }
+        else
+        {
+            <p>В группе нет оперативных работников</p>
+        }
+    <p>
+        @Html.ActionLink("Вернуться назад к списку", "Index")
+    </p>
+}
+else
+{
+    @Html.Partial("AccessError")
+}

@@ -49,6 +49,7 @@ namespace DutyPanel.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(WrittenStatement writtenstatement)
         {
+            writtenstatement.DateStatment = DateTime.Now;
             writtenstatement.Duty = db.Dutys.Find((Session["User"] as Duty).Id);
             if (ModelState.IsValid)
             {

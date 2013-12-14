@@ -1,15 +1,11 @@
 ﻿@model DutyPanel.Models.OralStatement
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Устное заявление";
 }
 @if (Session["User"] is DutyPanel.Models.Duty || Session["User"] is DutyPanel.Models.OperativeWorker || Session["User"] is DutyPanel.Models.AdminUser)
 {
-    <h2>Details</h2>
-
-<fieldset>
-    <legend>OralStatement</legend>
-
+    <h2>Устное заявление № @Model.NumberStatement</h2>
     <div class="display-label">
          @Html.DisplayNameFor(model => model.PhoneCaller)
     </div>
@@ -86,19 +82,18 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.Description)
     </div>
-</fieldset>
-<p>
-    @if(Session["User"] is DutyPanel.Models.Duty)
-    {
-        @Html.ActionLink("Edit", "Edit", new { id=Model.NumberStatement }) <span>|</span>
-    }
-    @Html.ActionLink("Back to List", "Index")
-</p>
-<p>
-    @Html.ActionLink("Создать выезд", "Create", "Leaving", new { id = Model.NumberStatement}, "div")
-</p>
+    <p>
+        @if(Session["User"] is DutyPanel.Models.Duty)
+        {
+            @Html.ActionLink("Редактировать", "Edit", new { id=Model.NumberStatement }) <span>|</span>
+        }
+        @Html.ActionLink("Вернуться назад к списку", "Index")
+    </p>
+    <p>
+        @Html.ActionLink("Создать выезд оперативной группы", "Create", "Leaving", new { id = Model.NumberStatement}, null)
+    </p>
 }
 else
 {
-    <p>У вас нет прав для доступа в данный раздел.</p>
+    @Html.Partial("AccessError")
 }

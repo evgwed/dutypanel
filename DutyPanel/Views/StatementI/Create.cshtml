@@ -1,20 +1,14 @@
 ﻿@model DutyPanel.Models.InternetStatement
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Создание интернет заявления";
 }
 @if(Session["User"]== null)
 {
-    <h2>Create</h2>
-
-using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>InternetStatement</legend>
-
-
+    <h2>Создание интернет заявления</h2>
+    using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
         <div class="editor-label">
             @Html.LabelFor(model => model.DeclarantLastName)
         </div>
@@ -37,14 +31,6 @@ using (Html.BeginForm()) {
         <div class="editor-field">
             @Html.EditorFor(model => model.DeclarantSecondName)
             @Html.ValidationMessageFor(model => model.DeclarantSecondName)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.DateStatment)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.DateStatment)
-            @Html.ValidationMessageFor(model => model.DateStatment)
         </div>
 
         <div class="editor-label">
@@ -88,13 +74,12 @@ using (Html.BeginForm()) {
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Создать" />
         </p>
-    </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Вернуться назад к списку", "Index")
 </div>
 
 @section Scripts {
@@ -108,5 +93,5 @@ using (Html.BeginForm()) {
 }
 else
 {
-    <p>Ошибка, вы не можете подавать заявление таким способом</p>
+    @Html.Partial("AccessError")
 }

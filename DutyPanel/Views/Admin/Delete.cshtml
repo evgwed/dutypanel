@@ -1,16 +1,12 @@
 ﻿@model DutyPanel.Models.AdminUser
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Удаление администратора";
 }
 
 @if(Session["User"] is DutyPanel.Models.AdminUser)
 {
-<h2>Delete</h2>
-
-<h3>Вы действительно хотите удалить этого пользователя?</h3>
-<fieldset>
-    <legend>AdminUser</legend>
+<h2>Вы действительно хотите удалить данного пользователя?</h2>
 
     <div class="display-label">
          @Html.DisplayNameFor(model => model.DateOfLastEntry)
@@ -95,17 +91,15 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.ContactPhone)
     </div>
-</fieldset>
-using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-}
-
+    using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        <p>
+            <input type="submit" value="Удалить" /> |
+            @Html.ActionLink("Вернуться назад к списку", "Index")
+        </p>
+    }
 }
 else
 {
-    <p>Ошибка! Необходимо авторизоваться</p>
+    @Html.Partial("AccessError")
 }

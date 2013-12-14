@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<DutyPanel.Models.WrittenStatement>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Список письменных заявлений";
 }
 @if (Session["User"] is DutyPanel.Models.Duty || Session["User"] is DutyPanel.Models.AdminUser || Session["User"] is DutyPanel.Models.OperativeWorker)
 {
-    <h2>Index</h2>
+    <h2>Список письменных заявлений</h2>
 if (Session["User"] is DutyPanel.Models.Duty)
 {
     <p>
-        @Html.ActionLink("Create New", "Create")    
+        @Html.ActionLink("Создать письменное заявление", "Create")    
     </p>
 }
 <table>
@@ -59,12 +59,12 @@ if (Session["User"] is DutyPanel.Models.Duty)
         <td>
             @if(Session["User"] is DutyPanel.Models.Duty)
             {
-                @Html.ActionLink("Edit", "Edit", new { id=item.NumberStatement }) <span>|</span>
+                @Html.ActionLink("Редактировать", "Edit", new { id=item.NumberStatement }) <span>|</span>
             }
-            @Html.ActionLink("Details", "Details", new { id=item.NumberStatement }) <span>|</span>
+            @Html.ActionLink("Подробная информация", "Details", new { id=item.NumberStatement }) <span>|</span>
             @if (Session["User"] is DutyPanel.Models.Duty || Session["User"] is DutyPanel.Models.AdminUser)
             {
-                @Html.ActionLink("Delete", "Delete", new { id=item.NumberStatement })
+                @Html.ActionLink("Удалить", "Delete", new { id=item.NumberStatement })
             }
         </td>
     </tr>
@@ -74,5 +74,5 @@ if (Session["User"] is DutyPanel.Models.Duty)
 }
 else
 {
-    <p>У вас нет доступа к данному разделу.</p>
+    @Html.Partial("AccessError")
 }

@@ -1,20 +1,16 @@
 ﻿@model DutyPanel.Models.AdminUser
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Редактирование администратора/начальника дежурной части";
 }
 
 @if(Session["User"] is DutyPanel.Models.AdminUser)
 {
-<h2>Edit</h2>
+<h2>Редактирование администратора/начальника дежурной части</h2>
 
 using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>AdminUser</legend>
-
 
         @Html.HiddenFor(model => model.Id)
 
@@ -107,26 +103,25 @@ using (Html.BeginForm()) {
         </div>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Сохранить изменения" />
         </p>
-    </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Вернуться назад к списку администраторов", "Index")
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            $("#DateGivePassport").appendDtpicker({ "dateFormat": "DD/MM/YYYY" });
+        });
+    </script>
 }
-<script>
-    $(function () {
-        $("#DateGivePassport").appendDtpicker({ "dateFormat": "DD/MM/YYYY" });
-    });
-</script>
 
 }
 else
 {
-    <p>Ошибка! Необходимо авторизоваться</p>
+    @Html.Partial("AccessError")
 }

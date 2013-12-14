@@ -1,17 +1,12 @@
 ﻿@model DutyPanel.Models.OralStatement
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Удаление заявления";
 }
 
 @if ((Session["User"] is DutyPanel.Models.Duty) || (Session["User"] is DutyPanel.Models.AdminUser))
 {
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<fieldset>
-    <legend>OralStatement</legend>
-
+    <h2>Вы действительно хотите удалить заявление?</h2>
     <div class="display-label">
          @Html.DisplayNameFor(model => model.PhoneCaller)
     </div>
@@ -88,16 +83,15 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.Description)
     </div>
-</fieldset>
-using (Html.BeginForm()) {
+    using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-}
+        <p>
+            <input type="submit" value="Удалить" /> |
+            @Html.ActionLink("Вернуться назад к списку", "Index")
+        </p>
+    }
 }
 else
 {
-    <p>У вас нет прав на совершение данного действия</p>
+    @Html.Partial("AccessError")
 }

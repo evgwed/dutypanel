@@ -51,6 +51,7 @@ namespace DutyPanel.Controllers
         {
             internetstatement.InfoBrowser = Request.Browser.Browser;
             internetstatement.IpAdress = Request.UserHostAddress;
+            internetstatement.DateStatment = DateTime.Now;
             db.InternetStatements.Add(internetstatement);
             db.SaveChanges();
             if (Session["User"] != null)
@@ -59,7 +60,7 @@ namespace DutyPanel.Controllers
             }
             else
             {
-                return RedirectToAction("Details", new { id = internetstatement.NumberStatement });
+                return RedirectToAction("Index", "Home", new { res = true });
             }
         }
 

@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<DutyPanel.Models.InternetStatement>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Список интернет заявлений";
 }
 
 @if (Session["User"] is DutyPanel.Models.AdminUser || Session["User"] is DutyPanel.Models.Duty)
 {
-<h2>Internet Statements</h2>
+<h2>Список интернет заявлений</h2>
 <table>
     <tr>
         <th>
@@ -53,20 +53,19 @@
         <td>
             @if(Session["User"] is DutyPanel.Models.Duty)
             {
-                @Html.ActionLink("Edit", "Edit", new { id=item.NumberStatement }) <span>|</span>
+                @Html.ActionLink("Редактировать", "Edit", new { id=item.NumberStatement }) <span>|</span>
             }
-            @Html.ActionLink("Details", "Details", new { id=item.NumberStatement }) <span>|</span>
+            @Html.ActionLink("Подробная информация", "Details", new { id=item.NumberStatement }) <span>|</span>
             @if (Session["User"] is DutyPanel.Models.Duty || Session["User"] is DutyPanel.Models.AdminUser)
             {
-                @Html.ActionLink("Delete", "Delete", new { id=item.NumberStatement })
+                @Html.ActionLink("Удалить", "Delete", new { id=item.NumberStatement })
             }
         </td>
     </tr>
 }
-
 </table>
 }
 else
 {
-    <p>У вас нет прав доступа для просмотра данного раздела</p>
+    @Html.Partial("AccessError")
 }

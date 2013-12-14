@@ -1,19 +1,16 @@
 ﻿@model DutyPanel.Models.OralStatement
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Редактирование устного заявления";
 }
 @if (Session["User"] is DutyPanel.Models.Duty)
 {
-<h2>Edit</h2>
+    <h2>Редактирование устного заявления</h2>
 
     using (Html.BeginForm())
     {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>OralStatement</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.PhoneCaller)
@@ -105,13 +102,12 @@
             @Html.ValidationMessageFor(model => model.Description)
         </div>
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Сохранить изменения" />
         </p>
-    </fieldset>
     }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Вернуться назад к списку", "Index")
 </div>
 
 @section Scripts {
@@ -125,5 +121,5 @@
 }
 else
 {
-    <p>У вас нет прав на данное действие</p>
+    @Html.Partial("AccessError")
 }
