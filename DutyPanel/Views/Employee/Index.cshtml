@@ -10,13 +10,16 @@
     <p>
         @Html.ActionLink("Создать сотрудника", "Create")
     </p>
-    <table>
+    <table class="simple-little-table">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.LastName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SecondName)
             </th>
         
             <th>

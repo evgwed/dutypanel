@@ -12,16 +12,13 @@
             @Html.ActionLink("Создать устное заявление", "Create")
         </p>
     }
-    <table>
+    <table class="simple-little-table">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.DeclarantLastName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DeclarantFirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeclarantSecondName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DateStatment)
@@ -42,9 +39,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DeclarantFirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeclarantSecondName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateStatment)

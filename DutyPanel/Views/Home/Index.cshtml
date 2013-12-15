@@ -3,7 +3,12 @@
 }
 
 <h2>Автоматизированная система "Дежурный пульт"</h2>
-<table>
+<table  class="simple-little-table">
+    <tr>
+        <th>E-mail</th>
+        <th>Пароль</th>
+        <th>Роль</th>
+    </tr>
 @foreach (DutyPanel.Models.User tmp in (IEnumerable<DutyPanel.Models.User>)ViewBag.Users)
 {
     <tr>

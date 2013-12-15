@@ -6,7 +6,7 @@
 @if (Session["User"] is DutyPanel.Models.AdminUser || Session["User"] is DutyPanel.Models.OperativeWorker)
 {
     <h2>Список протоколов</h2>
-    <table>
+    <table class="simple-little-table">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.DateOfPreparation)

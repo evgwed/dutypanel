@@ -9,19 +9,16 @@
     <p>
         @Html.ActionLink("Создать новую собаку", "Create")
     </p>
-    <table>
+    <table class="simple-little-table">
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DogOwner)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Breed)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateOfBirthday)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateCommencementOfService)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DateLastInspection)
@@ -32,16 +29,13 @@
     @foreach (var item in Model) {
         <tr>
             <td>
+                @item.DogOwner.LastName<span> </span>@item.DogOwner.FirstName
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Breed)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOfBirthday)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateCommencementOfService)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateLastInspection)

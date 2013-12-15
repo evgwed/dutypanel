@@ -1,23 +1,27 @@
-﻿
-<div class="side_b">
+﻿<div class="side_b">
     <h2>Меню</h2>
     <ul>
-        <li>@Html.ActionLink("На главную", "Index", "Home")</li>
-        @if(Session["User"]==null)  
+        <li>@Html.ActionLink("На главную", "Index", "Home", new { res = false, IsMiniStyle = Session["Style"] }, null)</li>
+        @if (Session["User"] == null)
         {  
+
             <li>@Html.ActionLink("Авторизация", "Login", "Profile")</li>
+
             <li>@Html.ActionLink("Создание интернет заявления", "Create", "StatementI")</li>
         }
         else
         {
+
             <li>@Html.ActionLink("Выйти", "Logout", "Profile")</li>
+
             <li>@Html.ActionLink("Профиль", "Index", "Profile")</li>
         }
-            <li>@Html.ActionLink("Создание тестовых пользователей", "CreatAdmin", "Profile")</li>
+        <li>@Html.ActionLink("Создание тестовых пользователей", "CreatAdmin", "Profile")</li>
     </ul>
 </div>
-@if(Session["User"] is DutyPanel.Models.AdminUser)
+@if (Session["User"] is DutyPanel.Models.AdminUser)
 {
+
     <div class="side_b">
         <h2>Меню Администратора</h2>
         <ul>
@@ -30,6 +34,7 @@
 }
 @if ((Session["User"] is DutyPanel.Models.Duty) || (Session["User"] is DutyPanel.Models.AdminUser))
 { 
+
     <div class="side_b">
         <h2>Меню дежурного</h2>
         <ul>
@@ -42,6 +47,7 @@
 }
 @if ((Session["User"] is DutyPanel.Models.Driver) || (Session["User"] is DutyPanel.Models.AdminUser))
 { 
+
     <div class="side_b">
         <h2>Меню водителя</h2>
         <ul>
@@ -51,16 +57,17 @@
 }
 @if ((Session["User"] is DutyPanel.Models.OperativeWorker) || (Session["User"] is DutyPanel.Models.AdminUser))
 { 
+
     <div class="side_b">
         <h2>Меню оперативного работника</h2>
         <ul>
             <li>@Html.ActionLink("Собаки", "Index", "Dog")</li>
             <li>@Html.ActionLink("Протоколы", "Index", "Protocol")</li>
-            <li>@Html.ActionLink("Задержания", "Index", "Detention")</li>        
+            <li>@Html.ActionLink("Задержания", "Index", "Detention")</li>
         </ul>
     </div>
 }
 
-        
-        
-        
+
+
+

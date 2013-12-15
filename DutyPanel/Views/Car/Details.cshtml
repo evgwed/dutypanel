@@ -83,6 +83,35 @@
         <div class="display-field">
             @Html.DisplayFor(model => model.DesiredCategoryDriving)
         </div>
+    <h2>Водители данного авто</h2>
+    if (Model.Drivers.Count() != 0)
+    { 
+         <table class="simple-little-table">
+            <tr>
+                <th>
+                    Фамилия
+                </th>
+                <th>
+                    Имя
+                </th>
+                <th>
+                    № Группы
+                </th>
+            </tr>
+            @foreach(var item in Model.Drivers)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(model => item.LastName)</td>
+                    <td>@Html.DisplayFor(model => item.LastName)</td>
+                    <td>@Html.DisplayFor(model => item.Group.IdGroup)</td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <p>У данного автомобиля нет водителей.</p>
+    }
     <p>
         @Html.ActionLink("Редактировать", "Edit", new { id=Model.IdCar }) |
         @Html.ActionLink("Вернуться назад к списку", "Index")

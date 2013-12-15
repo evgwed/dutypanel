@@ -7,8 +7,10 @@
 {
     <h2>Список выездов оперативных групп</h2>
 
-    <table>
+    <table class="simple-little-table">
         <tr>
+            <th>№ Группы</th>
+            <th>Адрес</th>
             <th>
                 @Html.DisplayNameFor(model => model.TimeLeaving)
             </th>
@@ -17,6 +19,12 @@
 
     @foreach (var item in Model) {
         <tr>
+            <td>
+                @item.Group.IdGroup
+            </td>
+            <td>
+                @item.Statement.Adress
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TimeLeaving)
             </td>

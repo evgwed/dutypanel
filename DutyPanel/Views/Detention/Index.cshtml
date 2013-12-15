@@ -7,7 +7,7 @@
 {
     <h2>Список задержаний</h2>
 
-    <table>
+    <table class="simple-little-table">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.DetentionLastName)
@@ -17,6 +17,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.BaseDetention)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfDetention)
             </th>
         
             <th></th>
@@ -30,9 +33,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DetentionFirstName)
             </td>
-       
             <td>
                 @Html.DisplayFor(modelItem => item.BaseDetention)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfDetention)
             </td>
             <td>
                 @Html.ActionLink("Редактировать", "Edit", new { id=item.NumberDetention }) |

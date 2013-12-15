@@ -178,10 +178,45 @@
              <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.Driver).Group):</b># @Html.DisplayFor(model =>(model as DutyPanel.Models.Driver).Group.IdGroup)
         </div>
     }
+        <h4>Заслуги сотрудника:</h4>
+        if (Model.Merits.Count() != 0)
+        {
+            <table class="simple-little-table">
+                <tr>
+                    <th>
+                        Заслуга
+                    </th>
+                    <th>
+                        Дата
+                    </th>
+                    <th>
+                        Поощрение
+                    </th>
+                </tr>
+
+            @foreach (var item in Model.Merits) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfAssignment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Promotion)
+                    </td>
+                </tr>
+            }
+                </table>
+        }
+        else
+        { 
+            <p>У данного сотрудника нет заслуг.</p>
+        }
 <p>
     @Html.ActionLink("Редактировать", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Вернуться назад к списку", "Index")
-    @Html.ActionLink("Добавить заслугу", "Create", "Merit", new { id = Model.Id }, "div");
+    @Html.ActionLink("Вернуться назад к списку", "Index") |
+    @Html.ActionLink("Добавить заслугу", "Create", "Merit", new { id = Model.Id }, "div")
 </p>
 }
 else

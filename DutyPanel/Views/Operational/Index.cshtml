@@ -10,15 +10,37 @@
     <p>
         @Html.ActionLink("Создать новую группу", "Create")
     </p>
-    <table>
+    <table class="simple-little-table">
         <tr>
-            <th>Номер оперативной группы</th>
+            <th>№ группы</th>
+            <th>Начальник</th>
+            <th>Водитель</th>
             <th></th>
         </tr>
 
     @foreach (var item in Model) {
         <tr>
-            <th>@Html.DisplayFor(modelItem => item.IdGroup)</th>
+            <td>@Html.DisplayFor(modelItem => item.IdGroup)</td>
+            <td>
+            @if (item.Workers.Where(m => m.IsHeadOfGroup).Count() != 0)
+            {
+                @item.Workers.Where(m => m.IsHeadOfGroup).First().LastName<span> </span>@item.Workers.Where(m => m.IsHeadOfGroup).First().FirstName
+            }
+            else
+            { 
+                <span>нет</span>
+            }
+            </td>
+            <td>
+            @if (item.Driver!=null)
+            {
+                @item.Driver.LastName<span> </span>@item.Driver.FirstName
+            }
+            else
+            { 
+                <span>нет</span>
+            }
+            </td>
             <td>
                 @Html.ActionLink("Подробная информация", "Details", new { id=item.IdGroup }) |
                 @Html.ActionLink("Удалить", "Delete", new { id=item.IdGroup })

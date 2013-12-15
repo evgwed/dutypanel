@@ -12,7 +12,7 @@ if (Session["User"] is DutyPanel.Models.Duty)
         @Html.ActionLink("Создать письменное заявление", "Create")    
     </p>
 }
-<table>
+<table class="simple-little-table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.DeclarantContactPhone)
@@ -22,9 +22,6 @@ if (Session["User"] is DutyPanel.Models.Duty)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DeclarantFirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DeclarantSecondName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DaetIncident)
@@ -46,9 +43,6 @@ if (Session["User"] is DutyPanel.Models.Duty)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DeclarantFirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DeclarantSecondName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DaetIncident)

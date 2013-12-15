@@ -7,16 +7,14 @@
 {
     <h2>Список заслуг сотрудников</h2>
 
-    <table>
+    <table class="simple-little-table">
         <tr>
+            <th>Сотрудник</th>
             <th>
                 @Html.DisplayNameFor(model => model.DateOfAssignment)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Promotion)
             </th>
             <th></th>
         </tr>
@@ -24,13 +22,13 @@
     @foreach (var item in Model) {
         <tr>
             <td>
+                @item.Employee.LastName<span> </span>@item.Employee.FirstName
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.DateOfAssignment)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Promotion)
             </td>
             <td>
                 @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) |
