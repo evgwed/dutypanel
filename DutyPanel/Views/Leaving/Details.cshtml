@@ -6,25 +6,11 @@
 @if (Session["User"]!=null)
 {
     <h2>Информация о выезда оперативной группы</h2>
-
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.IdLeaving)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.IdLeaving)
-        </div>
         <div class="display-label">
              @Html.DisplayNameFor(model => model.TimeLeaving)
         </div>
         <div class="display-field">
             @Html.DisplayFor(model => model.TimeLeaving)
-        </div>
-    
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.Statement.NumberStatement)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Statement.NumberStatement)
         </div>
         <div class="display-label">
              @Html.DisplayNameFor(model => model.Statement.Adress)
@@ -45,9 +31,19 @@
             @Html.DisplayFor(model => model.Statement.DeclarantFirstName)
         </div>
     <p>
-        @Html.ActionLink("Редактировать", "Edit", new { id=Model.IdLeaving }) |
         @Html.ActionLink("Вернуться назад к списку", "Index")
-        @Html.ActionLink("Создать протокол", "Create", "Protocol", new { id = Model.IdLeaving}, null)
+        @if ((Model.Protocol == null) && (Session["User"] is DutyPanel.Models.OperativeWorker || Session["User"] is DutyPanel.Models.AdminUser))
+        {
+            <span> | </span>
+            @Html.ActionLink("Создать протокол", "Create", "Protocol", new { id = Model.IdLeaving}, null)
+        }
+        else
+        {
+            if (Session["User"] is DutyPanel.Models.OperativeWorker || Session["User"] is DutyPanel.Models.AdminUser)
+            { 
+                @Html.ActionLink("Составленный протокол", "Details", "Protocol", new { id = Model.Protocol.NumberProtocol}, null)
+            }
+        }
     </p>
 }
 else

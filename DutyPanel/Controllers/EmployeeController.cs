@@ -97,6 +97,7 @@ namespace DutyPanel.Controllers
         {
             duty_usr.PenaltiesCount = 0;
             duty_usr.DateRegistr = DateTime.Now;
+            duty_usr.TypeDuty = (TypeDuty)Convert.ToInt32(Request.Form["TypeDuty"]);
             duty_usr.Rank = db.Ranks.Find(Convert.ToInt32(Request.Form["Rank"]));
             db.Dutys.Add(duty_usr);
             db.SaveChanges();
@@ -193,31 +194,94 @@ namespace DutyPanel.Controllers
         [HttpPost]
         public ActionResult EditDuty(DutyPanel.Models.Duty duty_usr)
         {
-            duty_usr.Rank = db.Ranks.Find(duty_usr.Id);
-            duty_usr.DateLastEditedRank = db.EmployeeUsers.Find(duty_usr.Id).DateLastEditedRank;
-            duty_usr.TypeDuty = TypeDuty.Duty;
-            db.Entry(duty_usr).State = EntityState.Modified;
+            Duty tmp_duty = db.Dutys.Find(duty_usr.Id);
+            tmp_duty.TypeDuty = (TypeDuty)Convert.ToInt32(Request.Form["TypeDuty"]);
+            tmp_duty.ContactPhone = duty_usr.ContactPhone;
+            tmp_duty.DateGivePassport = duty_usr.DateGivePassport;
+            tmp_duty.DateIssueServiceCertificate = duty_usr.DateIssueServiceCertificate;
+            tmp_duty.Email = duty_usr.Email;
+            tmp_duty.EmployeeNumber = duty_usr.EmployeeNumber;
+            tmp_duty.FirstName = duty_usr.FirstName;
+            tmp_duty.LastName = duty_usr.LastName;
+            tmp_duty.NumberServiceCertificate = duty_usr.NumberServiceCertificate;
+            tmp_duty.PassportNumber = duty_usr.PassportNumber;
+            tmp_duty.Password = duty_usr.Password;
+            tmp_duty.PenaltiesCount = duty_usr.PenaltiesCount;
+            tmp_duty.RegistrationAddress = duty_usr.RegistrationAddress;
+            tmp_duty.SecondName = duty_usr.SecondName;
+            tmp_duty.SubdivisionPasport = duty_usr.SubdivisionPasport;
+            tmp_duty.WhoGivePassport = duty_usr.WhoGivePassport;
+            tmp_duty.WorkingPhone = duty_usr.WorkingPhone;
+            tmp_duty.TypeDuty = TypeDuty.AssistantDuty;
+            db.Entry(tmp_duty).State = EntityState.Modified;
+            db.Configuration.ValidateOnSaveEnabled = false;
             db.SaveChanges();
+            db.Configuration.ValidateOnSaveEnabled = true;
             return RedirectToAction("Index");
         }
         [HttpPost]
         public ActionResult EditOperativeWorker(DutyPanel.Models.OperativeWorker ow_usr)
         {
-            ow_usr.Group = db.OperationalGroups.Find(Convert.ToInt32(Request.Form["Group"]));
+            /*ow_usr.Group = db.OperationalGroups.Find(Convert.ToInt32(Request.Form["Group"]));
             ow_usr.Rank = db.Ranks.Find(ow_usr.Id);
-            ow_usr.DateLastEditedRank = db.EmployeeUsers.Find(ow_usr.Id).DateLastEditedRank;
-            db.Entry(ow_usr).State = System.Data.EntityState.Modified;
+            ow_usr.DateLastEditedRank = db.EmployeeUsers.Find(ow_usr.Id).DateLastEditedRank;*/
+            OperativeWorker tmp_ow = db.OperativeWorkers.Find(ow_usr.Id);
+            tmp_ow.ContactPhone = ow_usr.ContactPhone;
+            tmp_ow.DateGivePassport = ow_usr.DateGivePassport;
+            tmp_ow.DateIssueServiceCertificate = ow_usr.DateIssueServiceCertificate;
+            tmp_ow.Email = ow_usr.Email;
+            tmp_ow.EmployeeNumber = ow_usr.EmployeeNumber;
+            tmp_ow.FirstName = ow_usr.FirstName;
+            tmp_ow.Group = db.OperationalGroups.Find(Convert.ToInt32(Request.Form["Group"]));
+            tmp_ow.LastName = ow_usr.LastName;
+            tmp_ow.NumberServiceCertificate = ow_usr.NumberServiceCertificate;
+            tmp_ow.PassportNumber = ow_usr.PassportNumber;
+            tmp_ow.Password = ow_usr.Password;
+            tmp_ow.PenaltiesCount = ow_usr.PenaltiesCount;
+            tmp_ow.RegistrationAddress = ow_usr.RegistrationAddress;
+            tmp_ow.SecondName = ow_usr.SecondName;
+            tmp_ow.SubdivisionPasport = ow_usr.SubdivisionPasport;
+            tmp_ow.WhoGivePassport = ow_usr.WhoGivePassport;
+            tmp_ow.WorkingPhone = ow_usr.WorkingPhone;
+            tmp_ow.IsHeadOfGroup = ow_usr.IsHeadOfGroup;
+            tmp_ow.IsHaveDog = ow_usr.IsHaveDog;
+            tmp_ow.NumberServiceWeapon = ow_usr.NumberServiceWeapon;
+            tmp_ow.AccessionNumberHandCuffs = ow_usr.AccessionNumberHandCuffs;
+            db.Entry(tmp_ow).State = System.Data.EntityState.Modified;
+            db.Configuration.ValidateOnSaveEnabled = false;
             db.SaveChanges();
+            db.Configuration.ValidateOnSaveEnabled = true;
             return RedirectToAction("Index");
         }
         [HttpPost]
         public ActionResult EditDriver(DutyPanel.Models.Driver d_usr)
         {
-            d_usr.Rank = db.Ranks.Find(d_usr.Id);
-            d_usr.DateLastEditedRank = db.EmployeeUsers.Find(d_usr.Id).DateLastEditedRank;
-            d_usr.Group = db.OperationalGroups.Find(Convert.ToInt32(Request.Form["Group"]));
-            db.Entry(d_usr).State = System.Data.EntityState.Modified;
+            Driver tmp_driver = db.Drivers.Find(d_usr.Id);
+            tmp_driver.CategoryLicense = d_usr.CategoryLicense;
+            tmp_driver.ContactPhone = d_usr.ContactPhone;
+            tmp_driver.DateGivePassport = d_usr.DateGivePassport;
+            tmp_driver.DateIssueServiceCertificate = d_usr.DateIssueServiceCertificate;
+            tmp_driver.DateReceiptLicense = d_usr.DateReceiptLicense;
+            tmp_driver.Email = d_usr.Email;
+            tmp_driver.EmployeeNumber = d_usr.EmployeeNumber;
+            tmp_driver.FirstName = d_usr.FirstName;
+            tmp_driver.Group = db.OperationalGroups.Find(Convert.ToInt32(Request.Form["Group"]));
+            tmp_driver.LastName = d_usr.LastName;
+            tmp_driver.LicenseNumber = d_usr.LicenseNumber;
+            tmp_driver.NumberMedicalCertificates = d_usr.NumberMedicalCertificates;
+            tmp_driver.NumberServiceCertificate = d_usr.NumberServiceCertificate;
+            tmp_driver.PassportNumber = d_usr.PassportNumber;
+            tmp_driver.Password = d_usr.Password;
+            tmp_driver.PenaltiesCount = d_usr.PenaltiesCount;
+            tmp_driver.RegistrationAddress = d_usr.RegistrationAddress;
+            tmp_driver.SecondName = d_usr.SecondName;
+            tmp_driver.SubdivisionPasport = d_usr.SubdivisionPasport;
+            tmp_driver.WhoGivePassport = d_usr.WhoGivePassport;
+            tmp_driver.WorkingPhone = d_usr.WorkingPhone;
+            db.Entry<Driver>(tmp_driver).State = System.Data.EntityState.Modified;
+            db.Configuration.ValidateOnSaveEnabled = false;
             db.SaveChanges();
+            db.Configuration.ValidateOnSaveEnabled = false;
             return RedirectToAction("Index");
         }
         public ActionResult EditRank(int id = 0)

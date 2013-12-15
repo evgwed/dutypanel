@@ -49,16 +49,12 @@ namespace DutyPanel.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(WrittenStatement writtenstatement)
         {
+            writtenstatement.Status = StatementStatus.Received;
             writtenstatement.DateStatment = DateTime.Now;
             writtenstatement.Duty = db.Dutys.Find((Session["User"] as Duty).Id);
-            if (ModelState.IsValid)
-            {
-                db.Statements.Add(writtenstatement);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(writtenstatement);
+            db.Statements.Add(writtenstatement);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         //
@@ -81,6 +77,7 @@ namespace DutyPanel.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(WrittenStatement writtenstatement)
         {
+            writtenstatement.Status = (StatementStatus)Convert.ToInt32(Request.Form["Status"]);
             writtenstatement.Duty = db.Dutys.Find((Session["User"] as Duty).Id);
             if (ModelState.IsValid)
             {

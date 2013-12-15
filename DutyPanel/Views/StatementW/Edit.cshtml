@@ -12,6 +12,16 @@ using (Html.BeginForm())
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
         <div class="editor-label">
+            @Html.LabelFor(model => model.Status)
+        </div>
+        <div class="editor-field">
+            <select name="Status" id="Status">
+                <option value="1">Заявление принято</option>
+                <option value="2">Заявление находится в обработке</option>
+                <option value="3">Отправлен ответ заявителю</option>
+            </select>
+        </div>
+        <div class="editor-label">
             @Html.LabelFor(model => model.DeclarantNumberPasport)
         </div>
         <div class="editor-field">

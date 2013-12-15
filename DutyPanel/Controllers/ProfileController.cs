@@ -10,6 +10,7 @@ namespace DutyPanel.Controllers
 {
     public class ProfileController : Controller
     {
+
         //
         // GET: /Profile/
         public DataContext db = new DataContext();
@@ -17,6 +18,22 @@ namespace DutyPanel.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+        public ActionResult Statements(string status)
+        {
+            if (status == "received")
+            {
+                return View(db.Statements.Where(m=>m.Status == StatementStatus.Received).OrderBy(m => m.DateStatment).ToList());
+            }
+            if (status == "processed")
+            {
+                return View(db.Statements.Where(m => m.Status == StatementStatus.Processed).OrderBy(m => m.DateStatment).ToList());
+            }
+            if (status == "reply")
+            {
+                return View(db.Statements.Where(m => m.Status == StatementStatus.Reply).OrderBy(m => m.DateStatment).ToList());
+            }
+            return View(db.Statements.OrderBy(m => m.DateStatment).ToList());
         }
         public ActionResult Login()
         {

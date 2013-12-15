@@ -49,8 +49,9 @@ namespace DutyPanel.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(InternetStatement internetstatement)
         {
+            internetstatement.Status = StatementStatus.Received;
             internetstatement.InfoBrowser = Request.Browser.Browser;
-            internetstatement.IpAdress = Request.UserHostAddress;
+            internetstatement.IpAdress = GetIp(Request);
             internetstatement.DateStatment = DateTime.Now;
             db.InternetStatements.Add(internetstatement);
             db.SaveChanges();
@@ -63,7 +64,15 @@ namespace DutyPanel.Controllers
                 return RedirectToAction("Index", "Home", new { res = true });
             }
         }
-
+        public string GetIp(HttpRequestBase request)
+        {
+            string ipList = request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+            if (!string.IsNullOrEmpty(ipList))
+            {
+                return ipList.Split(',')[0];
+            }
+            return request.ServerVariables["REMOTE_ADDR"];
+        }
         //
         // GET: /StatementI/Edit/5
 
@@ -84,6 +93,7 @@ namespace DutyPanel.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(InternetStatement internetstatement)
         {
+            internetstatement.Status = (StatementStatus)Convert.ToInt32(Request.Form["Status"]);
             if (Session["User"] is Duty)
             { 
                 internetstatement.Duty =  db.Dutys.Find((Session["User"] as Duty).Id);

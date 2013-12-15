@@ -398,7 +398,6 @@
     <Content Include="Views\Leaving\Index.cshtml" />
     <Content Include="Views\Leaving\Details.cshtml" />
     <Content Include="Views\Leaving\Create.cshtml" />
-    <Content Include="Views\Leaving\Edit.cshtml" />
     <Content Include="Views\Leaving\Delete.cshtml" />
     <Content Include="Views\Protocol\Index.cshtml" />
     <Content Include="Views\Protocol\Details.cshtml" />
@@ -413,6 +412,7 @@
     <Content Include="Views\Employee\EditRank.cshtml" />
     <Content Include="Views\Shared\AccessError.cshtml" />
     <Content Include="Views\Shared\_LayoutMini.cshtml" />
+    <Content Include="Views\Profile\Statements.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -53,6 +53,7 @@ namespace DutyPanel.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(OralStatement oralstatement)
         {
+            oralstatement.Status = StatementStatus.Received;
             oralstatement.DateStatment = DateTime.Now;
             if (Session["User"] is Duty)
             {
@@ -87,7 +88,8 @@ namespace DutyPanel.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(OralStatement oralstatement)
         {
-                oralstatement.Duty = db.Dutys.Find((Session["User"] as Duty).Id);
+            oralstatement.Duty = db.Dutys.Find((Session["User"] as Duty).Id);
+            oralstatement.Status = (StatementStatus)Convert.ToInt32(Request.Form["Status"]);
             if (ModelState.IsValid)
             {
                 db.Entry(oralstatement).State = EntityState.Modified;

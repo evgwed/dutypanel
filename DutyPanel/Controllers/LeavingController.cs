@@ -19,6 +19,11 @@ namespace DutyPanel.Controllers
         public ActionResult Index()
         {
             var leavingsgroups = db.LeavingsGroups.Include(l => l.Protocol);
+            if (Session["User"] is OperativeWorker)
+            {
+                OperationalGroup gr = db.OperationalGroups.Find((Session["User"] as OperativeWorker).Group.IdGroup);
+                return View(db.LeavingsGroups.Where(m=>m.Group.IdGroup == gr.IdGroup).ToList());
+            }
             return View(leavingsgroups.ToList());
         }
 
@@ -61,42 +66,12 @@ namespace DutyPanel.Controllers
         public ActionResult Create(LeavingGroup leavinggroup)
         {
             leavinggroup.Statement = db.Statements.Find((Session["Statement"] as Statement).NumberStatement);
+            db.Statements.Find((Session["Statement"] as Statement).NumberStatement).Status = StatementStatus.Processed;
             Session["Statement"] = null;
             leavinggroup.Group = db.OperationalGroups.Find(Convert.ToInt32(Request.Form["Group"]));
             db.LeavingsGroups.Add(leavinggroup);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        //
-        // GET: /Leaving/Edit/5
-
-        public ActionResult Edit(int id = 0)
-        {
-            LeavingGroup leavinggroup = db.LeavingsGroups.Find(id);
-            if (leavinggroup == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.IdLeaving = new SelectList(db.Protocols, "NumberProtocol", "PlaceOfPreparation", leavinggroup.IdLeaving);
-            return View(leavinggroup);
-        }
-
-        //
-        // POST: /Leaving/Edit/5
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(LeavingGroup leavinggroup)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(leavinggroup).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.IdLeaving = new SelectList(db.Protocols, "NumberProtocol", "PlaceOfPreparation", leavinggroup.IdLeaving);
-            return View(leavinggroup);
         }
 
         //

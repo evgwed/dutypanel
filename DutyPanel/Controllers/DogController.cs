@@ -40,8 +40,12 @@ namespace DutyPanel.Controllers
 
         public ActionResult Create()
         {
+            if (db.OperativeWorkers.Where(m => m.IsHaveDog == false).Count() == 0)
+            {
+                ViewData["ErrorText"] = "Нельзя создать запись о новой собаке. У всех оперативных работников есть собака.";
+            }
             ViewBag.IdDog = new SelectList(db.Users, "Id", "Password");//вижла сама это сделала,зачем???!!!
-            ViewData["DogOwner"] = new SelectList(db.OperativeWorkers, "Id", "LastName");
+            ViewData["DogOwner"] = new SelectList(db.OperativeWorkers.Where(m=>m.IsHaveDog==false), "Id", "LastName");
             return View();
         }
 

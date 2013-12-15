@@ -26,7 +26,7 @@
         <h2>Меню Администратора</h2>
         <ul>
             <li>@Html.ActionLink("Профиль админа", "Index", "Admin")</li>
-            <li>@Html.ActionLink("Добавить звание", "Index", "Merit")</li>
+            <li>@Html.ActionLink("Заслуги сотрудников", "Index", "Merit")</li>
             <li>@Html.ActionLink("Сотрудники", "Index", "Employee")</li>
             <li>@Html.ActionLink("Оперативные группы", "Index", "Operational")</li>
         </ul>
@@ -38,6 +38,7 @@
     <div class="side_b">
         <h2>Меню дежурного</h2>
         <ul>
+            <li>@Html.ActionLink("Все заявления", "Statements", "Profile")</li>
             <li>@Html.ActionLink("Интернет заявления", "Index", "StatementI")</li>
             <li>@Html.ActionLink("Устные заявления", "Index", "StatementO")</li>
             <li>@Html.ActionLink("Письменные заявления", "Index", "StatementW")</li>
@@ -62,6 +63,7 @@
         <h2>Меню оперативного работника</h2>
         <ul>
             <li>@Html.ActionLink("Собаки", "Index", "Dog")</li>
+            <li>@Html.ActionLink("Выезд оперативной группы", "Index", "Leaving")</li>
             <li>@Html.ActionLink("Протоколы", "Index", "Protocol")</li>
             <li>@Html.ActionLink("Задержания", "Index", "Detention")</li>
         </ul>

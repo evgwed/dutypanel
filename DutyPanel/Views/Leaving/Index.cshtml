@@ -14,6 +14,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.TimeLeaving)
             </th>
+            <th>Наличие протокола</th>
             <th></th>
         </tr>
 
@@ -29,13 +30,20 @@
                 @Html.DisplayFor(modelItem => item.TimeLeaving)
             </td>
             <td>
-                @if (Session["User"] is DutyPanel.Models.OperativeWorker || Session["User"] is DutyPanel.Models.Duty || Session["User"] is DutyPanel.Models.AdminUser)
+                @if (item.Protocol!=null)
                 {
-                    @Html.ActionLink("Редактировать", "Edit", new { id=item.IdLeaving }) <span>|</span>
+                    <span>есть</span>
                 }
-                @Html.ActionLink("Подробная информация", "Details", new { id=item.IdLeaving }) |
+                else
+                {
+                    <span>есть</span>
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Подробная информация", "Details", new { id=item.IdLeaving }) 
                 @if (Session["User"] is DutyPanel.Models.OperativeWorker || Session["User"] is DutyPanel.Models.AdminUser)
                 {
+                    <span> | </span>
                     @Html.ActionLink("Удалить", "Delete", new { id=item.IdLeaving })
                 }
             </td>

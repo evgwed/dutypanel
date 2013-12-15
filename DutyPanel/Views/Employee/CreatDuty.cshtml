@@ -10,7 +10,17 @@
     using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
-  
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.TypeDuty)
+            </div>
+            <div class="editor-field">
+                <select name="TypeDuty" id="TypeDuty">
+                    <option value="1">Старшый оперативный дежурный</option>
+                    <option value="2">Дежурный</option>
+                    <option value="3">Помощник оперативного дежурного(по службе 02)</option>
+                </select>
+            </div>
             <div class="editor-label">
                 @Html.LabelFor(model => model.Rank)
             </div>
