@@ -22,9 +22,9 @@ namespace DutyPanel.Controllers
             if (Session["User"] is OperativeWorker)
             {
                 OperationalGroup gr = db.OperationalGroups.Find((Session["User"] as OperativeWorker).Group.IdGroup);
-                return View(db.LeavingsGroups.Where(m=>m.Group.IdGroup == gr.IdGroup).ToList());
+                return View(db.LeavingsGroups.Where(m => m.Group.IdGroup == gr.IdGroup).ToList());
             }
-            return View(leavingsgroups.ToList());
+            return View(db.LeavingsGroups.OrderBy(m=>m.Group.IdGroup).ToList());
         }
 
         //

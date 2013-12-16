@@ -24,6 +24,7 @@ namespace DutyPanel.Models
         [Required]
         [Display(Name = "Время выезда")]
         public DateTime? TimeLeaving { get; set; }
+        [Required]
         [Display(Name = "Заявление")]
         public virtual Statement Statement { get; set; }
         [Required]

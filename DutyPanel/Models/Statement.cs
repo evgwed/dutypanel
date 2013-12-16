@@ -51,6 +51,8 @@ namespace DutyPanel.Models
         public virtual StatementStatus Status { get; set; }
         [Display(Name = "Дежурный составитель")]
         public virtual Duty Duty { get; set; }
+        [Display(Name = "Выезд группы по заявлению")]
+        public virtual LeavingGroup Leaving { get; set; }
     }
     public class InternetStatement : Statement
     {
@@ -90,7 +92,5 @@ namespace DutyPanel.Models
         [Required]
         [Display(Name = "Контактный телефон заявителя")]
         public string DeclarantContactPhone { get; set; }
-        [Display(Name = "Выезд группы по заявлению")]
-        public virtual LeavingGroup Leaving { get; set; }
     }
 }

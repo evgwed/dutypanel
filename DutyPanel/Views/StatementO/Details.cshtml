@@ -88,9 +88,10 @@
             @Html.ActionLink("Редактировать", "Edit", new { id=Model.NumberStatement }) <span>|</span>
         }
         @Html.ActionLink("Вернуться назад к списку", "Index")
-    </p>
-    <p>
-        @Html.ActionLink("Создать выезд оперативной группы", "Create", "Leaving", new { id = Model.NumberStatement}, null)
+        @if(Model.Leaving == null)
+        {
+            <span>|</span>@Html.ActionLink("Создать выезд оперативной группы", "Create", "Leaving", new { id = Model.NumberStatement}, null)
+        }
     </p>
 }
 else

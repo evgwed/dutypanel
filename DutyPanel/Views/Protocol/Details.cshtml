@@ -27,12 +27,49 @@
         <div class="display-field">
             @Html.DisplayFor(model => model.IsHaveDelayed)
         </div>
+        if (Model.IsHaveDelayed)
+        { 
+            <h3>Список задержанных</h3>
+            <table class="simple-little-table">
+                <tr>
+                    <th>
+                        Имя
+                    </th>
+                    <th>
+                        Фамилия
+                    </th>
+                    <th>
+                        Отчество
+                    </th>
+                    <th>
+                        Дата задержания
+                    </th>
+                </tr>
+                @foreach(var item in Model.Detentions)
+                {
+                    <tr>
+                        <td>
+                            @item.DetentionLastName
+                        </td>
+                        <td>
+                            @item.DetentionFirstName
+                        </td>
+                        <td>
+                            @item.DetentionSecondName
+                        </td>
+                        <td>
+                            @item.DateOfDetention
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
     <p>
         @Html.ActionLink("Редактировать", "Edit", new { id=Model.NumberProtocol }) |
-        @Html.ActionLink("Вернуться назад к списку", "Index") |
+        @Html.ActionLink("Вернуться назад к списку", "Index")
         @if(Model.IsHaveDelayed)
         {
-            @Html.ActionLink("Добавить задержанных", "Create", "Detention", new { id = Model.NumberProtocol}, null)
+           <span>|</span> @Html.ActionLink("Добавить задержанных", "Create", "Detention", new { id = Model.NumberProtocol}, null)
         }
     </p>
 }

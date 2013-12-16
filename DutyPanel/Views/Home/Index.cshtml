@@ -3,44 +3,47 @@
 }
 
 <h2>Автоматизированная система "Дежурный пульт"</h2>
-<table  class="simple-little-table">
-    <tr>
-        <th>E-mail</th>
-        <th>Пароль</th>
-        <th>Роль</th>
-    </tr>
-@foreach (DutyPanel.Models.User tmp in (IEnumerable<DutyPanel.Models.User>)ViewBag.Users)
+@if (ViewBag.Users!= null)
 {
-    <tr>
-        <td>@tmp.Email</td>
-        <td>@tmp.Password</td>
-        <td>
-            @if (tmp is DutyPanel.Models.AdminUser)
-            { 
-                <span>Администратор</span>
-            }
-            @if (tmp is DutyPanel.Models.Driver)
-            { 
-                <span>Водитель</span>
-            }
-            @if (tmp is DutyPanel.Models.Duty)
-            { 
-                <span>Дежурный</span>
-            }
-            @if (tmp is DutyPanel.Models.OperativeWorker)
-            { 
-                <span>Оперативный работник</span>
-            }
-            @if (tmp is DutyPanel.Models.EmployeeUser)
-            { 
-                <span>(Сотрудник)</span>
-            }
-        </td>
-    </tr>
+    <table  class="simple-little-table">
+        <tr>
+            <th>E-mail</th>
+            <th>Пароль</th>
+            <th>Роль</th>
+        </tr>
+    @foreach (DutyPanel.Models.User tmp in (IEnumerable<DutyPanel.Models.User>)ViewBag.Users)
+    {
+        <tr>
+            <td>@tmp.Email</td>
+            <td>@tmp.Password</td>
+            <td>
+                @if (tmp is DutyPanel.Models.AdminUser)
+                { 
+                    <span>Администратор</span>
+                }
+                @if (tmp is DutyPanel.Models.Driver)
+                { 
+                    <span>Водитель</span>
+                }
+                @if (tmp is DutyPanel.Models.Duty)
+                { 
+                    <span>Дежурный</span>
+                }
+                @if (tmp is DutyPanel.Models.OperativeWorker)
+                { 
+                    <span>Оперативный работник</span>
+                }
+                @if (tmp is DutyPanel.Models.EmployeeUser)
+                { 
+                    <span>(Сотрудник)</span>
+                }
+            </td>
+        </tr>
+    }
+    </table>
+    <br /><br />
+    @Html.ActionLink("Войти от Админа", "TMP_Enter", new { role = "admin"})<span> | </span> 
+    @Html.ActionLink("Войти от Дежурного", "TMP_Enter", new { role = "duty"})<span> | </span>  
+    @Html.ActionLink("Войти от Водителя", "TMP_Enter", new { role = "driver"})<span> | </span> 
+    @Html.ActionLink("Войти от Оперативного работника", "TMP_Enter", new { role = "ow"})
 }
-</table>
-<br /><br />
-@Html.ActionLink("Войти от Админа", "TMP_Enter", new { role = "admin"})| 
-@Html.ActionLink("Войти от Дежурного", "TMP_Enter", new { role = "duty"})| 
-@Html.ActionLink("Войти от Водителя", "TMP_Enter", new { role = "driver"})| 
-@Html.ActionLink("Войти от Оперативного работника", "TMP_Enter", new { role = "ow"})
