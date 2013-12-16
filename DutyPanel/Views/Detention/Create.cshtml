@@ -6,7 +6,8 @@
 @if ((Session["User"] is DutyPanel.Models.AdminUser) || (Session["User"] is DutyPanel.Models.OperativeWorker))
 {
     <h2>Создание задержания</h2>
-    using (Html.BeginForm()) {
+    using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
 
@@ -85,6 +86,11 @@
 
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
+        <script>
+            $(function () {
+                $("#DateOfDetention").appendDtpicker({ "dateFormat": "DD/MM/YYYY hh:mm" });
+            });
+        </script>
     }
 }
 else

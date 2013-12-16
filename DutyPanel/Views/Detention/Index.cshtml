@@ -6,7 +6,7 @@
 @if ((Session["User"] is DutyPanel.Models.AdminUser) || (Session["User"] is DutyPanel.Models.OperativeWorker))
 {
     <h2>Список задержаний</h2>
-    <p>Сортировка: @Html.ActionLink("все", "Index") | @Html.ActionLink("уведомлены родственники", "Index", new { filter = "notifed"}) | @Html.ActionLink("не уведомлены родственники", "Index", new { filter = "notnotifed"})</p>
+    <p>Сортировка: @Html.ActionLink("Все", "Index") | @Html.ActionLink("Уведомлены родственники", "Index", new { filter = "notifed"}) | @Html.ActionLink("Не уведомлены родственники", "Index", new { filter = "notnotifed"})</p>
     <table class="simple-little-table">
         <tr>
             <th>
