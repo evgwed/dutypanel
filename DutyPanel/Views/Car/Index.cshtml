@@ -51,9 +51,15 @@
                 @Html.DisplayFor(modelItem => item.SeatsCount)
             </td>
             <td>
-                @Html.ActionLink("Редактирование", "Edit", new { id=item.IdCar }) |
-                @Html.ActionLink("Подробная информация", "Details", new { id=item.IdCar }) |
-                @Html.ActionLink("Удалить", "Delete", new { id=item.IdCar })
+                @if((Session["User"] as DutyPanel.Models.Driver).WorkingCar.IdCar == item.IdCar||Session["User"] is DutyPanel.Models.AdminUser)
+                {
+                    @Html.ActionLink("Редактирование", "Edit", new { id=item.IdCar }) <span>|</span>
+                }
+                @Html.ActionLink("Подробная информация", "Details", new { id = item.IdCar })
+                @if ((Session["User"] as DutyPanel.Models.Driver).WorkingCar.IdCar == item.IdCar || Session["User"] is DutyPanel.Models.AdminUser)
+                {
+                    <span>|</span> @Html.ActionLink("Удалить", "Delete", new { id=item.IdCar })
+                }
             </td>
         </tr>
     }
