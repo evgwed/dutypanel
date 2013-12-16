@@ -16,8 +16,16 @@ namespace DutyPanel.Controllers
         //
         // GET: /Detention/
 
-        public ActionResult Index()
+        public ActionResult Index(string filter)
         {
+            if (filter == "notified")
+            {
+                return View(db.Detentions.Where(m=>m.IsNotifiRelatives==true).ToList());
+            }
+            if (filter == "notnotifed")
+            {
+                return View(db.Detentions.Where(m=>m.IsNotifiRelatives==false).ToList());
+            }
             return View(db.Detentions.ToList());
         }
 
