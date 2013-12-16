@@ -29,8 +29,11 @@
         </div>
     <p>
         @Html.ActionLink("Редактировать", "Edit", new { id=Model.NumberProtocol }) |
-        @Html.ActionLink("Вернуться назад к списку", "Index")
-        @Html.ActionLink("Добавить задержанных", "Create", "Detention", new { id = Model.NumberProtocol}, null)
+        @Html.ActionLink("Вернуться назад к списку", "Index") |
+        @if(Model.IsHaveDelayed)
+        {
+            @Html.ActionLink("Добавить задержанных", "Create", "Detention", new { id = Model.NumberProtocol}, null)
+        }
     </p>
 }
 else
