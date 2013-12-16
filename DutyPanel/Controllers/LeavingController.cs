@@ -24,6 +24,11 @@ namespace DutyPanel.Controllers
                 OperationalGroup gr = db.OperationalGroups.Find((Session["User"] as OperativeWorker).Group.IdGroup);
                 return View(db.LeavingsGroups.Where(m => m.Group.IdGroup == gr.IdGroup).ToList());
             }
+            if (Session["User"] is Driver)
+            {
+                OperationalGroup gr = db.OperationalGroups.Find((Session["User"] as Driver).Group.IdGroup);
+                return View(db.LeavingsGroups.Where(m => m.Group.IdGroup == gr.IdGroup).ToList());
+            }
             return View(db.LeavingsGroups.OrderBy(m=>m.Group.IdGroup).ToList());
         }
 

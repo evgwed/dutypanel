@@ -57,6 +57,7 @@ namespace DutyPanel.Controllers
         public ActionResult Create(WarDog wardog)
         {
             wardog.DogOwner = db.OperativeWorkers.Find(Convert.ToInt32(Request.Form["DogOwner"]));
+            db.OperativeWorkers.Find(Convert.ToInt32(Request.Form["DogOwner"])).IsHaveDog = true;
             db.WarDogs.Add(wardog);
             db.SaveChanges();
             return RedirectToAction("Index");
