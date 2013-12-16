@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Удаление служебного автомобиля";
 }
-@if ((Session["User"] is DutyPanel.Models.AdminUser) || (Session["User"] is DutyPanel.Models.Driver))
+@if ((Session["User"] is DutyPanel.Models.AdminUser) || (Session["User"] as DutyPanel.Models.Driver).WorkingCar.IdCar == Model.IdCar)
 {
     <h2>Вы действительно хотите удалить данный автомобиль?</h2>
         <div class="display-label">

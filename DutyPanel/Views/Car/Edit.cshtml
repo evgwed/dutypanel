@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Редактирование информации об автомобиле";
 }
-@if ((Session["User"] is DutyPanel.Models.AdminUser) || (Session["User"] is DutyPanel.Models.Driver))
+@if ((Session["User"] is DutyPanel.Models.AdminUser) || (Session["User"] as DutyPanel.Models.Driver).WorkingCar.IdCar == Model.IdCar)
 {
     <h2>Редактирования информации об автомобиле</h2>
 
