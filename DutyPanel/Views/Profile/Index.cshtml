@@ -5,6 +5,12 @@
 }
 @if (Session["User"] != null)
 {
+    if (ViewData["Notification"] != null)
+    { 
+        <div class="notification_b">
+            <p>@ViewData["Notification"]</p>
+        </div>
+    }
     <h2>Ваш профиль</h2>
     <div class="display-label">
         <b>Вы авторизованы как:</b>

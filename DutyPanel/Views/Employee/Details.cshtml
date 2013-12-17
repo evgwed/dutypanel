@@ -58,7 +58,11 @@
     </div>
     <h4>Информация о звании:</h4>
     <div>
-         <b>@Html.DisplayNameFor(model => model.Rank):</b> @Html.DisplayFor(model => model.Rank.Name) (@Html.ActionLink("Изменить звание", "EditRank","Employee", new {id = Model.Id}, null))
+         <b>@Html.DisplayNameFor(model => model.Rank):</b> @Html.DisplayFor(model => model.Rank.Name)
+        @if (Session["User"] is DutyPanel.Models.AdminUser)
+        { 
+            <span>(</span> @Html.ActionLink("Изменить звание", "EditRank","Employee", new {id = Model.Id}, null) <span>)</span>
+        }
     </div>
     <div>
          <b>@Html.DisplayNameFor(model => model.Rank.Salary):</b> @Html.DisplayFor(model => model.Rank.Salary)
@@ -126,7 +130,7 @@
     }
     if(Model is DutyPanel.Models.Driver)
     {
-        <h3>Информация о видителе:</h3>
+        <h3>Информация о водителе:</h3>
         <div>
                 <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.Driver).LicenseNumber):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.Driver).LicenseNumber)
         </div>
@@ -138,6 +142,9 @@
         </div>
         <div>
                 <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.Driver).NumberMedicalCertificates):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.Driver).NumberMedicalCertificates)
+        </div>
+        <div>
+                <b>@Html.DisplayNameFor(model => (model as DutyPanel.Models.Driver).DateIssueServiceCertificate):</b>@Html.DisplayFor(model => (model as DutyPanel.Models.Driver).DateIssueServiceCertificate)
         </div>
         <h4>Информация о рабочем автомобиле:</h4>
         <div>

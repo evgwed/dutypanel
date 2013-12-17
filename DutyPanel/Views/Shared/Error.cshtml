@@ -1,17 +1,20 @@
-﻿@{
-    Layout = null;
+﻿@model System.Web.Mvc.HandleErrorInfo
+ 
+@{
+    ViewBag.Title = "Ошибка | " + Model.Exception.Message;
 }
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Error</title>
-</head>
-<body>
-    <hgroup>
-        <h1>Error.</h1>
-        <h2>An error occurred while processing your request.</h2>
-    </hgroup>
-</body>
-</html>
+ 
+<h2>
+   К сожалению, произошла ошибка при обработке запроса.
+</h2>
+<p>Если вы случайно попали на данную страницу, то просим вас перейти на @Html.ActionLink("главную страницу", "Index", "Home") и попытаться выполнить предыдущее действие заново. Если данная ошибка првториться вновь, то просим вас связаться с администратором данной системы.</p>
+<h3>Тип исключения: @Model.Exception.GetType()</h3>
+<div>
+  <p>Ошибка была вызвана в Action <u>@Model.ActionName</u> контроллера <u>@Model.ControllerName</u></p>
+  <b>Текст ошибки: </b><span style="color:#f00">@Model.Exception.Message</span>
+  <h4>Трассировка стека</h4>
+  <pre style="overflow: auto; background-color: #FFFB97; color: #134D82; font-size: 11px;">@Model.Exception.StackTrace</pre>
+</div>
+<p>
+    
+</p>

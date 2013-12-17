@@ -17,6 +17,26 @@ namespace DutyPanel.Controllers
 
         public ActionResult Index()
         {
+            if (Session["User"] is Driver)
+            {
+                if ((Session["User"] as Driver).DateReceiptLicense < DateTime.Now.AddYears(-10))
+                {
+                    ViewData["Notification"] = "Вам необходимо обновить водительские права, так как срок действия истек.\n\n";
+                }
+            }
+            else
+            {
+                if (Session["User"] is OperativeWorker)
+                {
+                    if ((Session["User"] as OperativeWorker).IsHaveDog)
+                    {
+                        if ((Session["User"] as OperativeWorker).WarDog.DateLastInspection < DateTime.Now.AddDays(-1))
+                        {
+                            ViewData["Notification"] = "Необходмио показать служебную собаку ветеренару.";
+                        }
+                    }
+                }
+            }
             return View();
         }
         public ActionResult Statements(string status)
@@ -60,17 +80,7 @@ namespace DutyPanel.Controllers
                 ViewData["ErrorText"] = "Ошибка авторизации. Проверьте правильность e-mail или пароля.";
                 return View();
             }
-        }/*
-        public ActionResult Edit(int idu)
-        {
-            DutyPanel.Models.User tmp_usr = db.Users.Find(idu);
-            if (tmp_usr is Duty)
-            { 
-                return RedirectToAction("EditDuty", new {id = idu});
-            }
-            return View();
-        }*/
-        
+        }        
         
         /// <summary>
         /// profile/creatadmin - создание тестовых пользователей
@@ -116,6 +126,19 @@ namespace DutyPanel.Controllers
         {
             Session["User"] = null;
             return RedirectToAction("Index", "Home");
+        }
+        public ActionResult FindStatment()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult FindStatment(IEnumerable<DutyPanel.Models.Statement> d)
+        {
+            DateTime dateForm_min = DateTime.Parse(Request.Form["date_min"]),
+                     dateForm_max = DateTime.Parse(Request.Form["date_max"]);
+            string districtForm = Request.Form["district"];
+            ViewData["FindText"] = "Результат поисказаявлений по району происшествия "+ districtForm+ ", начиная с даты "+dateForm_min.ToString()+" и заканчивая датой "+dateForm_max.ToString()+".";
+            return View(db.Statements.Where(m=>(m.DaetIncident >= dateForm_min)&&(m.DaetIncident<= dateForm_max)&&(m.District == districtForm)));
         }
     }
 }

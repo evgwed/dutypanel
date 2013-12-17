@@ -120,6 +120,12 @@ textarea {
     color: #001880;
     border:1px solid #60a2d6;
 }
+.notification_b {
+    background-color: #e0f2c0;
+    padding: 10px;
+    color: #5c7c32;
+    border:1px solid #5c7c32;
+}
 
 /*Сайдбар*/
 .side_b {

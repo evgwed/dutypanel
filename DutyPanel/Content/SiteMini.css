@@ -6,7 +6,6 @@
     padding:0px;
     margin:0px;
 }
-
 header, footer, nav, section {
     display: block;
 }
@@ -121,6 +120,12 @@ textarea {
     padding: 10px;
     color: #001880;
     border:1px solid #60a2d6;
+}
+.notification_b {
+    background-color: #e0f2c0;
+    padding: 10px;
+    color: #5c7c32;
+    border:1px solid #5c7c32;
 }
 .footer {
     margin-top: 10px;

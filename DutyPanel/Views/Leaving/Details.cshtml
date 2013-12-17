@@ -38,6 +38,7 @@
         {
             if (Session["User"] is DutyPanel.Models.OperativeWorker || Session["User"] is DutyPanel.Models.AdminUser)
             { 
+                <span> | </span>
                 @Html.ActionLink("Составленный протокол", "Details", "Protocol", new { id = Model.Protocol.NumberProtocol}, null)
             }
         }

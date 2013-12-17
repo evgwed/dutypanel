@@ -32,14 +32,14 @@ namespace DutyPanel.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            
-            modelBuilder.Entity<User>().ToTable("Users");
+           
+            modelBuilder.Entity<User>().ToTable("Users", "visitor");
             modelBuilder.Entity<AdminUser>().ToTable("AdminUsers");
             modelBuilder.Entity<EmployeeUser>().ToTable("EmployeeUsers");
             modelBuilder.Entity<Duty>().ToTable("Dutys");
             modelBuilder.Entity<OperativeWorker>().ToTable("OperativeWorkers");
             modelBuilder.Entity<Driver>().ToTable("Drivers");
-            modelBuilder.Entity<Statement>().ToTable("Statements");
+            modelBuilder.Entity<Statement>().ToTable("Statements", "visitor");
             modelBuilder.Entity<InternetStatement>().ToTable("InternetStatements");
             modelBuilder.Entity<OralStatement>().ToTable("OralStatements");
             modelBuilder.Entity<WrittenStatement>().ToTable("WrittenStatements");

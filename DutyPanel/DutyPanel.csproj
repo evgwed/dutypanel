@@ -190,6 +190,15 @@
     <Compile Include="Merits.cs">
       <DependentUpon>DutyPanelModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312161716263_InitialCreate.cs" />
+    <Compile Include="Migrations\201312161716263_InitialCreate.Designer.cs">
+      <DependentUpon>201312161716263_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312172029475_m1.cs" />
+    <Compile Include="Migrations\201312172029475_m1.Designer.cs">
+      <DependentUpon>201312172029475_m1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\Detention.cs" />
@@ -413,6 +422,9 @@
     <Content Include="Views\Shared\AccessError.cshtml" />
     <Content Include="Views\Shared\_LayoutMini.cshtml" />
     <Content Include="Views\Profile\Statements.cshtml" />
+    <Content Include="Views\Shared\Error404.cshtml" />
+    <Content Include="Views\Shared\Error500.cshtml" />
+    <Content Include="Views\Profile\FindStatment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -422,6 +434,14 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201312161716263_InitialCreate.resx">
+      <DependentUpon>201312161716263_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312172029475_m1.resx">
+      <DependentUpon>201312172029475_m1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

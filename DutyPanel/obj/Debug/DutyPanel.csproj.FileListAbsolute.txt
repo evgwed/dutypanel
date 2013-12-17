@@ -60,3 +60,6 @@ C:\Git\Udan_curse\DutyPanel\bin\System.Web.WebPages.Razor.xml
 C:\Git\Udan_curse\DutyPanel\obj\Debug\DutyPanel.csprojResolveAssemblyReference.cache
 C:\Git\Udan_curse\DutyPanel\obj\Debug\DutyPanel.dll
 C:\Git\Udan_curse\DutyPanel\obj\Debug\DutyPanel.pdb
+C:\Git\Udan_curse\DutyPanel\obj\Debug\DutyPanel.Migrations.InitialCreate.resources
+C:\Git\Udan_curse\DutyPanel\obj\Debug\DutyPanel.csproj.GenerateResource.Cache
+C:\Git\Udan_curse\DutyPanel\obj\Debug\DutyPanel.Migrations.m1.resources
