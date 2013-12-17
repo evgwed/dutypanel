@@ -6,41 +6,36 @@
 @if ((Session["User"] is DutyPanel.Models.AdminUser) || (Session["User"] is DutyPanel.Models.OperativeWorker))
 {
     <h2>Информация о служебной собаке</h2>
+    
+        <div>
+            <b>@Html.DisplayNameFor(model => model.Name): </b>@Html.DisplayFor(model => model.Name)
+        </div>
+        <div>
+            <b>@Html.DisplayNameFor(model => model.Breed): </b>@Html.DisplayFor(model => model.Breed)
+        </div>
+        <div>
+            <b>@Html.DisplayNameFor(model => model.DateOfBirthday): </b>@Html.DisplayFor(model => model.DateOfBirthday)
+        </div>
+        <div>
+            <b>@Html.DisplayNameFor(model => model.DateCommencementOfService): </b>@Html.DisplayFor(model => model.DateCommencementOfService)
+        </div>
+        <div>
+            <b>@Html.DisplayNameFor(model => model.DateLastInspection): </b>@Html.DisplayFor(model => model.DateLastInspection)
+        </div>
+        <div>
+            <b>@Html.DisplayNameFor(model => model.DogOwner.LastName): </b>@Html.DisplayFor(model => model.DogOwner.LastName)
+        </div>
+        <div>
+            <b>@Html.DisplayNameFor(model => model.DogOwner.FirstName): </b>@Html.DisplayFor(model => model.DogOwner.FirstName)
+        </div>
+        <div>
+            <b>@Html.DisplayNameFor(model => model.DogOwner.SecondName): </b>@Html.DisplayFor(model => model.DogOwner.SecondName)
+        </div>
+        <div>
+            <b>Номер оперативной группы: </b>№@Html.DisplayFor(model => model.DogOwner.Group.IdGroup)
+        </div>
 
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.Name)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Name)
-        </div>
-
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.Breed)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Breed)
-        </div>
-
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.DateOfBirthday)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.DateOfBirthday)
-        </div>
-
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.DateCommencementOfService)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.DateCommencementOfService)
-        </div>
-
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.DateLastInspection)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.DateLastInspection)
-        </div>
+        
     <p>
         @Html.ActionLink("Редактировать", "Edit", new { id=Model.IdDog }) |
         @Html.ActionLink("Вернуться назад к списку", "Index")

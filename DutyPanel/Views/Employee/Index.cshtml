@@ -25,6 +25,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.ContactPhone)
             </th>
+            <th>Роль</th>
             <th></th>
         </tr>
 
@@ -39,9 +40,25 @@
             <td>
                 @Html.DisplayFor(modelItem => item.SecondName)
             </td>
-        
             <td>
                 @Html.DisplayFor(modelItem => item.ContactPhone)
+            </td>
+            <td>
+                @if (item is DutyPanel.Models.Duty)
+                {
+                    <span>Дежурный</span>
+                }
+                else
+                {
+                    if (item is DutyPanel.Models.OperativeWorker)
+                    {
+                        <span>Оперативный работник</span>
+                    }
+                    else
+                    { 
+                        <span>Водитель</span>
+                    }
+                }
             </td>
             <td>
                 @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) |

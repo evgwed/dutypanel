@@ -63,6 +63,9 @@ namespace DutyPanel.Controllers
             if (ModelState.IsValid)
             {
                 db.Protocols.Add(protocol);
+                //изменяется статус заявления на "Отправлен ответ заявителю"
+                LeavingGroup tmp_leaving = db.LeavingsGroups.Find((Session["LeavingGroup"] as LeavingGroup).IdLeaving);
+                db.Statements.Find(tmp_leaving.Statement.NumberStatement).Status = StatementStatus.Reply;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

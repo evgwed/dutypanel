@@ -6,29 +6,26 @@
 @if (Session["User"]!=null)
 {
     <h2>Информация о выезда оперативной группы</h2>
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.TimeLeaving)
+        <div>
+             <b>@Html.DisplayNameFor(model => model.TimeLeaving): </b>@Html.DisplayFor(model => model.TimeLeaving)
         </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.TimeLeaving)
+        <div>
+             <b>@Html.DisplayNameFor(model =>  model.Statement.Adress): </b>@Html.DisplayFor(model =>  model.Statement.Adress)
         </div>
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.Statement.Adress)
+        <div>
+             <b>@Html.DisplayNameFor(model =>   model.Statement.DeclarantLastName): </b>@Html.DisplayFor(model =>   model.Statement.DeclarantLastName)
         </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Statement.Adress)
+        <div>
+             <b>@Html.DisplayNameFor(model =>  model.Statement.DeclarantFirstName): </b>@Html.DisplayFor(model =>  model.Statement.DeclarantFirstName)
         </div>
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.Statement.DeclarantLastName)
+        <div>
+             <b>@Html.DisplayNameFor(model =>  model.Statement.DeclarantSecondName): </b>@Html.DisplayFor(model =>  model.Statement.DeclarantSecondName)
         </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Statement.DeclarantLastName)
+        <div>
+             <b>Номер оперативной группы: </b>№@Html.DisplayFor(model =>  model.Group.IdGroup)
         </div>
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.Statement.DeclarantFirstName)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Statement.DeclarantFirstName)
+        <div>
+             <b>@Html.DisplayNameFor(model =>  model.Statement.Description): </b>@Html.DisplayFor(model =>  model.Statement.Description)
         </div>
     <p>
         @Html.ActionLink("Вернуться назад к списку", "Index")

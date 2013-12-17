@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -50,5 +51,60 @@ namespace DutyPanel.Models
             .WithOptionalDependent(s => s.Driver);
         }
 
+    }
+    //Класс для хранимых процедур , триггеров и функций
+    public class ForDB : IDatabaseInitializer<DataContext>
+    {
+        public void InitializeDatabase(DataContext bases)
+        {
+            if (!bases.Database.CompatibleWithModel(false) || !bases.Database.Exists())
+            {
+                bases.Database.Delete();
+                bases.Database.Create();
+
+                bases.Database.Connection.Open();
+                DbCommand command = null;
+
+                // Триггер для изменения поля в оперативном работнике ипри задании ему собаки 
+                command = bases.Database.Connection.CreateCommand();
+                command.CommandText = @"
+                    CREATE TRIGGER CreatDog on WarDogs
+                    AFTER INSERT
+                    AS
+                    BEGIN
+                            SET NOCOUNT ON;
+		                    DECLARE @IdOwner int;
+		                    SELECT @IdOwner = Id FROM OperativeWorkers WHERE
+							                    Id = (SELECT IdDog FROM inserted);
+		                    UPDATE
+			                    OperativeWorkers
+		                    SET
+			                    OperativeWorkers.IsHaveDog = 1
+		                    WHERE OperativeWorkers.Id = @IdOwner
+                    END;
+                    ";
+                command.ExecuteNonQuery();
+                // Триггер для изменения полья в оперативном работнике при удалении собаки
+                command = bases.Database.Connection.CreateCommand();
+                command.CommandText = @"
+                    CREATE TRIGGER CreatDog on WarDogs
+                    AFTER INSERT
+                    AS
+                    BEGIN
+                            SET NOCOUNT ON;
+		                    DECLARE @IdOwner int;
+		                    SELECT @IdOwner = Id FROM OperativeWorkers WHERE
+							                    Id = (SELECT IdDog FROM inserted);
+		                    UPDATE
+			                    OperativeWorkers
+		                    SET
+			                    OperativeWorkers.IsHaveDog = 1
+		                    WHERE OperativeWorkers.Id = @IdOwner
+                    END;
+                    ";
+                command.ExecuteNonQuery();
+                bases.SaveChanges();
+            }
+        }
     }
 }

@@ -5,36 +5,68 @@
 }
 @if(Session["User"] is DutyPanel.Models.AdminUser)
 {
-    <h2>Инофрмация об оперативной группе</h2>
+    <h2>Инофрмация об оперативной группе №@Model.IdGroup</h2>
+        <h4>Водитель</h4>
         if(Model.Driver != null)
         {
-            <h4>Водитель</h4>
-            <p>@Model.Driver.LastName @Model.Driver.FirstName</p>
+            <table class="simple-little-table">
+                <tr>
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Отчество</th>
+                    <th>Рабочий телефон</th>
+                </tr>
+                <tr>
+                    <td>@Model.Driver.LastName</td>
+                    <td>@Model.Driver.FirstName</td>
+                    <td>@Model.Driver.SecondName</td>
+                    <td>@Model.Driver.WorkingPhone</td>
+                </tr>
+            </table>
             <h4>Автомобиль</h4>
-            <p>@Model.Driver.WorkingCar.BrandCar Номер:@Model.Driver.WorkingCar.NumberCar</p>
+            <table class="simple-little-table">
+                <tr>
+                    <th>Регистрационный номер</th>
+                    <th>Марка</th>
+                    <th>Модель</th>
+                    <th>Цвет</th>
+                </tr>
+                <tr>
+                    <td>@Model.Driver.WorkingCar.NumberCar</td>
+                    <td>@Model.Driver.WorkingCar.BrandCar</td>
+                    <td>@Model.Driver.WorkingCar.ModelCar</td>
+                    <td>@Model.Driver.WorkingCar.Color</td>
+                </tr>
+            </table>
         }
         else
         {
-            <p>Водителя в группе нет</p>
+            <p>В данной оперативной группе водителя нет.</p>
         }
         <h4>Состав группы</h4>
-        if (Model.Workers!= null)
+        if (Model.Workers.Count()!= 0)
         {
-            foreach (DutyPanel.Models.OperativeWorker item in Model.Workers)
+            <table class="simple-little-table">
+                <tr>
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Отчество</th>
+                    <th>Рабочий телефон</th>
+                </tr>
+            @foreach (DutyPanel.Models.OperativeWorker item in Model.Workers)
             { 
-                <p>
-                    <b>@Html.DisplayNameFor(model => item.LastName) </b> @Html.DisplayFor(model => item.LastName)
-                </p>
-        
-                <p>
-                    <b>@Html.DisplayNameFor(model => item.FirstName) </b> @Html.DisplayFor(model => item.FirstName)
-                </p>
-                <hr />
+                <tr>
+                    <td>@item.LastName</td>
+                    <td>@item.FirstName</td>
+                    <td>@item.SecondName</td>
+                    <td>@item.WorkingPhone</td>
+                </tr>
             }
+            </table>
         }
         else
         {
-            <p>В группе нет оперативных работников</p>
+            <p>В группе нет оперативных работников.</p>
         }
     <p>
         @Html.ActionLink("Вернуться назад к списку", "Index")

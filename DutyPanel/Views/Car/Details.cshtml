@@ -113,7 +113,14 @@
         <p>У данного автомобиля нет водителей.</p>
     }
     <p>
-        @if((Session["User"] as DutyPanel.Models.Driver).WorkingCar.IdCar == Model.IdCar||Session["User"] is DutyPanel.Models.AdminUser)
+        @if (Session["User"] is DutyPanel.Models.Driver)
+        {
+            if ((Session["User"] as DutyPanel.Models.Driver).WorkingCar.IdCar == Model.IdCar)
+            {
+                @Html.ActionLink("Редактировать", "Edit", new { id=Model.IdCar }) <span>|</span>
+            }
+        }
+        @if(Session["User"] is DutyPanel.Models.AdminUser)
         {
             @Html.ActionLink("Редактировать", "Edit", new { id=Model.IdCar }) <span>|</span>
         }

@@ -6,27 +6,23 @@
 @if (Session["User"] is DutyPanel.Models.AdminUser || Session["User"] is DutyPanel.Models.OperativeWorker)
 {
     <h2>Протокол № @Model.NumberProtocol</h2>
+    
+        <div>
+             <b>@Html.DisplayNameFor(model => model.DateOfPreparation): </b>@Html.DisplayFor(model => model.DateOfPreparation)
+        </div>
+        <div>
+             <b>@Html.DisplayNameFor(model => model.PlaceOfPreparation): </b>@Html.DisplayFor(model => model.PlaceOfPreparation)
+        </div>
+        <div>
+             <b>@Html.DisplayNameFor(model => model.IsHaveDelayed): </b>@Html.DisplayFor(model => model.IsHaveDelayed)
+        </div>
+        <div>
+             <b>Номер группы составившей протокол: </b>№@Html.DisplayFor(model => model.Leaving.Group.IdGroup)
+        </div>
+        <div>
+             <b>Начальник группы: </b><span>@Model.Leaving.Group.Workers.Where(l=>l.IsHeadOfGroup).First().LastName @Model.Leaving.Group.Workers.Where(l=>l.IsHeadOfGroup).First().FirstName @Model.Leaving.Group.Workers.Where(l=>l.IsHeadOfGroup).First().SecondName</span>
+        </div>
 
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.DateOfPreparation)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.DateOfPreparation)
-        </div>
-
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.PlaceOfPreparation)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.PlaceOfPreparation)
-        </div>
-
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.IsHaveDelayed)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.IsHaveDelayed)
-        </div>
         if (Model.IsHaveDelayed)
         { 
             <h3>Список задержанных</h3>

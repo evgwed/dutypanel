@@ -41,9 +41,29 @@
                 @Html.DisplayFor(modelItem => item.DateLastInspection)
             </td>
             <td>
-                @Html.ActionLink("Редактировать", "Edit", new { id=item.IdDog }) |
-                @Html.ActionLink("Подробная информация", "Details", new { id=item.IdDog }) |
-                @Html.ActionLink("Удалить", "Delete", new { id=item.IdDog })
+                @if (Session["User"] is DutyPanel.Models.OperativeWorker)
+                {
+                    if ((Session["User"] as DutyPanel.Models.OperativeWorker).WarDog.IdDog == item.IdDog)
+                    { 
+                        @Html.ActionLink("Редактировать", "Edit", new { id=item.IdDog }) <span>|</span>
+                    }
+                }
+                @if (Session["User"] is DutyPanel.Models.AdminUser)
+                {
+                    @Html.ActionLink("Редактировать", "Edit", new { id=item.IdDog }) <span>|</span>
+                }
+                @Html.ActionLink("Подробная информация", "Details", new { id=item.IdDog }) 
+                @if (Session["User"] is DutyPanel.Models.AdminUser)
+                {
+                    <span>|</span>@Html.ActionLink("Удалить", "Delete", new { id=item.IdDog })
+                }
+                @if (Session["User"] is DutyPanel.Models.OperativeWorker)
+                {
+                    if ((Session["User"] as DutyPanel.Models.OperativeWorker).WarDog.IdDog == item.IdDog)
+                    { 
+                        <span>|</span>@Html.ActionLink("Удалить", "Delete", new { id=item.IdDog })
+                    }
+                }
             </td>
         </tr>
     }
