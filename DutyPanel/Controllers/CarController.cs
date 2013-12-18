@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DutyPanel.Models;
+using DutyPanel.Models.ModelForSQL;
 
 namespace DutyPanel.Controllers
 {
@@ -31,6 +32,9 @@ namespace DutyPanel.Controllers
             {
                 return HttpNotFound();
             }
+            var q = db.Database.SqlQuery<FIO>("SELECT * FROM [dbo].[GetCarFIO]('" + id.ToString() + "')");
+            FIO tmp_fio = q.FirstOrDefault();
+            ViewData["FIO"] = tmp_fio.LastName + " " + tmp_fio.FirstName + " " + tmp_fio.SecondName;
             return View(car);
         }
 

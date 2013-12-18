@@ -3,17 +3,25 @@
 @{
     ViewBag.Title = "Письменное заявление";
 }
+
+
 @if (Session["User"] is DutyPanel.Models.Duty || Session["User"] is DutyPanel.Models.AdminUser || Session["User"] is DutyPanel.Models.OperativeWorker)
 {
     <h2>Письменное заявление № @Model.NumberStatement</h2>
-
+    
+    <div class="display-label">
+        <span>ФИО Дежурного, принявшего заявление </span>
+    </div>
+    <div class="display-field">
+       @ViewData["FIO"]
+    </div>
     <div class="display-label">
          @Html.DisplayNameFor(model => model.DeclarantNumberPasport)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.DeclarantNumberPasport)
     </div>
-
+    
     <div class="display-label">
          @Html.DisplayNameFor(model => model.DeclarantWhoGivePassport)
     </div>
@@ -111,6 +119,7 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.Description)
     </div>
+    
 <p>
     @if (Session["User"] is DutyPanel.Models.Duty)
     {

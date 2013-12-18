@@ -254,3 +254,6 @@ textarea {
     color: #bd5a35;
     text-decoration:underline;
 }
+.display-label {
+    font-weight:bold;
+}

@@ -129,7 +129,7 @@ namespace DutyPanel.Controllers
         }
         public ActionResult FindStatment()
         {
-            return View();
+            return View(db.Statements.ToList());
         }
         [HttpPost]
         public ActionResult FindStatment(IEnumerable<DutyPanel.Models.Statement> d)
@@ -137,7 +137,14 @@ namespace DutyPanel.Controllers
             DateTime dateForm_min = DateTime.Parse(Request.Form["date_min"]),
                      dateForm_max = DateTime.Parse(Request.Form["date_max"]);
             string districtForm = Request.Form["district"];
-            ViewData["FindText"] = "Результат поисказаявлений по району происшествия "+ districtForm+ ", начиная с даты "+dateForm_min.ToString()+" и заканчивая датой "+dateForm_max.ToString()+".";
+            if (districtForm.Length == 0)
+            {
+                ViewData["FindText"] = "Необходимо запонить поле Район происшествий";
+            }
+            else
+            {
+                ViewData["FindText"] = "Результат поисказаявлений по району происшествия " + districtForm + ", начиная с даты " + dateForm_min.ToString() + " и заканчивая датой " + dateForm_max.ToString() + ".";
+            }
             return View(db.Statements.Where(m=>(m.DaetIncident >= dateForm_min)&&(m.DaetIncident<= dateForm_max)&&(m.District == districtForm)));
         }
     }

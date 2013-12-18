@@ -204,6 +204,7 @@
     <Compile Include="Models\Detention.cs" />
     <Compile Include="Models\EmployeesType.cs" />
     <Compile Include="Models\Merit.cs" />
+    <Compile Include="Models\ModelForSQL\FIO.cs" />
     <Compile Include="Models\Operative.cs" />
     <Compile Include="Models\Protocol.cs" />
     <Compile Include="Models\Statement.cs" />
@@ -425,6 +426,7 @@
     <Content Include="Views\Shared\Error404.cshtml" />
     <Content Include="Views\Shared\Error500.cshtml" />
     <Content Include="Views\Profile\FindStatment.cshtml" />
+    <Content Include="Views\Detention\FindDetention.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,86 @@
+﻿@model IEnumerable<DutyPanel.Models.Detention>
+
+@{
+    ViewBag.Title = "Поиск задержанных лиц";
+}
+@if (Session["User"] is DutyPanel.Models.AdminUser || Session["User"] is DutyPanel.Models.OperativeWorker)
+{
+    using (Html.BeginForm()) {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                        <b>Поиск задержанных:</b>
+                    <div style="background-color:#444; padding: 10px 5px;">
+                        <input type="text" name="LastName" placeholder="Район происшествий" />
+                        <input type="text" name="FirstName" placeholder="Район происшествий" />
+                        <input type="text" name="SecondName" placeholder="Район происшествий" />
+                        <input type="submit" value="Найти" />
+                    </div>
+            }
+    <h2>Список найденных заявлений</h2>
+    if (ViewData["FindText"] != null)
+    { 
+        <p>@ViewData["FindText"]</p>
+    }
+    else
+    {
+        <p>Необходимо заполнить форму и начать поиск.</p>
+    }
+    <table class="simple-little-table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DetentionLastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DetentionFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DetentionSecondName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfDetention)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsNotifiRelatives)
+            </th>
+            <th></th>
+        </tr>
+    @if(Model!=null)
+    {
+        foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DetentionLastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DetentionFirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DetentionSecondName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfDetention)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsNotifiRelatives)
+                </td>
+                <td>
+                        @Html.ActionLink("Подробнее", "Details", "Detention", new { id = item.NumberDetention }, null)
+                </td>
+            </tr>
+        }
+    }
+    </table>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        <script>
+            $(function () {
+                $("#date_min, #date_max").appendDtpicker({ "dateFormat": "DD/MM/YYYY" });
+            });
+        </script>
+    }
+}
+else
+{
+    @Html.Partial("AccessError")
+}

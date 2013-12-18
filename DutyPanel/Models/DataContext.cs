@@ -103,6 +103,113 @@ namespace DutyPanel.Models
                     END;
                     ";
                 command.ExecuteNonQuery();
+                // Процедура для получения ФИО начальника группы, которая произвела задержание
+                command = bases.Database.Connection.CreateCommand();
+                command.CommandText = @"
+                    CREATE PROCEDURE [dbo].[GetDetention]
+	                    @Lastname nvarchar(50),
+	                    @Firstname nvarchar(50),
+	                    @Secondname nvarchar(50)
+                    AS
+	                    DECLARE @numberProtocol int
+	                    SELECT @numberProtocol = Protocol_NumberProtocol
+	                    FROM [Detentions]
+	                    WHERE
+		                    DetentionLastName = @Lastname AND
+		                    DetentionFirstName = @Firstname AND
+		                    DetentionSecondName = @Secondname
+
+	                    DECLARE @idGroup int
+	                    SELECT @idGroup = Group_IdGroup
+	                    FROM [LeavingGroups]
+	                    WHERE
+		                     IdLeaving = @numberProtocol
+
+	                    DECLARE @idOW int
+	                    SELECT @idOW = Id
+	                    FROM [OperativeWorkers]
+	                    WHERE
+		                     Group_IdGroup = @idGroup AND
+		                     IsHeadOfGroup = 1
+	
+	                    SELECT LastName, FirstName, SecondName
+	                    FROM [visitor].Users
+	                    WHERE
+		                    Id = @idOW
+                    RETURN 0;
+                    ";
+                command.ExecuteNonQuery();
+                //Функция для получения ФИО главноего водителя по номеру авто
+                command = bases.Database.Connection.CreateCommand();
+                command.CommandText = @"
+                    CREATE FUNCTION [dbo].[GetCarFIO]
+                    (
+	                    @Numbercar nvarchar(50)
+                    )
+                    RETURNS @returntable TABLE
+                    (
+	                    LastName nvarchar(50),
+	                    FirstName nvarchar(50),
+	                    SecondName nvarchar(50)
+                    )
+                    AS
+                    BEGIN
+	                    DECLARE @IdCar int
+	                    SELECT @IdCar = IdCar
+	                    FROM [Cars]
+	                    WHERE NumberCar = @Numbercar
+
+	                    DECLARE @IdDriver int
+	                    SELECT @IdDriver = Id
+	                    FROM [Drivers]
+	                    WHERE WorkingCar_IdCar = @IdCar
+	
+	                    DECLARE @LastName nvarchar(50),
+			                    @FirstName nvarchar(50),
+			                    @SecondName nvarchar(50)
+	                    SELECT @LastName = LastName FROM [visitor].Users WHERE Id = @IdDriver
+	                    SELECT @FirstName = FirstName FROM [visitor].Users WHERE Id = @IdDriver
+	                    SELECT @SecondName = SecondName FROM [visitor].Users WHERE Id = @IdDriver
+
+	                    INSERT @returntable
+	                    SELECT @LastName, @FirstName, @SecondName
+	                    RETURN
+                    END;
+                    ";
+                command.ExecuteNonQuery();
+                // Функция для получения ФИО дежурного, который принял заявление
+                command = bases.Database.Connection.CreateCommand();
+                command.CommandText = @"
+                    CREATE FUNCTION [dbo].[GetStatementFIO]
+                    (
+	                    @Idstatement int
+                    )
+                    RETURNS @returntable TABLE
+                    (
+	                    LastName nvarchar(50),
+	                    FirstName nvarchar(50),
+	                    SecondName nvarchar(50)
+                    )
+                    AS
+                    BEGIN
+	                    DECLARE @IdUser int
+	                    SELECT @IdUser = Duty_Id
+	                    FROM [visitor].Statements
+	                    WHERE NumberStatement = @Idstatement
+	
+	                    DECLARE @LastName nvarchar(50),
+			                    @FirstName nvarchar(50),
+			                    @SecondName nvarchar(50)
+	                    SELECT @LastName = LastName FROM [visitor].Users WHERE Id = @IdUser
+	                    SELECT @FirstName = FirstName FROM [visitor].Users WHERE Id = @IdUser
+	                    SELECT @SecondName = SecondName FROM [visitor].Users WHERE Id = @IdUser
+
+	                    INSERT @returntable
+	                    SELECT @LastName, @FirstName, @SecondName
+	                    RETURN
+                    END;
+                    ";
+                command.ExecuteNonQuery();
                 bases.SaveChanges();
             }
         }

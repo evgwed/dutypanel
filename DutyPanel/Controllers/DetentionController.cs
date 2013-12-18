@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DutyPanel.Models;
+using System.Data.SqlClient;
+using DutyPanel.Models.ModelForSQL;
 
 namespace DutyPanel.Controllers
 {
@@ -20,11 +22,11 @@ namespace DutyPanel.Controllers
         {
             if (filter == "notified")
             {
-                return View(db.Detentions.Where(m=>m.IsNotifiRelatives==true).ToList());
+                return View(db.Detentions.Where(m => m.IsNotifiRelatives == true).ToList());
             }
             if (filter == "notnotifed")
             {
-                return View(db.Detentions.Where(m=>m.IsNotifiRelatives==false).ToList());
+                return View(db.Detentions.Where(m => !(m.IsNotifiRelatives)).ToList());
             }
             return View(db.Detentions.ToList());
         }
@@ -39,17 +41,20 @@ namespace DutyPanel.Controllers
             {
                 return HttpNotFound();
             }
+            var q = db.Database.SqlQuery<FIO>("GetDetention @Lastname, @Firstname, @Secondname", new SqlParameter("Lastname", detention.DetentionLastName), new SqlParameter("Firstname", detention.DetentionFirstName), new SqlParameter("Secondname", detention.DetentionSecondName));
+            FIO tmp_fio = q.FirstOrDefault();
+            ViewData["FIO"] = tmp_fio.LastName + " " + tmp_fio.FirstName + " " + tmp_fio.SecondName;
             return View(detention);
         }
 
         //
         // GET: /Detention/Create
 
-        public ActionResult Create(int id=0)
+        public ActionResult Create(int id = 0)
         {
             if (db.Protocols.Find(id) != null)
             {
-                Session["Protocol"] = db.Protocols.Find(id); 
+                Session["Protocol"] = db.Protocols.Find(id);
                 return View();
             }
             else
@@ -91,13 +96,20 @@ namespace DutyPanel.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Detention detention)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(detention).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(detention);
+            Detention det_tmp = db.Detentions.Find(detention.NumberDetention);
+            det_tmp.BaseDetention = detention.BaseDetention;
+            det_tmp.DateOfDetention = detention.DateOfDetention;
+            det_tmp.DetentionFirstName = detention.DetentionFirstName;
+            det_tmp.DetentionLastName = detention.DetentionLastName;
+            det_tmp.DetentionSecondName = detention.DetentionSecondName;
+            det_tmp.IsNotifiRelatives = detention.IsNotifiRelatives;
+            det_tmp.PleaceDetention = detention.PleaceDetention;
+            det_tmp.Things = detention.Things;
+            db.Entry(det_tmp).State = EntityState.Modified;
+            db.Configuration.ValidateOnSaveEnabled = false;
+            db.SaveChanges();
+            db.Configuration.ValidateOnSaveEnabled = true;
+            return RedirectToAction("Index");
         }
 
         //
@@ -125,7 +137,29 @@ namespace DutyPanel.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        public ActionResult FindDetention()
+        {
+            return View(db.Detentions.ToList());
+        }
+        [HttpPost]
+        public ActionResult FindDetention(IEnumerable<DutyPanel.Models.Detention> none)
+        {
+            string last = Request.Form["LastName"],
+                   first = Request.Form["FirstName"],
+                   second = Request.Form["SecondName"];
+            if (last.Length != 0 && first.Length != 0 && second.Length != 0)
+            {
+                ViewData["FindText"] = "Поиск задержанного с именем " + first + ", фамилией " + last + " и отчеством "+second+".";
+                return View(db.Detentions.Where(m => (m.DetentionLastName == last) && (m.DetentionFirstName == first) && (m.DetentionSecondName == second)).ToList());
+            }
+            if (last.Length != 0 && first.Length != 0 && second.Length == 0)
+            {
+                ViewData["FindText"] = "Поиск задержанного с именем " + first + " и фамилией " + last + ".";
+                return View(db.Detentions.Where(m => (m.DetentionLastName == last) && (m.DetentionFirstName == first)).ToList());
+            }
+            ViewData["FindText"] = null;
+            return View(db.Detentions.ToList());
+        }
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

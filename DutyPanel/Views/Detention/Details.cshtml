@@ -3,65 +3,40 @@
 @{
     ViewBag.Title = "Информация о задержании";
 }
+
 @if ((Session["User"] is DutyPanel.Models.AdminUser) || (Session["User"] is DutyPanel.Models.OperativeWorker))
 {
     <h2>Информация о задержании</h2>
 
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.DetentionLastName)
+        <div>
+             <b>@Html.DisplayNameFor(model => model.DetentionLastName): </b> @Html.DisplayFor(model => model.DetentionLastName)
         </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.DetentionLastName)
+        <div>
+             <b>@Html.DisplayNameFor(model => model.DetentionFirstName): </b> @Html.DisplayFor(model => model.DetentionFirstName)
         </div>
-
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.DetentionFirstName)
+        <div>
+             <b>@Html.DisplayNameFor(model => model.DetentionSecondName): </b> @Html.DisplayFor(model => model.DetentionSecondName)
         </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.DetentionFirstName)
+        <div>
+             <b>@Html.DisplayNameFor(model => model.DateOfDetention): </b> @Html.DisplayFor(model => model.DateOfDetention)
         </div>
-
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.DetentionSecondName)
+        <div>
+             <b>@Html.DisplayNameFor(model => model.PleaceDetention): </b> @Html.DisplayFor(model => model.PleaceDetention)
         </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.DetentionSecondName)
+        <div>
+             <b>@Html.DisplayNameFor(model => model.BaseDetention): </b> @Html.DisplayFor(model => model.BaseDetention)
         </div>
-
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.DateOfDetention)
+        <div>
+             <b>@Html.DisplayNameFor(model => model.Things): </b> @Html.DisplayFor(model => model.Things)
         </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.DateOfDetention)
+        <div>
+             <b>@Html.DisplayNameFor(model => model.IsNotifiRelatives): </b> @Html.DisplayFor(model => model.IsNotifiRelatives)
         </div>
-
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.PleaceDetention)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.PleaceDetention)
+        <div>
+             <b>ФИО начальника группы, которая произвела задержание: </b> @ViewData["FIO"] 
         </div>
 
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.BaseDetention)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.BaseDetention)
-        </div>
-
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.Things)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Things)
-        </div>
-
-        <div class="display-label">
-             @Html.DisplayNameFor(model => model.IsNotifiRelatives)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.IsNotifiRelatives)
-        </div>
+        
     <p>
         @Html.ActionLink("Редактировать", "Edit", new { id=Model.NumberDetention }) |
         @Html.ActionLink("Вернуться назад к списку", "Index")

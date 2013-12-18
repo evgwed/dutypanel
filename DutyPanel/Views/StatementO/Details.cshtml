@@ -7,6 +7,12 @@
 {
     <h2>Устное заявление № @Model.NumberStatement</h2>
     <div class="display-label">
+        <span>ФИО Дежурного, принявшего заявление </span>
+    </div>
+    <div class="display-field">
+       @ViewData["FIO"]
+    </div>
+    <div class="display-label">
          @Html.DisplayNameFor(model => model.PhoneCaller)
     </div>
     <div class="display-field">

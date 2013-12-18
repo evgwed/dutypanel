@@ -6,7 +6,13 @@
 @if ((Session["User"] is DutyPanel.Models.AdminUser) || (Session["User"] is DutyPanel.Models.Driver))
 {
     <h2>Подробная информация об автомобиле</h2>
-
+        
+        <div class="display-label">
+             Главный водитель автомобиля
+        </div>
+        <div class="display-field">
+            @ViewData["FIO"]
+        </div>
         <div class="display-label">
              @Html.DisplayNameFor(model => model.NumberCar)
         </div>

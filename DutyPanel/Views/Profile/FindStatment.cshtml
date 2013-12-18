@@ -3,88 +3,95 @@
 @{
     ViewBag.Title = "Поиск заявлений";
 }
- @using (Html.BeginForm()) {
-            @Html.AntiForgeryToken()
-            @Html.ValidationSummary(true)
+@if (Session["User"] is DutyPanel.Models.AdminUser || Session["User"] is DutyPanel.Models.Duty)
+{
+    using (Html.BeginForm()) {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
 
-                    <b>Поиск заявлений:</b>
-                <div style="background-color:#444; padding: 10px 5px;">
-                    <input type="text" name="district" placeholder="Район происшествий" />
-                    <input type="text" name="date_min" id="date_min" placeholder="Начальная дата" />
-                    <input type="text" name="date_max" id="date_max" placeholder="Конечная дата" />
-                    <input type="submit" value="Найти" />
-                </div>
+                        <b>Поиск заявлений:</b>
+                    <div style="background-color:#444; padding: 10px 5px;">
+                        <input type="text" name="district" placeholder="Район происшествий" />
+                        <input type="text" name="date_min" id="date_min" placeholder="Начальная дата" />
+                        <input type="text" name="date_max" id="date_max" placeholder="Конечная дата" />
+                        <input type="submit" value="Найти" />
+                    </div>
+            }
+    <h2>Список найденных заявлений</h2>
+    if (ViewData["FindText"] != null)
+    { 
+        <p>@ViewData["FindText"]</p>
+    }
+    else
+    {
+        <p>Необходимо заполнить форму и начать поиск.</p>
+    }
+    <table class="simple-little-table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DeclarantLastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeclarantFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateStatment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+    @if(Model!=null)
+    {
+        foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeclarantLastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeclarantFirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateStatment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @if(item is DutyPanel.Models.InternetStatement)
+                    {
+                        @Html.ActionLink("Подробнее", "Details", "StatementI", new { id = item.NumberStatement }, null)
+                    }
+                    @if(item is DutyPanel.Models.OralStatement)
+                    {
+                        @Html.ActionLink("Подробнее", "Details", "StatementO", new { id = item.NumberStatement }, null)
+                    }
+                    @if(item is DutyPanel.Models.WrittenStatement)
+                    {
+                        @Html.ActionLink("Подробнее", "Details", "StatementW", new { id = item.NumberStatement }, null)
+                    }
+                </td>
+            </tr>
         }
-<h2>Список найденных заявлений</h2>
-@if (ViewData["FindText"] != null)
-{ 
-    <p>@ViewData["FindText"]</p>
+    }
+    </table>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        <script>
+            $(function () {
+                $("#date_min, #date_max").appendDtpicker({ "dateFormat": "DD/MM/YYYY" });
+            });
+        </script>
+    }
 }
 else
 {
-    <p>Необходимо заполнить форму и начать поиск.</p>
-}
-<table class="simple-little-table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DeclarantLastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DeclarantFirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateStatment)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Adress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th></th>
-    </tr>
-@if(Model!=null)
-{
-    foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeclarantLastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeclarantFirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateStatment)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Adress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @if(item is DutyPanel.Models.InternetStatement)
-                {
-                    @Html.ActionLink("Подробнее", "Details", "StatementI", new { id = item.NumberStatement }, null)
-                }
-                @if(item is DutyPanel.Models.OralStatement)
-                {
-                    @Html.ActionLink("Подробнее", "Details", "StatementO", new { id = item.NumberStatement }, null)
-                }
-                @if(item is DutyPanel.Models.WrittenStatement)
-                {
-                    @Html.ActionLink("Подробнее", "Details", "StatementW", new { id = item.NumberStatement }, null)
-                }
-            </td>
-        </tr>
-    }
-}
-</table>
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        $(function () {
-            $("#date_min, #date_max").appendDtpicker({ "dateFormat": "DD/MM/YYYY" });
-        });
-    </script>
+    @Html.Partial("AccessError")
 }
