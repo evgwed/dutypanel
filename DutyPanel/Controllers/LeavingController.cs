@@ -9,21 +9,24 @@ using DutyPanel.Models;
 
 namespace DutyPanel.Controllers
 {
+    //Контроллер для управления записями о выездах оперативных групп
     public class LeavingController : Controller
     {
         private DataContext db = new DataContext();
 
-        //
+        //Получение списка выездов оперативных групп
         // GET: /Leaving/
 
         public ActionResult Index()
         {
             var leavingsgroups = db.LeavingsGroups.Include(l => l.Protocol);
+            //Отдельная фильтрация для Оперативного работника
             if (Session["User"] is OperativeWorker)
             {
                 OperationalGroup gr = db.OperationalGroups.Find((Session["User"] as OperativeWorker).Group.IdGroup);
                 return View(db.LeavingsGroups.Where(m => m.Group.IdGroup == gr.IdGroup).ToList());
             }
+            //Отделаьная фильратция для водителя
             if (Session["User"] is Driver)
             {
                 OperationalGroup gr = db.OperationalGroups.Find((Session["User"] as Driver).Group.IdGroup);
@@ -32,7 +35,7 @@ namespace DutyPanel.Controllers
             return View(db.LeavingsGroups.OrderBy(m=>m.Group.IdGroup).ToList());
         }
 
-        //
+        //Отображение записи о выезде оперативной группы
         // GET: /Leaving/Details/5
 
         public ActionResult Details(int id = 0)
@@ -45,7 +48,7 @@ namespace DutyPanel.Controllers
             return View(leavinggroup);
         }
 
-        //
+        //Создание новой записи о выезде оперативной группы
         // GET: /Leaving/Create
 
         public ActionResult Create(int id = 0)
@@ -63,7 +66,7 @@ namespace DutyPanel.Controllers
             }
         }
 
-        //
+        //Создание новой записи о выезде оперативной группы
         // POST: /Leaving/Create
 
         [HttpPost]
@@ -79,7 +82,7 @@ namespace DutyPanel.Controllers
             return RedirectToAction("Index");
         }
 
-        //
+        //Удаление записи о выезде оперативной группы
         // GET: /Leaving/Delete/5
 
         public ActionResult Delete(int id = 0)
@@ -92,7 +95,7 @@ namespace DutyPanel.Controllers
             return View(leavinggroup);
         }
 
-        //
+        //Удаление записи о выезде оперативной группы
         // POST: /Leaving/Delete/5
 
         [HttpPost, ActionName("Delete")]

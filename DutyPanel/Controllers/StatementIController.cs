@@ -9,11 +9,12 @@ using DutyPanel.Models;
 
 namespace DutyPanel.Controllers
 {
+    //Контроллер для управления записями об интернет заявлениях
     public class StatementIController : Controller
     {
         private DataContext db = new DataContext();
 
-        //
+        //Получение списка интернет заявлений
         // GET: /StatementI/
 
         public ActionResult Index()
@@ -21,7 +22,7 @@ namespace DutyPanel.Controllers
             return View(db.InternetStatements.ToList());
         }
 
-        //
+        //Отображение записи об интернет заявлении
         // GET: /StatementI/Details/5
 
         public ActionResult Details(int id = 0)
@@ -34,7 +35,7 @@ namespace DutyPanel.Controllers
             return View(internetstatement);
         }
 
-        //
+        //Создание новой  записи об интернет заявлении
         // GET: /StatementI/Create
 
         public ActionResult Create()
@@ -42,7 +43,7 @@ namespace DutyPanel.Controllers
             return View();
         }
 
-        //
+        //Создание новой записи об интернет заявлении
         // POST: /StatementI/Create
 
         [HttpPost]
@@ -64,6 +65,7 @@ namespace DutyPanel.Controllers
                 return RedirectToAction("Index", "Home", new { res = true });
             }
         }
+        //Функция для получения реального IP пользователя
         public string GetIp(HttpRequestBase request)
         {
             string ipList = request.ServerVariables["HTTP_X_FORWARDED_FOR"];
@@ -73,7 +75,7 @@ namespace DutyPanel.Controllers
             }
             return request.ServerVariables["REMOTE_ADDR"];
         }
-        //
+        //Редактирование записи об интернет заявлении
         // GET: /StatementI/Edit/5
 
         public ActionResult Edit(int id = 0)
@@ -86,7 +88,7 @@ namespace DutyPanel.Controllers
             return View(internetstatement);
         }
 
-        //
+        //Редактирование записи об интернет заявлении
         // POST: /StatementI/Edit/5
 
         [HttpPost]
@@ -103,7 +105,7 @@ namespace DutyPanel.Controllers
             return RedirectToAction("Index");
         }
 
-        //
+        //Удаление записи об интернет заявлении
         // GET: /StatementI/Delete/5
 
         public ActionResult Delete(int id = 0)
@@ -116,7 +118,7 @@ namespace DutyPanel.Controllers
             return View(internetstatement);
         }
 
-        //
+        //Удаление записи об интернет заявлении
         // POST: /StatementI/Delete/5
 
         [HttpPost, ActionName("Delete")]

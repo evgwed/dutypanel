@@ -9,11 +9,12 @@ using DutyPanel.Models;
 
 namespace DutyPanel.Controllers
 {
+    //Контроллер для упраавления записями об администраторах системы
     public class AdminController : Controller
     {
         private DataContext db = new DataContext();
 
-        //
+        //Получение списка администраторов системы
         // GET: /Admin/
 
         public ActionResult Index()
@@ -21,7 +22,7 @@ namespace DutyPanel.Controllers
             return View(db.AdminUsers.ToList());
         }
 
-        //
+        //Получение подробной информации о администраторе
         // GET: /Admin/Details/5
 
         public ActionResult Details(int id = 0)
@@ -34,7 +35,7 @@ namespace DutyPanel.Controllers
             return View(adminuser);
         }
 
-        //
+        //Создание новой записи об администраторе
         // GET: /Admin/Create
 
         public ActionResult Create()
@@ -42,7 +43,7 @@ namespace DutyPanel.Controllers
             return View();
         }
 
-        //
+        //Создание новой записи об администратор
         // POST: /Admin/Create
 
         [HttpPost]
@@ -55,7 +56,7 @@ namespace DutyPanel.Controllers
                 return RedirectToAction("Index");
         }
 
-        //
+        //Редактирование записи об администратор
         // GET: /Admin/Edit/5
 
         public ActionResult Edit(int id = 0)
@@ -68,7 +69,7 @@ namespace DutyPanel.Controllers
             return View(adminuser);
         }
 
-        //
+        //Редактирование записи об администратор
         // POST: /Admin/Edit/5
 
         [HttpPost]
@@ -91,7 +92,7 @@ namespace DutyPanel.Controllers
             return RedirectToAction("Index");
         }
 
-        //
+        //Удаление записи об администратор
         // GET: /Admin/Delete/5
 
         public ActionResult Delete(int id = 0)
@@ -104,7 +105,7 @@ namespace DutyPanel.Controllers
             return View(adminuser);
         }
 
-        //
+        //Удаление
         // POST: /Admin/Delete/5
 
         [HttpPost, ActionName("Delete")]
@@ -120,6 +121,7 @@ namespace DutyPanel.Controllers
             }
             else
             {
+                //Запрет на удаление единственного в системе администратора
                 ViewData["InfoText"] = "Ошибка удаления! В системе даолжен быть хотя бы один администратор.";
                 return View(db.AdminUsers.Find(id));
             }

@@ -11,11 +11,12 @@ using System.Data.Common;
 
 namespace DutyPanel.Controllers
 {
+    //Контроллер для управления Сотрудниками
     public class EmployeeController : Controller
     {
         private DataContext db = new DataContext();
 
-        //
+        //отображение списка сотрудников
         // GET: /Employee/
 
         public ActionResult Index()
@@ -23,7 +24,7 @@ namespace DutyPanel.Controllers
             return View(db.EmployeeUsers.ToList());
         }
 
-        //
+        //Отображение записи о сотруднике
         // GET: /Employee/Details/5
 
         public ActionResult Details(int id = 0)
@@ -36,7 +37,7 @@ namespace DutyPanel.Controllers
             return View(employeeuser);
         }
 
-        //
+        //Удаление записи о сотруднике
         // GET: /Employee/Delete/5
 
         public ActionResult Delete(int id = 0)
@@ -49,7 +50,7 @@ namespace DutyPanel.Controllers
             return View(employeeuser);
         }
 
-        //
+        //Удаление записи о сотруднике
         // POST: /Employee/Delete/5
 
         [HttpPost, ActionName("Delete")]
@@ -62,7 +63,7 @@ namespace DutyPanel.Controllers
             return RedirectToAction("Index");
         }
 
-        //
+        //Создание записи о сотруднике
         // GET: /Employee/Create
 
         public ActionResult Create()
@@ -70,13 +71,14 @@ namespace DutyPanel.Controllers
             return View();
         }
 
-        //
+        //Созданеи записи о сотруднике
         // POST: /Employee/Create
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(EmployeeUsers euser)
         {
+            //получение из формы типа создаваемого сотрудника и перенаправление на нужный метод
             switch (Request.Form["TypeUser"])
             {
                 case "1":
@@ -89,11 +91,15 @@ namespace DutyPanel.Controllers
             }
             return RedirectToAction("Index");
         }
+        //Созданеи записи о дежурном
+        // GET: /Employee/CreateDuty
         public ActionResult CreatDuty()
         {
             ViewData["Rank"] = new SelectList(db.Ranks, "Id", "Name");
             return View();
         }
+        //Созданеи записи о дежурном
+        // POST: /Employee/CreateDuty
         [HttpPost]
         public ActionResult CreatDuty(Duty duty_usr)
         {
@@ -105,7 +111,9 @@ namespace DutyPanel.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        
+
+        //Созданеи записи об оперативном работнике
+        // GET: /Employee/CreatOperativeWorker
         public ActionResult CreatOperativeWorker()
         {
             ViewData["Rank"] = new SelectList(db.Ranks, "Id", "Name");
@@ -117,6 +125,8 @@ namespace DutyPanel.Controllers
             ViewData["Group"] = for_query;
             return View();
         }
+        //Созданеи записи об оперативном работнике
+        // POST: /Employee/CreatOperativeWorker
         [HttpPost]
         public ActionResult CreatOperativeWorker(OperativeWorker ow_usr)
         {
@@ -130,16 +140,16 @@ namespace DutyPanel.Controllers
             if (ow_usr.Group.Workers.Count() == 1)
             {
                 db.Database.Connection.Open();
-                    // Start a local transaction.
+                    // Начало транзакции
                     DbTransaction sqlTran = db.Database.Connection.BeginTransaction();
 
-                    // Enlist a command in the current transaction.
+                    // Создание комнады транзакции
                     DbCommand command = db.Database.Connection.CreateCommand();
                     command.Transaction = sqlTran;
 
                     try
                     {
-                        // Execute two separate commands.
+                        // Выполнение SQL команды на изменеие IsHeadOfGroup для оперативного сотрудника, который первый в оперативной группе
                         command.CommandText = @"
                             UPDATE
 		                        OperativeWorkers
@@ -147,31 +157,31 @@ namespace DutyPanel.Controllers
 		                        OperativeWorkers.IsHeadOfGroup = 1
 	                        WHERE OperativeWorkers.Id = "+ ow_usr.Id.ToString();
                         command.ExecuteNonQuery();
-                        // Commit the transaction.
+                        // Commit транзакции
                         sqlTran.Commit();
                         db.SaveChanges();
                     }
                     catch (Exception ex)
                     {
-                        // Handle the exception if the transaction fails to commit.
+                        // Ошибка транзакции Commit
                         Session["TransactionError"] = "Ошибка в транзакции. Во время изменения поля IsHEadGroup возникла ошибка. "+ ex.Message+"   ";
                         try
                         {
-                            // Attempt to roll back the transaction.
+                            // Попытка отмены транзакции
                             sqlTran.Rollback();
                         }
                         catch (Exception exRollback)
                         {
-                            // Throws an InvalidOperationException if the connection 
-                            // is closed or the transaction has already been rolled 
-                            // back on the server.
-                            Session["TransactionError"] += "Ошибка при отмены транзакции. ошибка при вызове метода Rollback(). "+ exRollback.Message;
+                            //Соединение закрыто или транзакция была уже отменена
+                            Session["TransactionError"] += "Ошибка при отмены транзакции. ошибка при вызове метода Rollback().Соединение закрыто или транзакция была уже отменена. " + exRollback.Message;
                         }
                     }
 
             }
             return RedirectToAction("Index");
         }
+        //Созданеи записи о водителе
+        //GET: Employee/CreatDriver
         public ActionResult CreatDriver()
         {
             ViewData["Rank"] = new SelectList(db.Ranks, "Id", "Name");
@@ -191,6 +201,8 @@ namespace DutyPanel.Controllers
             }
             return View();
         }
+        //Созданеи записи о водителе
+        //POST: Employee/CreatDriver
         [HttpPost]
         public ActionResult CreatDriver(Driver driver_usr)
         {
@@ -204,7 +216,7 @@ namespace DutyPanel.Controllers
             return RedirectToAction("Index");
         }
 
-        //
+        //Редактирование записи о сотруднике
         // GET: /Employee/Edit/5
 
         public ActionResult Edit(int id = 0)
@@ -216,12 +228,14 @@ namespace DutyPanel.Controllers
             }
             else
             {
+                //если дежурный
                 if (employeeuser is Duty)
                 {
                     return View("EditDuty", db.Dutys.Find(id));
                 }
                 else
                 {
+                    //если оперативный работник
                     if (employeeuser is OperativeWorker)
                     {
                         ViewData["Group"] = new SelectList(db.OperationalGroups, "IdGroup", "IdGroup");
@@ -229,6 +243,7 @@ namespace DutyPanel.Controllers
                     }
                     else
                     {
+                        //если водитель
                         ViewData["Group"] = new SelectList(db.OperationalGroups, "IdGroup", "IdGroup");
                         return View("EditDriver", db.Drivers.Find(id));
                     }
@@ -236,6 +251,9 @@ namespace DutyPanel.Controllers
 
             }
         }
+
+        //Редактирование дежурного
+        //POST: Employee/EditDuty
         [HttpPost]
         public ActionResult EditDuty(DutyPanel.Models.Duty duty_usr)
         {
@@ -264,12 +282,11 @@ namespace DutyPanel.Controllers
             db.Configuration.ValidateOnSaveEnabled = true;
             return RedirectToAction("Index");
         }
+        //Редактирование оперативного сотрудника
+        //POST: Employee/EditOperativeWorker
         [HttpPost]
         public ActionResult EditOperativeWorker(DutyPanel.Models.OperativeWorker ow_usr)
         {
-            /*ow_usr.Group = db.OperationalGroups.Find(Convert.ToInt32(Request.Form["Group"]));
-            ow_usr.Rank = db.Ranks.Find(ow_usr.Id);
-            ow_usr.DateLastEditedRank = db.EmployeeUsers.Find(ow_usr.Id).DateLastEditedRank;*/
             OperativeWorker tmp_ow = db.OperativeWorkers.Find(ow_usr.Id);
             tmp_ow.ContactPhone = ow_usr.ContactPhone;
             tmp_ow.DateGivePassport = ow_usr.DateGivePassport;
@@ -298,6 +315,8 @@ namespace DutyPanel.Controllers
             db.Configuration.ValidateOnSaveEnabled = true;
             return RedirectToAction("Index");
         }
+        //Редактирование водителя
+        //POST: Employee/EditDriver
         [HttpPost]
         public ActionResult EditDriver(DutyPanel.Models.Driver d_usr)
         {
@@ -329,6 +348,8 @@ namespace DutyPanel.Controllers
             db.Configuration.ValidateOnSaveEnabled = false;
             return RedirectToAction("Index");
         }
+        //Изменение звания сотрдника
+        //GET: Employee/EditRank/5
         public ActionResult EditRank(int id = 0)
         {
             if (db.EmployeeUsers.Find(id) == null)
@@ -336,6 +357,8 @@ namespace DutyPanel.Controllers
             ViewData["Rank"] = new SelectList(db.Ranks, "Id", "Name");
             return View();
         }
+        //Изменение звания сотрдника
+        //POST: Employee/EditRank/5
         [HttpPost]
         public ActionResult EditRank(EmployeeUser empl_usr)
         {

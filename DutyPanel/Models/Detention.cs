@@ -6,6 +6,7 @@ using System.Web;
 
 namespace DutyPanel.Models
 {
+    //Задержание
     public class Detention
     {
         [Key]

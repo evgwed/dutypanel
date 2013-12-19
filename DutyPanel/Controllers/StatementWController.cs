@@ -11,11 +11,12 @@ using System.Data.SqlClient;
 
 namespace DutyPanel.Controllers
 {
+    //Контроллер для управления записями о письменных заявлениях
     public class StatementWController : Controller
     {
         private DataContext db = new DataContext();
 
-        //
+        //Отображение списка письменных заявлений
         // GET: /StatementW/
 
         public ActionResult Index()
@@ -23,7 +24,7 @@ namespace DutyPanel.Controllers
             return View(db.WrittenStatements.ToList());
         }
 
-        //
+        //Отображение записи о письменном заявлении
         // GET: /StatementW/Details/5
 
         public ActionResult Details(int id = 0)
@@ -39,7 +40,7 @@ namespace DutyPanel.Controllers
             return View(writtenstatement);
         }
 
-        //
+        //Создание новой записи о письменном заявлении
         // GET: /StatementW/Create
 
         public ActionResult Create()
@@ -47,7 +48,7 @@ namespace DutyPanel.Controllers
             return View();
         }
 
-        //
+        //Создание новой записи о письменном заявлении
         // POST: /StatementW/Create
 
         [HttpPost]
@@ -62,7 +63,7 @@ namespace DutyPanel.Controllers
             return RedirectToAction("Index");
         }
 
-        //
+        //Редактировние записи о письменном заявлении
         // GET: /StatementW/Edit/5
 
         public ActionResult Edit(int id = 0)
@@ -75,7 +76,7 @@ namespace DutyPanel.Controllers
             return View(writtenstatement);
         }
 
-        //
+        //Редактирование записи о письменном заявлении
         // POST: /StatementW/Edit/5
 
         [HttpPost]
@@ -93,7 +94,7 @@ namespace DutyPanel.Controllers
             return View(writtenstatement);
         }
 
-        //
+        //Удаление записи о письменном заявлении
         // GET: /StatementW/Delete/5
 
         public ActionResult Delete(int id = 0)
@@ -106,7 +107,7 @@ namespace DutyPanel.Controllers
             return View(writtenstatement);
         }
 
-        //
+        //Удаление записи о письменном заявлении
         // POST: /StatementW/Delete/5
 
         [HttpPost, ActionName("Delete")]

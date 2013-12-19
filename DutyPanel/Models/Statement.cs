@@ -7,15 +7,17 @@ using System.Web;
 
 namespace DutyPanel.Models
 {
+    //Перечисление статусов заявлений
     public enum StatementStatus:int
     {
-        [Description("Заявление принято")]
+        //Заявление принято
         Received = 1,
-        [Description("Заявление обрабатывается")]
+        //Заявление обрабатывается
         Processed = 2,
-        [Description("Отправлен ответ заявителю")]
+        //Отправлен ответ заявителю
         Reply = 3
     }
+    //Класс заявление
     public class Statement
     {
         [Key]
@@ -54,6 +56,7 @@ namespace DutyPanel.Models
         [Display(Name = "Выезд группы по заявлению")]
         public virtual LeavingGroup Leaving { get; set; }
     }
+    //Интернет заявление
     public class InternetStatement : Statement
     {
         [Required]
@@ -63,6 +66,7 @@ namespace DutyPanel.Models
         [Display(Name = "Информация о браузере заявителя")]
         public string InfoBrowser { get; set; }
     }
+    //Устное заявление
     public class OralStatement : Statement
     {
         [Required]
@@ -72,6 +76,7 @@ namespace DutyPanel.Models
         [Display(Name = "Адрес звонящего")]
         public string AdressCaller { get; set; }
     }
+    //Письменное заявление
     public class WrittenStatement : Statement
     {
         [Required]

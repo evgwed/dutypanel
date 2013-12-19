@@ -6,6 +6,7 @@ using System.Web;
 
 namespace DutyPanel.Models
 {
+    //Оперативная группа
     public class OperationalGroup
     {
         [Key]
@@ -17,6 +18,7 @@ namespace DutyPanel.Models
         [Display(Name = "Выездые оперативной группы")]
         public virtual ICollection<LeavingGroup> Leavings { get; set; }
     }
+    //Выезд оперативной группы
     public class LeavingGroup
     {
         [Key]

@@ -24,6 +24,7 @@ namespace DutyPanel.Models
         public TypeDuty TypeDuty { get; set; }
         public virtual ICollection<Statement> Statments { get; set; }
     }
+    //Оперативнй работник
     public class OperativeWorker : EmployeeUser
     {
         [Required]
@@ -43,6 +44,7 @@ namespace DutyPanel.Models
         [Display(Name = "Оперативная группа")]
         public virtual OperationalGroup Group { get; set; }
     }
+    //Водитель
     public class Driver : EmployeeUser
     {
         [Required]

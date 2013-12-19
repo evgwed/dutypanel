@@ -6,7 +6,7 @@ using System.Web;
 
 namespace DutyPanel.Models
 {
-    //заслуги
+    //Заслуги
     public class Merit
     {
         [Key]

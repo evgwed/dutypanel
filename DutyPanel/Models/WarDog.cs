@@ -6,6 +6,7 @@ using System.Web;
 
 namespace DutyPanel.Models
 {
+    //Класс служебной собаки
     public class WarDog
     {
         [Key]

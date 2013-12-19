@@ -9,11 +9,12 @@ using DutyPanel.Models;
 
 namespace DutyPanel.Controllers
 {
+    //Контроллер для управлениями записей о служебных собаках
     public class DogController : Controller
     {
         private DataContext db = new DataContext();
 
-        //
+        //Получение списка собак
         // GET: /Dog/
 
         public ActionResult Index()
@@ -22,7 +23,7 @@ namespace DutyPanel.Controllers
             return View(wardogs.ToList());
         }
 
-        //
+        //Отображение записи о служебной собаке
         // GET: /Dog/Details/5
 
         public ActionResult Details(int id = 0)
@@ -35,7 +36,7 @@ namespace DutyPanel.Controllers
             return View(wardog);
         }
 
-        //
+        //Создание записи о служебной собаке
         // GET: /Dog/Create
 
         public ActionResult Create()
@@ -49,7 +50,7 @@ namespace DutyPanel.Controllers
             return View();
         }
 
-        //
+        //Создание записи о служебной собаке
         // POST: /Dog/Create
 
         [HttpPost]
@@ -62,7 +63,7 @@ namespace DutyPanel.Controllers
             return RedirectToAction("Index");
         }
 
-        //
+        //Редактирование записи о служебной собаке
         // GET: /Dog/Edit/5
 
         public ActionResult Edit(int id = 0)
@@ -77,7 +78,7 @@ namespace DutyPanel.Controllers
             return View(wardog);
         }
 
-        //
+        //Редактирвоание записи о служебной собаке
         // POST: /Dog/Edit/5
 
         [HttpPost]
@@ -90,7 +91,7 @@ namespace DutyPanel.Controllers
             return RedirectToAction("Index");
         }
 
-        //
+        //Удаление записи о служебной собаке
         // GET: /Dog/Delete/5
 
         public ActionResult Delete(int id = 0)
@@ -103,7 +104,7 @@ namespace DutyPanel.Controllers
             return View(wardog);
         }
 
-        //
+        //Удаление записи о служебной собаке
         // POST: /Dog/Delete/5
 
         [HttpPost, ActionName("Delete")]

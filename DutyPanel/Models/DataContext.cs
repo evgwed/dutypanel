@@ -32,7 +32,8 @@ namespace DutyPanel.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-           
+            //Указание названия таблиц, где необходимо хранить конкретные сущбности
+            //Создание схемы ролей dbo и visitor
             modelBuilder.Entity<User>().ToTable("Users", "visitor");
             modelBuilder.Entity<AdminUser>().ToTable("AdminUsers");
             modelBuilder.Entity<EmployeeUser>().ToTable("EmployeeUsers");
@@ -43,9 +44,11 @@ namespace DutyPanel.Models
             modelBuilder.Entity<InternetStatement>().ToTable("InternetStatements");
             modelBuilder.Entity<OralStatement>().ToTable("OralStatements");
             modelBuilder.Entity<WrittenStatement>().ToTable("WrittenStatements");
+            //Реализация связи 1:1 средствами API Entity Framework
             modelBuilder.Entity<LeavingGroup>()
             .HasOptional(f => f.Protocol)
             .WithRequired(s => s.Leaving);
+            //Реализация связи 1:1 средствами API Entity Framework
             modelBuilder.Entity<Driver>()
             .HasOptional(f => f.Group)
             .WithOptionalDependent(s => s.Driver);
@@ -65,7 +68,7 @@ namespace DutyPanel.Models
                 bases.Database.Connection.Open();
                 DbCommand command = null;
 
-                // Триггер для изменения поля в оперативном работнике ипри задании ему собаки 
+                // Триггер для изменения поля в оперативном работнике и при задании ему собаки 
                 command = bases.Database.Connection.CreateCommand();
                 command.CommandText = @"
                     CREATE TRIGGER CreatDog on WarDogs
@@ -139,7 +142,7 @@ namespace DutyPanel.Models
                     RETURN 0;
                     ";
                 command.ExecuteNonQuery();
-                //Функция для получения ФИО главноего водителя по номеру авто
+                //Функция для получения ФИО главного водителя по номеру авто
                 command = bases.Database.Connection.CreateCommand();
                 command.CommandText = @"
                     CREATE FUNCTION [dbo].[GetCarFIO]

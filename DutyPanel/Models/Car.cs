@@ -6,6 +6,7 @@ using System.Web;
 
 namespace DutyPanel.Models
 {
+    //Служеный автомобиль
     public class Car
     {
         [Key]

@@ -10,11 +10,12 @@ using DutyPanel.Models.ModelForSQL;
 
 namespace DutyPanel.Controllers
 {
+    //Контроллер управления автомобилями
     public class CarController : Controller
     {
         private DataContext db = new DataContext();
 
-        //
+        //Получение списка автомобилей
         // GET: /Car/
 
         public ActionResult Index()
@@ -22,7 +23,7 @@ namespace DutyPanel.Controllers
             return View(db.Cars.ToList());
         }
 
-        //
+        //Получение подробной информации об автомобиле по id
         // GET: /Car/Details/5
 
         public ActionResult Details(int id = 0)
@@ -32,6 +33,7 @@ namespace DutyPanel.Controllers
             {
                 return HttpNotFound();
             }
+            //Хранимая в бд функция получения ФИО главного водителя автомобиля по номеру авто
             var q = db.Database.SqlQuery<FIO>("SELECT * FROM [dbo].[GetCarFIO](N'"+car.NumberCar+"')");
             FIO tmp_fio = q.FirstOrDefault();
             if (tmp_fio.FirstName == null)
@@ -45,7 +47,7 @@ namespace DutyPanel.Controllers
             return View(car);
         }
 
-        //
+        //Создание записи о новом автомобиле
         // GET: /Car/Create
 
         public ActionResult Create()
@@ -53,7 +55,7 @@ namespace DutyPanel.Controllers
             return View();
         }
 
-        //
+        //Создание записи о новом автомобиле
         // POST: /Car/Create
 
         [HttpPost]
@@ -70,7 +72,7 @@ namespace DutyPanel.Controllers
             return View(car);
         }
 
-        //
+        //Редакитрование записи об автомобиле
         // GET: /Car/Edit/5
 
         public ActionResult Edit(int id = 0)
@@ -83,7 +85,7 @@ namespace DutyPanel.Controllers
             return View(car);
         }
 
-        //
+        //Редакитрование записи об автомобиле
         // POST: /Car/Edit/5
 
         [HttpPost]
@@ -99,7 +101,7 @@ namespace DutyPanel.Controllers
             return View(car);
         }
 
-        //
+        //Удаление записи об автомобиле
         // GET: /Car/Delete/5
 
         public ActionResult Delete(int id = 0)
@@ -112,7 +114,7 @@ namespace DutyPanel.Controllers
             return View(car);
         }
 
-        //
+        //Удаление записи об автомобиле
         // POST: /Car/Delete/5
 
         [HttpPost, ActionName("Delete")]

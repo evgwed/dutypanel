@@ -8,20 +8,21 @@ using System.Web.Mvc;
 
 namespace DutyPanel.Controllers
 {
+    //Контроллер для реализации логики профиля пользователя
     public class ProfileController : Controller
     {
-
-        //
-        // GET: /Profile/
         public DataContext db = new DataContext();
-
+        //Вывод информации о пользователе
+        // GET: /Profile/
         public ActionResult Index()
         {
             if (Session["User"] is Driver)
             {
-                if ((Session["User"] as Driver).DateReceiptLicense < DateTime.Now.AddYears(-10))
+                //Напомининие о продлении водительских прав
+                DateTime? date_license = db.Drivers.Find((Session["User"] as Driver).Id).DateReceiptLicense;
+                if (date_license < DateTime.Now.AddYears(-10))
                 {
-                    ViewData["Notification"] = "Вам необходимо обновить водительские права, так как срок действия истек.\n\n";
+                    ViewData["Notification"] = "Вам необходимо обновить водительские права, так как их срок действия истек.\n\n";
                 }
             }
             else
@@ -30,7 +31,10 @@ namespace DutyPanel.Controllers
                 {
                     if ((Session["User"] as OperativeWorker).IsHaveDog)
                     {
-                        if ((Session["User"] as OperativeWorker).WarDog.DateLastInspection < DateTime.Now.AddDays(-1))
+                        //Напоминание о наобходимости показать ветеренару служебную собаку
+                        DateTime? date_dog = db.WarDogs.Find((Session["User"] as OperativeWorker).WarDog.IdDog).DateLastInspection,
+                                 date_dotay = DateTime.Today.AddDays(-1);
+                        if ( date_dog <= date_dotay )
                         {
                             ViewData["Notification"] = "Необходмио показать служебную собаку ветеренару.";
                         }
@@ -39,26 +43,36 @@ namespace DutyPanel.Controllers
             }
             return View();
         }
+        //Отображение заявлений всех типов с возможностью фильтрации
+        // GET: /Profile/Statements
         public ActionResult Statements(string status)
         {
+            //Фильтр: Заялвение подано
             if (status == "received")
             {
                 return View(db.Statements.Where(m=>m.Status == StatementStatus.Received).OrderBy(m => m.DateStatment).ToList());
             }
+            //Фильтр: Заявление обарбатывается
             if (status == "processed")
             {
                 return View(db.Statements.Where(m => m.Status == StatementStatus.Processed).OrderBy(m => m.DateStatment).ToList());
             }
+            //Фильтр: Направлен ответ заявителю
             if (status == "reply")
             {
                 return View(db.Statements.Where(m => m.Status == StatementStatus.Reply).OrderBy(m => m.DateStatment).ToList());
             }
+            //Отображение без фильтра
             return View(db.Statements.OrderBy(m => m.DateStatment).ToList());
         }
+        //Авторизация сотрудника в системе
+        // GET: /Profile/Login
         public ActionResult Login()
         {
             return View();
         }
+        //Авторизация сотрудника в системе
+        // GET: /Profile/Login
         [HttpPost]
         public ActionResult Login(DutyPanel.Users usr)
         {
@@ -69,6 +83,7 @@ namespace DutyPanel.Controllers
                 Session.Add("User", tmp_user);
                 if (tmp_user is AdminUser)
                 {
+                    //Для администратора изменение даты последнего входа на сейчас
                     db.AdminUsers.Find(tmp_user.Id).DateOfLastEntry = DateTime.Now;
                     db.SaveChanges();
                 }
@@ -77,15 +92,14 @@ namespace DutyPanel.Controllers
             }
             else
             {
+                //Вывод сообщения об ошибке авторизации
                 ViewData["ErrorText"] = "Ошибка авторизации. Проверьте правильность e-mail или пароля.";
                 return View();
             }
-        }        
-        
-        /// <summary>
-        /// profile/creatadmin - создание тестовых пользователей
-        /// </summary>
-        /// <returns></returns>
+        }
+
+        //Функция создания тестовых записей в бд
+        // GET: /Profile/CreatAdmin
         public ActionResult CreatAdmin()
         {
             if (db.AdminUsers.Count() == 0)
@@ -122,18 +136,25 @@ namespace DutyPanel.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+        //Выход из профиля
+        // GET: /Profile/Logout
         public ActionResult Logout()
         {
             Session["User"] = null;
             return RedirectToAction("Index", "Home");
         }
+        //Поиск заявлений
+        // GET: /Profile/FindStatment
         public ActionResult FindStatment()
         {
             return View(db.Statements.ToList());
         }
+        //Поиск заявлений по району происшествия и дате
+        // GET: /Profile/FindStatment
         [HttpPost]
         public ActionResult FindStatment(IEnumerable<DutyPanel.Models.Statement> d)
         {
+            //Получение данных с формы
             DateTime dateForm_min = DateTime.Parse(Request.Form["date_min"]),
                      dateForm_max = DateTime.Parse(Request.Form["date_max"]);
             string districtForm = Request.Form["district"];

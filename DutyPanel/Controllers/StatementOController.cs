@@ -10,11 +10,12 @@ using DutyPanel.Models.ModelForSQL;
 
 namespace DutyPanel.Controllers
 {
+    //Контроллер для управления записями об устных заявлениях
     public class StatementOController : Controller
     {
         private DataContext db = new DataContext();
 
-        //
+        //Отображение списка устных заявлений
         // GET: /StatementO/
 
         public ActionResult Index()
@@ -22,7 +23,7 @@ namespace DutyPanel.Controllers
             return View(db.OralStatements.ToList());
         }
 
-        //
+        //Отображение записи о письменном заявлении
         // GET: /StatementO/Details/5
 
         public ActionResult Details(int id = 0)
@@ -32,13 +33,14 @@ namespace DutyPanel.Controllers
             {
                 return HttpNotFound();
             }
+            //хранимая функция на получение ФИО дежурного, который принял заявление
             var q = db.Database.SqlQuery<FIO>("SELECT * FROM [dbo].[GetStatementFIO]('" + id.ToString() + "')");
             FIO tmp_fio = q.FirstOrDefault();
             ViewData["FIO"] = tmp_fio.LastName + " " + tmp_fio.FirstName + " " + tmp_fio.SecondName;
             return View(oralstatement);
         }
 
-        //
+        //Создание записи о письменном заявлении
         // GET: /StatementO/Create
 
         public ActionResult Create()
@@ -50,7 +52,7 @@ namespace DutyPanel.Controllers
             return View();
         }
 
-        //
+        //Создание  записи о письменном заявлении
         // POST: /StatementO/Create
 
         [HttpPost]
@@ -72,7 +74,7 @@ namespace DutyPanel.Controllers
                 return RedirectToAction("Index");
         }
 
-        //
+        //Редактирование записи о письменном заявлении
         // GET: /StatementO/Edit/5
 
         public ActionResult Edit(int id = 0)
@@ -85,7 +87,7 @@ namespace DutyPanel.Controllers
             return View(oralstatement);
         }
 
-        //
+        //Редактирование записи о письменном заявлении
         // POST: /StatementO/Edit/5
 
         [HttpPost]
@@ -103,7 +105,7 @@ namespace DutyPanel.Controllers
             return View(oralstatement);
         }
 
-        //
+        //Удаление записи о письменном заявлении
         // GET: /StatementO/Delete/5
 
         public ActionResult Delete(int id = 0)
@@ -116,7 +118,7 @@ namespace DutyPanel.Controllers
             return View(oralstatement);
         }
 
-        //
+        //Удаление записи о письменном заявлении
         // POST: /StatementO/Delete/5
 
         [HttpPost, ActionName("Delete")]

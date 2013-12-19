@@ -9,11 +9,12 @@ using DutyPanel.Models;
 
 namespace DutyPanel.Controllers
 {
+    //Контроллер для управления записями об оператиных группах
     public class OperationalController : Controller
     {
         private DataContext db = new DataContext();
 
-        //
+        //Отображение списка оперативных групп
         // GET: /Operational/
 
         public ActionResult Index()
@@ -21,7 +22,7 @@ namespace DutyPanel.Controllers
             return View(db.OperationalGroups.ToList());
         }
 
-        //
+        //Отображение записи об оперативной группе
         // GET: /Operational/Details/5
 
         public ActionResult Details(int id = 0)
@@ -34,7 +35,7 @@ namespace DutyPanel.Controllers
             return View(operationalgroup);
         }
 
-        //
+        //Создание новой записи об оперативной группе
         // GET: /Operational/Create
 
         public ActionResult Create()
@@ -43,7 +44,7 @@ namespace DutyPanel.Controllers
             return View();
         }
 
-        //
+        //Созданеи новой записи об оперативной группе
         // POST: /Operational/Create
 
         [HttpPost]
@@ -55,8 +56,8 @@ namespace DutyPanel.Controllers
             return RedirectToAction("Index");
         }
 
-       
-        //
+
+        //Удаление записи об оперативной группе
         // GET: /Operational/Delete/5
 
         public ActionResult Delete(int id = 0)
@@ -69,7 +70,7 @@ namespace DutyPanel.Controllers
             return View(operationalgroup);
         }
 
-        //
+        //Удаление записи об оперативной группе
         // POST: /Operational/Delete/5
 
         [HttpPost, ActionName("Delete")]
@@ -78,11 +79,13 @@ namespace DutyPanel.Controllers
         {
             OperationalGroup operationalgroup = db.OperationalGroups.Find(id);
             IEnumerable<OperativeWorker> w_arr = db.OperativeWorkers.Where(s => s.Group.IdGroup == operationalgroup.IdGroup);
+            //Открепление оперативных сотрудников от удаляемой группы
             foreach (OperativeWorker item in w_arr)
             {
                 db.OperativeWorkers.Find(item.Id).IsHeadOfGroup = false;
                 db.OperativeWorkers.Find(item.Id).Group = null;
             }
+            //Открепление водителя от удаляемой оперативной группы
             db.Drivers.Find(operationalgroup.Driver.Id).Group = null;
             db.OperationalGroups.Remove(operationalgroup);
             db.SaveChanges();

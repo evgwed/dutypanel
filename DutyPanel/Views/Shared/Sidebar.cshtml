@@ -1,20 +1,19 @@
 ﻿<div class="side_b">
     <h2>Меню</h2>
     <ul>
-        <li>@Html.ActionLink("На главную", "Index", "Home", new { res = false, IsMiniStyle = Session["Style"] }, null)</li>
+        <li>@Html.ActionLink("Главная страница", "Index", "Home", new { res = false, IsMiniStyle = Session["Style"] }, null)</li>
         @if (Session["User"] == null)
         {  
 
-            <li>@Html.ActionLink("Авторизация", "Login", "Profile")</li>
+            <li>@Html.ActionLink("Авторизация для сотрудников", "Login", "Profile")</li>
 
-            <li>@Html.ActionLink("Создание интернет заявления", "Create", "StatementI")</li>
+            <li>@Html.ActionLink("Подача заявления о происшествии", "Create", "StatementI")</li>
         }
         else
         {
 
-            <li>@Html.ActionLink("Выйти", "Logout", "Profile")</li>
-
             <li>@Html.ActionLink("Профиль", "Index", "Profile")</li>
+            <li>@Html.ActionLink("Выйти", "Logout", "Profile")</li>
         }
         
     </ul>
@@ -25,9 +24,9 @@
     <div class="side_b">
         <h2>Меню Администратора</h2>
         <ul>
-            <li>@Html.ActionLink("Профиль админа", "Index", "Admin")</li>
+            <li>@Html.ActionLink("Управление администраторами", "Index", "Admin")</li>
             <li>@Html.ActionLink("Заслуги сотрудников", "Index", "Merit")</li>
-            <li>@Html.ActionLink("Сотрудники", "Index", "Employee")</li>
+            <li>@Html.ActionLink("Управление сотрудниками", "Index", "Employee")</li>
             <li>@Html.ActionLink("Оперативные группы", "Index", "Operational")</li>
         </ul>
     </div>
@@ -43,7 +42,7 @@
             <li>@Html.ActionLink("Интернет заявления", "Index", "StatementI")</li>
             <li>@Html.ActionLink("Устные заявления", "Index", "StatementO")</li>
             <li>@Html.ActionLink("Письменные заявления", "Index", "StatementW")</li>
-            <li>@Html.ActionLink("Выезд оперативной группы", "Index", "Leaving")</li>
+            <li>@Html.ActionLink("Выезды оперативных групп", "Index", "Leaving")</li>
         </ul>
     </div>
 }
@@ -53,8 +52,8 @@
     <div class="side_b">
         <h2>Меню водителя</h2>
         <ul>
-            <li>@Html.ActionLink("Автомобили", "Index", "Car")</li>
-            <li>@Html.ActionLink("Выезд оперативной группы", "Index", "Leaving")</li>
+            <li>@Html.ActionLink("Служебные автомобили", "Index", "Car")</li>
+            <li>@Html.ActionLink("Выезды оперативной группы", "Index", "Leaving")</li>
         </ul>
     </div>
 }
@@ -65,7 +64,7 @@
         <h2>Меню оперативного работника</h2>
         <ul>
             <li>@Html.ActionLink("Собаки", "Index", "Dog")</li>
-            <li>@Html.ActionLink("Выезд оперативной группы", "Index", "Leaving")</li>
+            <li>@Html.ActionLink("Выезды оперативной группы", "Index", "Leaving")</li>
             <li>@Html.ActionLink("Протоколы", "Index", "Protocol")</li>
             <li>@Html.ActionLink("Задержания", "Index", "Detention")</li>
             <li>@Html.ActionLink("Поиск по задержаниям", "FindDetention", "Detention")</li>

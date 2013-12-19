@@ -8,18 +8,21 @@ using System.Data.Entity.Validation;
 
 namespace DutyPanel.Controllers
 {
+    //Контроллер для управление главной страницей
     public class HomeController : Controller
     {
         public DataContext db = new DataContext();
-        //
+        //Отображение главной страницы
         // GET: /Home/
 
         public ActionResult Index(bool res = false, string IsMiniStyle = "default")
         {
+            //Запись о удачно поданном интернет заявлении
             if (res)
             {
-                ViewData["InfoText"] = "Ваше заявление создано, скоро с вами свяжется дежурный для уточнения информации.";
+                ViewData["InfoText"] = "Ваше заявление подано, скоро с вами свяжется дежурный для уточнения информации.";
             }
+            //Изменение шаблона отображения страницы
             if (IsMiniStyle == "mini")
             {
                 Session["Style"] = "mini";
@@ -28,10 +31,13 @@ namespace DutyPanel.Controllers
             {
                 Session["Style"] = "default";
             }
+            //Необходимо для отображения тестовых пользователей
             if(db.Users.Count()!=0)
                 ViewBag.Users = db.Users.Take(4);
             return View();
         }
+        //Авторизация от имени одного из тестовых пользователей
+        //GET: Home/TMP_Enter
         public ActionResult TMP_Enter(string role)
         {
             switch (role) { 

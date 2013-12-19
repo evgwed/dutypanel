@@ -23,13 +23,13 @@
             <b>@Html.DisplayNameFor(model => model.DateLastInspection): </b>@Html.DisplayFor(model => model.DateLastInspection)
         </div>
         <div>
-            <b>@Html.DisplayNameFor(model => model.DogOwner.LastName): </b>@Html.DisplayFor(model => model.DogOwner.LastName)
+            <b>@Html.DisplayNameFor(model => model.DogOwner.LastName) хозяина: </b>@Html.DisplayFor(model => model.DogOwner.LastName)
         </div>
         <div>
-            <b>@Html.DisplayNameFor(model => model.DogOwner.FirstName): </b>@Html.DisplayFor(model => model.DogOwner.FirstName)
+            <b>@Html.DisplayNameFor(model => model.DogOwner.FirstName) хозяина: </b>@Html.DisplayFor(model => model.DogOwner.FirstName)
         </div>
         <div>
-            <b>@Html.DisplayNameFor(model => model.DogOwner.SecondName): </b>@Html.DisplayFor(model => model.DogOwner.SecondName)
+            <b>@Html.DisplayNameFor(model => model.DogOwner.SecondName) хозяина: </b>@Html.DisplayFor(model => model.DogOwner.SecondName)
         </div>
         <div>
             <b>Номер оперативной группы: </b>№@Html.DisplayFor(model => model.DogOwner.Group.IdGroup)
@@ -37,7 +37,17 @@
 
         
     <p>
-        @Html.ActionLink("Редактировать", "Edit", new { id=Model.IdDog }) |
+        @if(Session["User"] is DutyPanel.Models.AdminUser)
+        {
+            @Html.ActionLink("Редактировать", "Edit", new { id=Model.IdDog }) <span>|</span>
+        }
+        @if(Session["User"] is DutyPanel.Models.OperativeWorker)
+        {
+            if((Session["User"] as DutyPanel.Models.OperativeWorker).WarDog.IdDog == Model.IdDog)
+            {
+                @Html.ActionLink("Редактировать", "Edit", new { id=Model.IdDog }) <span>|</span>
+            }
+        }
         @Html.ActionLink("Вернуться назад к списку", "Index")
     </p>
 }

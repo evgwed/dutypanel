@@ -6,6 +6,7 @@ using System.Web;
 
 namespace DutyPanel.Models
 {
+    //Протокол
     public class Protocol
     {
         [Key]

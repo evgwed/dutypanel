@@ -9,11 +9,12 @@ using DutyPanel.Models;
 
 namespace DutyPanel.Controllers
 {
+    //Контроллер для управления протоколами
     public class ProtocolController : Controller
     {
         private DataContext db = new DataContext();
 
-        //
+        //Получение списка протоколов
         // GET: /Protocol/
 
         public ActionResult Index()
@@ -22,7 +23,7 @@ namespace DutyPanel.Controllers
             return View(protocols.ToList());
         }
 
-        //
+        //Отображение записи о протоколе
         // GET: /Protocol/Details/5
 
         public ActionResult Details(int id = 0)
@@ -35,7 +36,7 @@ namespace DutyPanel.Controllers
             return View(protocol);
         }
 
-        //
+        //Создание записи о протоколе
         // GET: /Protocol/Create
 
         public ActionResult Create(int id = 0)
@@ -52,7 +53,7 @@ namespace DutyPanel.Controllers
             }
         }
 
-        //
+        //Создание записи о протоколе
         // POST: /Protocol/Create
 
         [HttpPost]
@@ -74,7 +75,7 @@ namespace DutyPanel.Controllers
             return View(protocol);
         }
 
-        //
+        //Редактирование записи о протоколе
         // GET: /Protocol/Edit/5
 
         public ActionResult Edit(int id = 0)
@@ -88,7 +89,7 @@ namespace DutyPanel.Controllers
             return View(protocol);
         }
 
-        //
+        //Редактирование записи о протоколе
         // POST: /Protocol/Edit/5
 
         [HttpPost]
@@ -105,7 +106,7 @@ namespace DutyPanel.Controllers
             return View(protocol);
         }
 
-        //
+        //Удаление записи о протоколе
         // GET: /Protocol/Delete/5
 
         public ActionResult Delete(int id = 0)
@@ -118,7 +119,7 @@ namespace DutyPanel.Controllers
             return View(protocol);
         }
 
-        //
+        //удаление записи о протоколе
         // POST: /Protocol/Delete/5
 
         [HttpPost, ActionName("Delete")]
