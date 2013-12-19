@@ -32,9 +32,16 @@ namespace DutyPanel.Controllers
             {
                 return HttpNotFound();
             }
-            var q = db.Database.SqlQuery<FIO>("SELECT * FROM [dbo].[GetCarFIO]('" + id.ToString() + "')");
+            var q = db.Database.SqlQuery<FIO>("SELECT * FROM [dbo].[GetCarFIO](N'"+car.NumberCar+"')");
             FIO tmp_fio = q.FirstOrDefault();
-            ViewData["FIO"] = tmp_fio.LastName + " " + tmp_fio.FirstName + " " + tmp_fio.SecondName;
+            if (tmp_fio.FirstName == null)
+            {
+                ViewData["FIO"] = "У автомобиля нет водителей.";
+            }
+            else
+            {
+                ViewData["FIO"] = tmp_fio.LastName + " " + tmp_fio.FirstName + " " + tmp_fio.SecondName;
+            }
             return View(car);
         }
 

@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DutyPanel.Models;
+using System.Data.SqlClient;
+using System.Data.Common;
 
 namespace DutyPanel.Controllers
 {
@@ -125,6 +127,49 @@ namespace DutyPanel.Controllers
             ow_usr.Rank = db.Ranks.Find(Convert.ToInt32(Request.Form["Rank"]));
             db.OperativeWorkers.Add(ow_usr);
             db.SaveChanges();
+            if (ow_usr.Group.Workers.Count() == 1)
+            {
+                db.Database.Connection.Open();
+                    // Start a local transaction.
+                    DbTransaction sqlTran = db.Database.Connection.BeginTransaction();
+
+                    // Enlist a command in the current transaction.
+                    DbCommand command = db.Database.Connection.CreateCommand();
+                    command.Transaction = sqlTran;
+
+                    try
+                    {
+                        // Execute two separate commands.
+                        command.CommandText = @"
+                            UPDATE
+		                        OperativeWorkers
+	                        SET
+		                        OperativeWorkers.IsHeadOfGroup = 1
+	                        WHERE OperativeWorkers.Id = "+ ow_usr.Id.ToString();
+                        command.ExecuteNonQuery();
+                        // Commit the transaction.
+                        sqlTran.Commit();
+                        db.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle the exception if the transaction fails to commit.
+                        Session["TransactionError"] = "Ошибка в транзакции. Во время изменения поля IsHEadGroup возникла ошибка. "+ ex.Message+"   ";
+                        try
+                        {
+                            // Attempt to roll back the transaction.
+                            sqlTran.Rollback();
+                        }
+                        catch (Exception exRollback)
+                        {
+                            // Throws an InvalidOperationException if the connection 
+                            // is closed or the transaction has already been rolled 
+                            // back on the server.
+                            Session["TransactionError"] += "Ошибка при отмены транзакции. ошибка при вызове метода Rollback(). "+ exRollback.Message;
+                        }
+                    }
+
+            }
             return RedirectToAction("Index");
         }
         public ActionResult CreatDriver()
