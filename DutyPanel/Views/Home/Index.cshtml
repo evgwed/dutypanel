@@ -4,6 +4,7 @@
 <h2>Автоматизированная система "Дежурный пульт"</h2>
 @if (ViewBag.Users!= null)
 {
+    <h3>Тестовые данные для входа в систему:</h3>
     <table  class="simple-little-table">
         <tr>
             <th>E-mail</th>
@@ -40,9 +41,16 @@
         </tr>
     }
     </table>
-    <br /><br />
-    @Html.ActionLink("Войти от Админа", "TMP_Enter", new { role = "admin"})<span> | </span> 
-    @Html.ActionLink("Войти от Дежурного", "TMP_Enter", new { role = "duty"})<span> | </span>  
-    @Html.ActionLink("Войти от Водителя", "TMP_Enter", new { role = "driver"})<span> | </span> 
-    @Html.ActionLink("Войти от Оперативного работника", "TMP_Enter", new { role = "ow"})
+    <h3>Автоматическая авторизация тестовых пользователей:</h3>
+    <ul>
+    <li>@Html.ActionLink("Войти от имени Администратора/Начальника дежурной части", "TMP_Enter", new { role = "admin"})</li>
+    <li>@Html.ActionLink("Войти от имени Дежурного работника", "TMP_Enter", new { role = "duty"})</li> 
+    <li>@Html.ActionLink("Войти от имени Водителя", "TMP_Enter", new { role = "driver"})</li>
+    <li>@Html.ActionLink("Войти от имени Оперативного работника", "TMP_Enter", new { role = "ow"})</li>
+    </ul>
+}
+else
+{
+    <p>В системе пока нет ни одной записи о пользователях. База данных пуста.</p>
+    <p>Вы можете создать записи о тестовых пользователях системы. @Html.ActionLink("Создать", "CreatAdmin", "Profile")</p>
 }

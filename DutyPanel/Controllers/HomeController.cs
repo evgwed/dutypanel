@@ -29,7 +29,7 @@ namespace DutyPanel.Controllers
                 Session["Style"] = "default";
             }
             if(db.Users.Count()!=0)
-                ViewBag.Users = db.Users;
+                ViewBag.Users = db.Users.Take(4);
             return View();
         }
         public ActionResult TMP_Enter(string role)
