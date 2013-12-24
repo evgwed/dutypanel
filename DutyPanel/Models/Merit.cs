@@ -13,6 +13,7 @@ namespace DutyPanel.Models
         public int Id { get; set; }
         [Required]
         [Display(Name = "Дата присвоения")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DateOfAssignment { get; set; }
         [Required]
         [Display(Name = "Описание заслуги")]

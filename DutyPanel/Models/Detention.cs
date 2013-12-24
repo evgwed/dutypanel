@@ -22,6 +22,7 @@ namespace DutyPanel.Models
         public string DetentionSecondName { get; set; }
         [Required]
         [Display(Name = "Дата и время задержания")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime? DateOfDetention { get; set; }
         [Required]
         [Display(Name = "Место задержания")]

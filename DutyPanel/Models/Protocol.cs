@@ -14,6 +14,7 @@ namespace DutyPanel.Models
         public int NumberProtocol { get; set; }
         [Required]
         [Display(Name = "Дата составления")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime? DateOfPreparation { get; set; }
         [Required]
         [Display(Name = "Место составления")]

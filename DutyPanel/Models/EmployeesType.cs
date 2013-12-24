@@ -52,6 +52,7 @@ namespace DutyPanel.Models
         public int LicenseNumber { get; set; }
         [Required]
         [Display(Name = "Дата получения водительских прав")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DateReceiptLicense { get; set; }
         [Required]
         [Display(Name = "Категория водительских прав")]

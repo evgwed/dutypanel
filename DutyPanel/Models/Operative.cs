@@ -25,14 +25,15 @@ namespace DutyPanel.Models
         public int IdLeaving { get; set; }
         [Required]
         [Display(Name = "Время выезда")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime? TimeLeaving { get; set; }
         [Required]
         [Display(Name = "Заявление")]
         public virtual Statement Statement { get; set; }
         [Required]
-        [Display(Name = "Опертаивная группа")]
+        [Display(Name = "Оперативная группа")]
         public virtual OperationalGroup Group { get; set; }
-        [Display(Name = "Составленныей протокол")]
+        [Display(Name = "Составленный протокол")]
         public virtual Protocol Protocol { get; set; }
     }
 }

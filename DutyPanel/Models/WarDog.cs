@@ -23,12 +23,15 @@ namespace DutyPanel.Models
         public string Breed { get; set; }
         [Required]
         [Display(Name = "Дата рождения")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DateOfBirthday { get; set; }
         [Required]
         [Display(Name = "Дата взятия на службу")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DateCommencementOfService { get; set; }
         [Required]
         [Display(Name = "Дата последнего осмотра ветеринаром")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DateLastInspection { get; set; }
     }
 }

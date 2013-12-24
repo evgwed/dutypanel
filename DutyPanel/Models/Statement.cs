@@ -33,9 +33,11 @@ namespace DutyPanel.Models
         public string DeclarantSecondName { get; set; }
         [Required]
         [Display(Name = "Дата подачи заявления")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime? DateStatment { get; set; }
         [Required]
         [Display(Name = "Дата происшествия")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime? DaetIncident { get; set; }
         [Required]
         [Display(Name = "Адрес происшествия")]
@@ -90,6 +92,7 @@ namespace DutyPanel.Models
         public int DeclarantSubdivisionPasport { get; set; }
         [Required]
         [Display(Name = "Дата выдачи паспорта")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DeclarantDateGivePassport { get; set; }
         [Required]
         [Display(Name = "Адрес прописки заявителя")]

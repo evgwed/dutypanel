@@ -33,6 +33,7 @@ namespace DutyPanel.Models
         public string WhoGivePassport { get; set; }
         [Required]
         [Display(Name = "Дата выдачи паспорта")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DateGivePassport { get; set; }
         [Required]
         [Display(Name = "Код подразделения")]
@@ -49,6 +50,7 @@ namespace DutyPanel.Models
     {
         [Required]
         [Display(Name = "Дата последнего входа")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DateOfLastEntry { get; set; }
     }
     //Сотрудник
@@ -59,9 +61,11 @@ namespace DutyPanel.Models
         public int EmployeeNumber { get; set; }
         [Required]
         [Display(Name = "Дата регистрации в ситеме")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DateRegistr { get; set; }
         [Required]
         [Display(Name = "Дата последнего изменения звания")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DateLastEditedRank { get; set; }
         [Required]
         [Display(Name = "Рабочий телефон")]
@@ -74,6 +78,7 @@ namespace DutyPanel.Models
         public int NumberServiceCertificate { get; set; }
         [Required]
         [Display(Name = "Дата выдачи служебного удостоверения")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DateIssueServiceCertificate { get; set; }
         [Required]
         [Display(Name = "Идентификатор звания")]

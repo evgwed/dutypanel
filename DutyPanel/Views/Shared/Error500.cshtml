@@ -6,3 +6,9 @@
 <h2>Внутренняя ошибка сервера.</h2>
 <p>@Session["TransactionError"]</p>
 <p>К сожалению, сервер не смог обработать ваш  запрос. Пожалуйста, обратитесь к администратору системы.</p>
+<div>
+  <p>Ошибка была вызвана в Action <u>@Model.ActionName</u> контроллера <u>@Model.ControllerName</u></p>
+  <b>Текст ошибки: </b><span style="color:#f00">@Model.Exception.Message</span>
+  <h4>Трассировка стека</h4>
+  <pre style="overflow: auto; background-color: #FFFB97; color: #134D82; font-size: 11px;">@Model.Exception.StackTrace</pre>
+</div>

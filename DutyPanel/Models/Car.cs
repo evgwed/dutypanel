@@ -26,6 +26,7 @@ namespace DutyPanel.Models
         public string ModelCar { get; set; }
         [Required]
         [Display(Name = "Дата выпуска")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? ReleaseDate { get; set; }
         [Required]
         [Display(Name = "Цвет кузова")]
@@ -35,6 +36,7 @@ namespace DutyPanel.Models
         public string FuelType { get; set; }
         [Required]
         [Display(Name = "Последняя дата заправки")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime? DateLastRefueling { get; set; }
         [Required]
         [Display(Name = "Число посадочных мест")]
