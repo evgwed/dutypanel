@@ -207,7 +207,7 @@
             @Scripts.Render("~/bundles/jqueryval")
             <script>
                 $(function () {
-                    $("#DateLastEditedRank, #DateIssueServiceCertificate, #DateGivePassport, #DateReceiptLicense").appendDtpicker({ "dateFormat": "DD/MM/YYYY" });
+                    $("#DateLastEditedRank, #DateIssueServiceCertificate, #DateGivePassport, #DateReceiptLicense").appendDtpicker({ "dateFormat": "DD/MM/YYYY", locale: "ru", closeOnSelected: true, firstDayOfWeek: 1  });
                 });
             </script>
         }

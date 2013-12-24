@@ -50,20 +50,33 @@ namespace DutyPanel.Controllers
             //Фильтр: Заялвение подано
             if (status == "received")
             {
-                return View(db.Statements.Where(m=>m.Status == StatementStatus.Received).OrderBy(m => m.DateStatment).ToList());
+                ViewData["StatusStatemet"] = "принято";
+                return View(db.Statements.Where(m => m.Status == StatementStatus.Received).OrderBy(m => m.DateStatment).ToList());
             }
-            //Фильтр: Заявление обарбатывается
-            if (status == "processed")
+            else
             {
-                return View(db.Statements.Where(m => m.Status == StatementStatus.Processed).OrderBy(m => m.DateStatment).ToList());
+                //Фильтр: Заявление обарбатывается
+                if (status == "processed")
+                {
+                    ViewData["StatusStatemet"] = "обрабатывается";
+                    return View(db.Statements.Where(m => m.Status == StatementStatus.Processed).OrderBy(m => m.DateStatment).ToList());
+                }
+                else
+                {
+                    //Фильтр: Направлен ответ заявителю
+                    if (status == "reply")
+                    {
+                        ViewData["StatusStatemet"] = "направлен ответ заявителю";
+                        return View(db.Statements.Where(m => m.Status == StatementStatus.Reply).OrderBy(m => m.DateStatment).ToList());
+                    }
+                    else
+                    {
+                        //Отображение без фильтра
+                        ViewData["StatusStatemet"] = "все";
+                        return View(db.Statements.OrderBy(m => m.DateStatment).ToList());
+                    }
+                }
             }
-            //Фильтр: Направлен ответ заявителю
-            if (status == "reply")
-            {
-                return View(db.Statements.Where(m => m.Status == StatementStatus.Reply).OrderBy(m => m.DateStatment).ToList());
-            }
-            //Отображение без фильтра
-            return View(db.Statements.OrderBy(m => m.DateStatment).ToList());
         }
         //Авторизация сотрудника в системе
         // GET: /Profile/Login

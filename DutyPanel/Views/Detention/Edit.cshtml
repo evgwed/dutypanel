@@ -91,7 +91,7 @@
         @Scripts.Render("~/bundles/jqueryval")
         <script>
             $(function () {
-                $("#DateOfDetention").appendDtpicker({ "dateFormat": "DD/MM/YYYY hh:mm" });
+                $("#DateOfDetention").appendDtpicker({ "dateFormat": "DD/MM/YYYY hh:mm", locale: "ru", closeOnSelected: true, firstDayOfWeek: 1  });
             });
         </script>
     }

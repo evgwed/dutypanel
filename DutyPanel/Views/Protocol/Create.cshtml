@@ -12,8 +12,6 @@
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
 
-        <fieldset>
-            <legend>Protocol</legend>
 
             <div class="editor-label">
                 @Html.LabelFor(model => model.DateOfPreparation)
@@ -42,7 +40,6 @@
             <p>
                 <input type="submit" value="Создать" />
             </p>
-        </fieldset>
     }
 
     <div>
@@ -53,7 +50,7 @@
         @Scripts.Render("~/bundles/jqueryval")
         <script>
             $(function () {
-                $("#DateOfPreparation").appendDtpicker({ "dateFormat": "DD/MM/YYYY" });
+                $("#DateOfPreparation").appendDtpicker({ "dateFormat": "DD/MM/YYYY", locale: "ru", closeOnSelected: true, firstDayOfWeek: 1  });
             });
         </script>
     }

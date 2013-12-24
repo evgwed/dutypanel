@@ -138,8 +138,8 @@ using (Html.BeginForm())
     @Scripts.Render("~/bundles/jqueryval")
     <script>
         $(function () {
-            $("#DateStatment, #DaetIncident").appendDtpicker({ "dateFormat": "DD/MM/YYYY h:m" });
-            $("#DeclarantDateGivePassport").appendDtpicker({ "dateFormat": "DD/MM/YYYY" });
+            $("#DateStatment, #DaetIncident").appendDtpicker({ "dateFormat": "DD/MM/YYYY h:m" , locale: "ru", closeOnSelected: true, firstDayOfWeek: 1 });
+            $("#DeclarantDateGivePassport").appendDtpicker({ "dateFormat": "DD/MM/YYYY", locale: "ru", closeOnSelected: true, firstDayOfWeek: 1  });
         });
     </script>
 }

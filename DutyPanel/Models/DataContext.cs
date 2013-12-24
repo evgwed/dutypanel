@@ -90,18 +90,18 @@ namespace DutyPanel.Models
                 // Триггер для изменения полья в оперативном работнике при удалении собаки
                 command = bases.Database.Connection.CreateCommand();
                 command.CommandText = @"
-                    CREATE TRIGGER CreatDog on WarDogs
-                    AFTER INSERT
+                    CREATE TRIGGER DeleteDog on WarDogs
+                    AFTER DELETE
                     AS
                     BEGIN
-                            SET NOCOUNT ON;
+		                    SET NOCOUNT ON;
 		                    DECLARE @IdOwner int;
 		                    SELECT @IdOwner = Id FROM OperativeWorkers WHERE
-							                    Id = (SELECT IdDog FROM inserted);
+							                    Id = (SELECT IdDog FROM deleted);
 		                    UPDATE
 			                    OperativeWorkers
 		                    SET
-			                    OperativeWorkers.IsHaveDog = 1
+			                    OperativeWorkers.IsHaveDog = 0
 		                    WHERE OperativeWorkers.Id = @IdOwner
                     END;
                     ";

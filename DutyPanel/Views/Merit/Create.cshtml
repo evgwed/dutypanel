@@ -49,7 +49,7 @@
         @Scripts.Render("~/bundles/jqueryval")
         <script>
             $(function () {
-                $("#DateOfAssignment").appendDtpicker({ "dateFormat": "DD/MM/YYYY" });
+                $("#DateOfAssignment").appendDtpicker({ "dateFormat": "DD/MM/YYYY" , locale: "ru", closeOnSelected: true, firstDayOfWeek: 1 });
             });
         </script>
     }

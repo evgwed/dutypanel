@@ -136,7 +136,21 @@
         { 
         <div >
             <b>@Html.DisplayNameFor(model => (Session["User"] as DutyPanel.Models.Duty).TypeDuty):</b>
-            @Html.DisplayFor(model => (Session["User"] as DutyPanel.Models.Duty).TypeDuty)
+            @if((Session["User"] as DutyPanel.Models.Duty).TypeDuty == DutyPanel.Models.TypeDuty.Duty)
+            {
+                <span>Дежурный</span>
+            }
+            else
+            {
+                if((Session["User"] as DutyPanel.Models.Duty).TypeDuty == DutyPanel.Models.TypeDuty.AssistantDuty)
+                {
+                    <span>Помощник дежурного</span>
+                }
+                else
+                {
+                     <span>Старший оперативный дежурный</span>
+                }
+            }
         </div>
         }
         if (Session["User"] is DutyPanel.Models.OperativeWorker)

@@ -114,7 +114,7 @@ using (Html.BeginForm()) {
 }
 <script>
     $(function () {
-        $("#DateGivePassport").appendDtpicker({ "dateFormat": "DD/MM/YYYY" });
+        $("#DateGivePassport").appendDtpicker({ "dateFormat": "DD/MM/YYYY", locale: "ru", closeOnSelected: true, firstDayOfWeek: 1 });
     });
 </script>
 

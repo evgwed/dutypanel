@@ -83,7 +83,7 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script>
         $(function () {
-            $("#DateStatment, #DaetIncident").appendDtpicker({ "dateFormat": "DD/MM/YYYY h:m" });
+            $("#DateStatment, #DaetIncident").appendDtpicker({ "dateFormat": "DD/MM/YYYY h:m", locale: "ru", closeOnSelected: true, firstDayOfWeek: 1  });
         });
     </script>
     }

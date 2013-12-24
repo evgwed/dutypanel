@@ -5,7 +5,7 @@
 }
 
 <h2>Список заявлений</h2>
-<p>Отобразить со статусом:</p>
+<p>Отобразить со статусом: @ViewData["StatusStatemet"]</p>
 <p>@Html.ActionLink("Все", "Statements", new {status = ""}) | @Html.ActionLink("Принято", "Statements", new {status = "received"}) | @Html.ActionLink("Обрабатывается", "Statements", new {status = "processed"}) | @Html.ActionLink("Направлен ответ заявителю", "Statements", new {status = "reply"})</p>
 
 <table class="simple-little-table">

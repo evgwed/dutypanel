@@ -73,7 +73,7 @@
         @Scripts.Render("~/bundles/jqueryval")
         <script>
             $(function () {
-                $("#DateOfBirthday, #DateCommencementOfService, #DateLastInspection").appendDtpicker({ "dateFormat": "DD/MM/YYYY" });
+                $("#DateOfBirthday, #DateCommencementOfService, #DateLastInspection").appendDtpicker({ "dateFormat": "DD/MM/YYYY", locale: "ru", closeOnSelected: true, firstDayOfWeek: 1  });
             });
         </script>
     }
