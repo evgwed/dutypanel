@@ -86,7 +86,10 @@ namespace DutyPanel.Controllers
                 db.OperativeWorkers.Find(item.Id).Group = null;
             }
             //Открепление водителя от удаляемой оперативной группы
-            db.Drivers.Find(operationalgroup.Driver.Id).Group = null;
+            if (operationalgroup.Driver != null)
+            {
+                db.Drivers.Find(operationalgroup.Driver.Id).Group = null;
+            }
             db.OperationalGroups.Remove(operationalgroup);
             db.SaveChanges();
             return RedirectToAction("Index");

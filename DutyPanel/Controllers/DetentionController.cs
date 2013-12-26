@@ -23,15 +23,15 @@ namespace DutyPanel.Controllers
             //Фильтр: были уведомлены родственники
             if (filter == "notified")
             {
-                return View(db.Detentions.Where(m => m.IsNotifiRelatives == true).ToList());
+                return View(db.Detentions.Where(m => m.IsNotifiRelatives == true).OrderBy(m => m.DetentionLastName).ToList());
             }
             //Фильтр: не были уведомлены родственники
             if (filter == "notnotifed")
             {
-                return View(db.Detentions.Where(m => !(m.IsNotifiRelatives)).ToList());
+                return View(db.Detentions.Where(m => !(m.IsNotifiRelatives)).OrderBy(m=>m.DetentionLastName).ToList());
             }
             //Отображение без фильтра
-            return View(db.Detentions.ToList());
+            return View(db.Detentions.OrderBy(m => m.DetentionLastName).ToList());
         }
 
         //Подробное отображение задержания

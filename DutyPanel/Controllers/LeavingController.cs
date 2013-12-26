@@ -57,7 +57,7 @@ namespace DutyPanel.Controllers
             {
                 ViewBag.IdLeaving = new SelectList(db.Protocols, "NumberProtocol", "PlaceOfPreparation");
                 Session["Statement"] = db.Statements.Find(id);
-                ViewData["Group"] = new SelectList(db.OperationalGroups, "IdGroup", "IdGroup");
+                ViewData["Group"] = new SelectList(db.OperationalGroups.Where(m=>m.Workers.Count()>0), "IdGroup", "IdGroup");
                 return View();
             }
             else

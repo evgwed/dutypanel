@@ -130,6 +130,10 @@
     {
         <span>|</span>@Html.ActionLink("Создать выезд оперативной группы", "Create", "Leaving", new { id = Model.NumberStatement}, null)
     }
+    else
+    {
+        <span> | По данному заявлению уже был выезд оперативной группы</span>
+    }
 </p>
 }
 else

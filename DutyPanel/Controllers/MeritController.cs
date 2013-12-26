@@ -19,7 +19,7 @@ namespace DutyPanel.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Merits.ToList());
+            return View(db.Merits.OrderBy(m=>m.Employee.LastName).ToList());
         }
 
         //Отображение записи о заслуге сотрудника

@@ -19,7 +19,7 @@ namespace DutyPanel.Controllers
 
         public ActionResult Index()
         {
-            return View(db.AdminUsers.ToList());
+            return View(db.AdminUsers.OrderBy(m=>m.LastName).ToList());
         }
 
         //Получение подробной информации о администраторе
@@ -83,7 +83,8 @@ namespace DutyPanel.Controllers
             tmp_admin.FirstName = adminuser.FirstName;
             tmp_admin.LastName = adminuser.LastName;
             tmp_admin.PassportNumber = adminuser.PassportNumber;
-            tmp_admin.Password = adminuser.RegistrationAddress;
+            tmp_admin.Password = adminuser.Password;
+            tmp_admin.RegistrationAddress = adminuser.RegistrationAddress;
             tmp_admin.SecondName = adminuser.SecondName;
             tmp_admin.SubdivisionPasport = adminuser.SubdivisionPasport;
             tmp_admin.WhoGivePassport = adminuser.WhoGivePassport;

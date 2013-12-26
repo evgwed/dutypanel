@@ -21,7 +21,7 @@ namespace DutyPanel.Controllers
 
         public ActionResult Index()
         {
-            return View(db.EmployeeUsers.ToList());
+            return View(db.EmployeeUsers.OrderBy(m=>m.LastName).ToList());
         }
 
         //Отображение записи о сотруднике
